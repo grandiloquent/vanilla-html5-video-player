@@ -1,0 +1,19 @@
+{
+    "url": "https://r4---sn-4g5e6nld.googlevideo.com/videoplayback?expire=1622410648&ei=OLGzYNCpHYiN7ASonKmgBg&ip=43.131.65.224&id=o-AGPHevUf2EMKcHh3P_e786A41ZtZjMhA2ubMZeAZb0Ze&itag=140&source=youtube&requiressl=yes&mh=KR&mm=31%2C26&mn=sn-4g5e6nld%2Csn-f5f7lnl7&ms=au%2Conr&mv=u&mvi=4&pl=22&pcm2=no&vprv=1&mime=audio%2Fmp4&ns=CmobTT6NyZc0TFGvCeDkG3MF&gir=yes&clen=956555&dur=59.025&lmt=1622208327391704&mt=1622388334&fvip=4&keepalive=yes&fexp=24001373%2C24007246&c=WEB&txp=5311224&n=Qbchgx1L02p2iCdz&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cpcm2%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOxFSw4C_pOUTPpksEscPZ40-mKRVqJuOrsw5horj7B0AiEA71GW4poCP6cgQnLlX55gG3aZMXXz2lA2azgMTfPDXS0%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl&lsig=AG3C_xAwRQIgbX82xaL3H8lkVP7HXU4epX6MgUXoPzZVo3vE9xxX3roCIQDvsS6jmCiFjgMCPoCRqddJwioGIbl3LtdNENC58eRi6Q%3D%3D",
+    "container": {
+        "name": "mp4"
+    },
+    "size": {
+        "bytes": 956555,
+        "kiloBytes": 934.1357421875,
+        "megaBytes": 0.9122419357299805,
+        "gigaBytes": 0.000890861265361309
+    },
+    "bitrate": {
+        "bitsPerSecond": 130355,
+        "kiloBitsPerSecond": 127.2998046875,
+        "megaBitsPerSecond": 0.12431621551513672,
+        "gigaBitsPerSecond": 0.0001214025542140007
+    },
+    "audioCodec": "mp4a.40.2"
+}
