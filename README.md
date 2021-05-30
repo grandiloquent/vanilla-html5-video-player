@@ -1,1 +1,10 @@
-"# vanilla-html5-video-player" 
+# 简单的网页播放器
+
+## 文档和资源
+
+* https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+* https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement
+
+### 测试视频地址
+
+* https://media.w3.org/2010/05/sintel/trailer.mp4
