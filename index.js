@@ -23,8 +23,7 @@ const _playerControlsContent = document.getElementById("player-controls-content"
 const _playerControlsMiddle = document.getElementById("player-controls-middle");
 const _playerControlPlayPauseIcon = document.getElementById("player-control-play-pause-icon");
 const _playerControlsBottom = document.getElementById("player-controls-bottom");
-const _timeFirst = document.getElementById("time-first");
-const _timeSecond = document.getElementById("time-second");
+const _timeDisplay = document.getElementById("time-display");
 const _progressBar = document.getElementById("progress-bar");
 const _progressBarLoaded = document.getElementById("progress-bar-loaded");
 const _progressBarPlayed = document.getElementById("progress-bar-played");
@@ -40,7 +39,7 @@ registerEvents(_html5MainVideo, {
         _spinner.setAttribute('hidden', 'hidden');
     },
     durationchange: ev => {
-        _timeSecond.textContent = formatDuration(_html5MainVideo.duration);
+        _timeDisplay.setAttribute('duration', formatDuration(_html5MainVideo.duration));
     },
     canplay: ev => {
         _spinner.setAttribute('hidden', 'hidden');
@@ -71,7 +70,8 @@ registerEvents(_html5MainVideo, {
     },
     timeupdate: ev => {
         // console.log("timeupdate");
-        _timeFirst.textContent = formatDuration(_html5MainVideo.currentTime);
+        if (_playerControlsBottom.hasAttribute('hidden')) return;
+        _timeDisplay.setAttribute('current', formatDuration(_html5MainVideo.currentTime));
         var percent = calculateProgressPercent(_html5MainVideo);
         _progressBarPlayed.style.width = percent;
         _progressBarPlayheadWrapper.style.marginLeft = percent;
@@ -86,7 +86,6 @@ registerEvents(_html5MainVideo, {
         _progressBarLoaded.style.width = '0';
     },
     loadeddata: ev => {
-        console.log('======================')
         _playerControlPlayPauseIcon.setAttribute('status', 'pause');
         //querySelector('path').setAttribute('d',
         //  'M6,4l12,8L6,20V4z');

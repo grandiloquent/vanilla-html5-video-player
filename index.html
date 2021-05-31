@@ -10,6 +10,7 @@
     <script src="./components/moreitem.js"></script>
     <script src="./components/playbutton.js"></script>
     <script src="./components/spinner.js"></script>
+    <script src="./components/timedisplay.js"></script>
 </head>
 
 <body>
@@ -32,19 +33,7 @@
                         <custom-spinner class="spinner" hidden></custom-spinner>
                     </div>
                     <div id="player-controls-bottom" hidden>
-                        <div id="time-display">
-                            <div id="time-display-content">
-                                <div id="time-first">
-                                    0:00
-                                </div>
-                                <div id="time-delimiter">
-                                    /
-                                </div>
-                                <div id="time-second">
-                                    0:00
-                                </div>
-                            </div>
-                        </div>
+                        <custom-time-display id="time-display"></custom-time-display>
                         <div id="progress-bar">
                             <div id="progress-bar-line">
                                 <div id="progress-bar-background">

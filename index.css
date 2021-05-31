@@ -151,24 +151,8 @@ c3-icon svg path {
     align-items: center;
 }
 
-#time-display {
-    display: flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    margin-left: 16px;
-    font-weight: 500;
-}
 
-#time-display-content {
-    pointer-events: none;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-}
+
 
 #time-first,
 #time-second,
