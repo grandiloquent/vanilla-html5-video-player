@@ -51,7 +51,7 @@ class CustomToolbarItem extends HTMLElement {
     attributeChangedCallback(attrName, oldVal, newVal) {
         switch (attrName) {
             case "name": {
-                this.buttonRendererText = newVal;
+                this.buttonRendererText.textContent = newVal;
                 break;
             }
             case "d": {
