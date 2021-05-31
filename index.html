@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>视频播放 - 回形针</title>
+    <title>在线视频播放播放器 - 回形针</title>
+    <meta name="description" content="在线视频播放播放器，支持解析91Porn、YouTube等视频平台的视频的真实地址，支持下载视频。">
     <link rel="stylesheet" href="index.css">
     <script src="./components/moreitem.js"></script>
     <script src="./components/playbutton.js"></script>
     <script src="./components/spinner.js"></script>
     <script src="./components/timedisplay.js"></script>
+    <script src="./components/progressbar.js"></script>
 </head>
 
 <body>
+    <h1 hidden>在线视频播放播放器</h1>
     <div id="player-container">
         <div id="player">
             <div id="html5-video-player">
@@ -34,29 +37,17 @@
                     </div>
                     <div id="player-controls-bottom" hidden>
                         <custom-time-display id="time-display"></custom-time-display>
-                        <div id="progress-bar">
-                            <div id="progress-bar-line">
-                                <div id="progress-bar-background">
-                                </div>
-                                <div id="progress-bar-loaded">
-                                </div>
-                                <div id="progress-bar-played">
-                                </div>
-                            </div>
-                            <div id="progress-bar-playhead-wrapper">
-                                <div id="progress-bar-playhead">
-                                    <div id="progress-bar-playhead-dot">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- ProgressBar -->
+                        <custom-progress-bar id="progress-bar"></custom-progress-bar>
                         <button id="fullscreen-icon">
-                            <c3-icon><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                    height="24" viewBox="0 0 24 24" width="24">
+                            <c3-icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                                    viewBox="0 0 24 24" width="24">
                                     <path
                                         d="M7,11H6V6h5v1H7V11z M18,6h-5v1h4v4h1V6z M18,13h-1v4h-4v1h5V13z M11,17H7v-4H6v5h5V17z">
                                     </path>
-                                </svg></c3-icon>
+                                </svg>
+                            </c3-icon>
                         </button>
                     </div>
                 </div>

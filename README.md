@@ -1,6 +1,6 @@
 # 简单的网页播放器
 
-在线演示：https://hxz315.com/video.html
+在线演示：https://www.hxz315.com/video.html
 
 ## 文档和资源
 

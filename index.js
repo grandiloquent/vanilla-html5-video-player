@@ -25,9 +25,6 @@ const _playerControlPlayPauseIcon = document.getElementById("player-control-play
 const _playerControlsBottom = document.getElementById("player-controls-bottom");
 const _timeDisplay = document.getElementById("time-display");
 const _progressBar = document.getElementById("progress-bar");
-const _progressBarLoaded = document.getElementById("progress-bar-loaded");
-const _progressBarPlayed = document.getElementById("progress-bar-played");
-const _progressBarPlayheadWrapper = document.getElementById("progress-bar-playhead-wrapper");
 const _progressBarPlayheadDot = document.getElementById("progress-bar-playhead-dot");
 const _fullscreenIcon = document.getElementById("fullscreen-icon");
 const _spinner = document.querySelector('.spinner');
@@ -73,12 +70,12 @@ registerEvents(_html5MainVideo, {
         if (_playerControlsBottom.hasAttribute('hidden')) return;
         _timeDisplay.setAttribute('current', formatDuration(_html5MainVideo.currentTime));
         var percent = calculateProgressPercent(_html5MainVideo);
-        _progressBarPlayed.style.width = percent;
-        _progressBarPlayheadWrapper.style.marginLeft = percent;
+        _progressBar.setAttribute('played', percent);
     },
     progress: ev => {
         //console.log("progress");
-        _progressBarLoaded.style.width = calculateLoadedPercent(_html5MainVideo);
+
+        _progressBar.setAttribute('loaded', calculateLoadedPercent(_html5MainVideo));
     },
     abort: ev => {
         _progressBarPlayed.style.width = '0';
