@@ -18,7 +18,6 @@ class CustomToast extends HTMLElement {
         notificationActionRenderer.setAttribute('class', 'notification-action-renderer');
         const notificationActionResponseText = document.createElement('DIV');
         notificationActionResponseText.setAttribute('class', 'notification-action-response-text');
-        notificationActionResponseText.appendChild(document.createTextNode('提取码已成功复制到剪切板'));
         notificationActionRenderer.appendChild(notificationActionResponseText);
         c3Toast.appendChild(notificationActionRenderer);
         this.root.appendChild(c3Toast);

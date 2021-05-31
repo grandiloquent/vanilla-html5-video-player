@@ -69,15 +69,167 @@
             </header>
         </div>
         <div class="player-size"></div>
-        <footer style="background-color: #def1ff;padding: 12px;box-sizing: border-box;">
-            <div style="padding-top: 8px;border-top: 1px solid rgba(0,0,0,0.102);"></div>
-            <a href="https://lucidu.cn/article?id=1">VPN</a>
-        </footer>
+        <style>
+            .clarification-container {
+                background-color: #def1ff;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            .clarification-endpoint {
+                display: block;
+                padding: 12px 0 12px 12px;
+                flex-direction: row;
+                flex-grow: 1;
+            }
+
+            .clarification-content {
+                padding-bottom: 8px;
+                display: flex;
+                margin: 0;
+                justify-content: center;
+                box-sizing: border-box;
+                -webkit-user-select: none;
+                min-width: 5.14em;
+                font-size: 1.4rem;
+                text-transform: uppercase;
+                border-radius: 3px;
+            }
+
+            .clarification-body {
+
+                flex-grow: 1;
+                margin-right: 12px;
+            }
+
+            .clarification-text {
+                margin-bottom: 0;
+                max-height: 3.75em;
+                -webkit-line-clamp: 3;
+                opacity: 1;
+                text-align: left;
+                font-size: 1.2rem;
+                box-orient: vertical;
+                -webkit-box-orient: vertical;
+                display: box;
+                overflow: hidden;
+                line-height: 1.25;
+                text-overflow: ellipsis;
+                font-weight: normal;
+            }
+
+            .clarification-bottom-row {
+                display: flex;
+                align-items: center;
+                flex: 1;
+                padding-top: 8px;
+                border-top: 1px solid rgba(0, 0, 0, 0.102);
+            }
+
+            .clarification-secondary-endpoint {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                flex: 1;
+            }
+
+            .clarification-source {
+                margin-left: 4px;
+                margin-top: 0;
+                color: #606060;
+                display: flex;
+                align-items: center;
+            }
+
+            .clarification-source-icon {
+                padding-left: 2px;
+                width: 12px;
+                height: 12px;
+                display: inline-block;
+                flex-shrink: 0;
+                fill: currentColor;
+                stroke: none;
+            }
+
+            .clarification-source-icon>svg {
+                width: 100%;
+                height: 100%;
+                stroke: #000;
+            }
+
+            .clarification-menu-button {
+                flex-shrink: 0;
+                padding-top: 12px;
+                display: flex;
+            }
+
+            .icon-button {
+                border: none;
+                background: transparent;
+                width: 40px;
+                height: 40px;
+                padding: 8px;
+                box-sizing: border-box;
+                cursor: pointer;
+                outline: none;
+                font: inherit;
+                text-transform: inherit;
+                color: inherit;
+            }
+
+            c3-icon {
+                display: inline-block;
+                flex-shrink: 0;
+                width: 24px;
+                height: 24px;
+                fill: currentColor;
+                stroke: none;
+            }
+        </style>
+        <div class="clarification-container">
+            <div class="clarification-endpoint">
+                <div class="clarification-content">
+                    <div class="clarification-body">
+                        <div class="clarification-text">
+                            点击播放按钮，输入视频地址及可获取下载链接
+                        </div>
+                    </div>
+                </div>
+                <div class="clarification-bottom-row">
+                    <a class="clarification-secondary-endpoint" href="https://lucidu.cn/article?id=1">
+                        <div class="clarification-source">VPN
+                            <div class="clarification-source-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                                    viewBox="0 0 24 24" width="24">
+                                    <path
+                                        d="M21,21H3V3h9v1H4v16h16v-8h1V21z M15,3v1h4.32l-8.03,8.03L12,12.74l8-8V9h1V3H15z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="clarification-menu-button">
+                <button class="icon-button">
+                    <c3-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                            viewBox="0 0 24 24" width="24">
+                            <path style="fill: #030303;"
+                                d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z">
+                            </path>
+                        </svg>
+                    </c3-icon>
+                </button>
+            </div>
+        </div>
+
         <div class="slim-video-metadata-header-content"></div>
         <div class="slim-video-metadata-actions">
             <custom-toolbar-item id="copy"></custom-toolbar-item>
         </div>
-        <div style="border-top: 1px solid rgba(0,0,0,0.102);"></div>
+        <div style="border-top: 1px solid rgba(0,0,0,0.102);">
+
+        </div>
 
     </div>
 
