@@ -200,40 +200,6 @@ c3-icon {
 }
 
 /*  */
-.c3-toast[dir="in"] {
-    transition: margin 225ms cubic-bezier(0.0, 0.0, 0.2, 1);
-    margin-bottom: 0;
-}
-
-.c3-toast[dir="out"] {
-    transition: margin 195ms cubic-bezier(0.4, 0.0, 1, 1);
-}
-
-.c3-toast {
-    display: block;
-    position: fixed;
-    z-index: 4;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-sizing: border-box;
-    padding: 14px 24px;
-    font-size: 1.4rem;
-    color: #ffffff;
-    background: hsl(0, 0%, 20%);
-    will-change: transform;
-    margin-bottom: -100%;
-}
-
-.notification-action-renderer {
-    display: flex;
-    align-items: center;
-}
-
-.notification-action-response-text {
-    flex-grow: 1;
-    padding-right: 1rem;
-}
 
 /*  */
 
@@ -310,5 +276,20 @@ a {
     display: flex;
     align-items: center;
 }
-
+.slim-video-metadata-header-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 0 9px 9px;
+}
+.slim-video-metadata-actions {
+    padding: 0 12px 12px 12px;
+    color: #606060;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
  

@@ -8,6 +8,7 @@
 * https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+* https://developer.mozilla.org/zh-CN/docs/Web/API/CustomEvent
 
 ### 测试视频地址
 

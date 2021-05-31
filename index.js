@@ -17,73 +17,73 @@ import {
 
 //-------------------------//
 
-const _html5MainVideo = document.getElementById("html5-main-video");
+const _video = document.getElementById("html5-main-video");
 const _playerControlOverlay = document.getElementById("player-control-overlay");
 const _playerControlsContent = document.getElementById("player-controls-content");
 const _playerControlsMiddle = document.getElementById("player-controls-middle");
-const _playerControlPlayPauseIcon = document.getElementById("player-control-play-pause-icon");
+const _play = document.getElementById("player-control-play-pause-icon");
 const _playerControlsBottom = document.getElementById("player-controls-bottom");
 const _timeDisplay = document.getElementById("time-display");
 const _progressBar = document.getElementById("progress-bar");
-const _progressBarPlayheadDot = document.getElementById("progress-bar-playhead-dot");
 const _fullscreenIcon = document.getElementById("fullscreen-icon");
 const _spinner = document.querySelector('.spinner');
+const _toast = document.querySelector('custom-toast');
+
 let _timerout;
 
-registerEvents(_html5MainVideo, {
+registerEvents(_video, {
     loadstart: event => {
         hideControls();
         _spinner.setAttribute('hidden', 'hidden');
     },
     durationchange: ev => {
-        _timeDisplay.setAttribute('duration', formatDuration(_html5MainVideo.duration));
+        _timeDisplay.setAttribute('duration', formatDuration(_video.duration));
     },
     canplay: ev => {
         _spinner.setAttribute('hidden', 'hidden');
         showControls();
     },
     loadedmetadata: ev => {
-        if (_html5MainVideo.videoWidth && _html5MainVideo
+        if (_video.videoWidth && _video
             .videoHeight) {
-            const ratio = Math.min(_html5MainVideo.videoWidth / _html5MainVideo
+            const ratio = Math.min(_video.videoWidth / _video
                 .videoHeight);
-            const height = _html5MainVideo.videoWidth <= window.innerWidth ?
-                _html5MainVideo
+            const height = _video.videoWidth <= window.innerWidth ?
+                _video
                 .videoHeight :
-                _html5MainVideo
-                .videoHeight * window.innerWidth / _html5MainVideo.videoWidth;
+                _video
+                .videoHeight * window.innerWidth / _video.videoWidth;
 
-            const width = _html5MainVideo.videoWidth <= window.innerWidth ?
-                _html5MainVideo
+            const width = _video.videoWidth <= window.innerWidth ?
+                _video
                 .videoWidth : window.innerWidth;
 
-            _html5MainVideo.style.height = height + 'px';
-            _html5MainVideo.style.width = width + 'px';
-            _html5MainVideo.style.left = (_html5MainVideo.videoWidth <= window
+            _video.style.height = height + 'px';
+            _video.style.width = width + 'px';
+            _video.style.left = (_video.videoWidth <= window
                 .innerWidth ?
-                (window.innerWidth - _html5MainVideo.videoWidth) / 2 : 0) + 'px';
+                (window.innerWidth - _video.videoWidth) / 2 : 0) + 'px';
 
         }
     },
     timeupdate: ev => {
         // console.log("timeupdate");
         if (_playerControlsBottom.hasAttribute('hidden')) return;
-        _timeDisplay.setAttribute('current', formatDuration(_html5MainVideo.currentTime));
-        var percent = calculateProgressPercent(_html5MainVideo);
+        _timeDisplay.setAttribute('current', formatDuration(_video.currentTime));
+        var percent = calculateProgressPercent(_video);
         _progressBar.setAttribute('played', percent);
     },
     progress: ev => {
         //console.log("progress");
 
-        _progressBar.setAttribute('loaded', calculateLoadedPercent(_html5MainVideo));
+        _progressBar.setAttribute('loaded', calculateLoadedPercent(_video));
     },
     abort: ev => {
-        _progressBarPlayed.style.width = '0';
-        _progressBarPlayheadWrapper.style.marginLeft = '0';
-        _progressBarLoaded.style.width = '0';
+        _progressBar.setAttribute('played', '0');
+        _progressBar.setAttribute('loaded', '0');
     },
     loadeddata: ev => {
-        _playerControlPlayPauseIcon.setAttribute('status', 'pause');
+        _play.setAttribute('status', 'pause');
         //querySelector('path').setAttribute('d',
         //  'M6,4l12,8L6,20V4z');
 
@@ -99,7 +99,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
     "stalled", "suspend", "volumechange", "waiting", "loading"
 ]
 .forEach(evenName => {
-    _html5MainVideo.addEventListener(evenName, event => {
+    _video.addEventListener(evenName, event => {
         switch (evenName) {
 
 
@@ -114,7 +114,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
             }
             case 'ended': {
                 console.log("ended");
-                _playerControlPlayPauseIcon.setAttribute('status', 'restart');
+                _play.setAttribute('status', 'restart');
 
                 break;
             }
@@ -132,7 +132,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 
             case 'pause': {
                 console.log("pause");
-                _playerControlPlayPauseIcon.setAttribute('status', 'pause');
+                _play.setAttribute('status', 'pause');
 
                 //.querySelector('path').setAttribute('d',
                 //  'M6,4l12,8L6,20V4z');
@@ -141,7 +141,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
             }
             case 'play': {
                 console.log("play");
-                _playerControlPlayPauseIcon.setAttribute('status', 'play');
+                _play.setAttribute('status', 'play');
                 //.querySelector('path').setAttribute('d',
                 //  'M9,19H7V5H9ZM17,5H15V19h2Z');
                 scheduleHideControls();
@@ -205,27 +205,27 @@ if (_html5MainVideo.canPlayType('application/vnd.apple.mpegurl')) {
                   ["addTextTrack()", "captureStream()", "canPlayType()", "fastSeek()", "load()", "pause()", "play()", "seekToNextFrame()", "setMediaKeys()", "setSinkId()"]
                  */
 
-_playerControlPlayPauseIcon.addEventListener('click', event => {
+_play.addEventListener('click', event => {
     //logProperties();
-    if (_html5MainVideo.ended) {
-        _html5MainVideo.load();
-        _html5MainVideo.currentTime = 0;
-        _html5MainVideo.play();
-    } else if (_html5MainVideo.paused) {
-        _html5MainVideo.play();
+    if (_video.ended) {
+        _video.load();
+        _video.currentTime = 0;
+        _video.play();
+    } else if (_video.paused) {
+        _video.play();
     } else {
-        _html5MainVideo.pause();
+        _video.pause();
     }
 });
-_progressBar.addEventListener('click', progressBarClickHandler(_html5MainVideo, _progressBar));
+_progressBar.addEventListener('click', progressBarClickHandler(_video, _progressBar));
 
 function showControls() {
-    _playerControlPlayPauseIcon.removeAttribute('hidden');
+    _play.removeAttribute('hidden');
     _playerControlsBottom.removeAttribute('hidden');
 }
 
 function hideControls() {
-    _playerControlPlayPauseIcon.setAttribute('hidden', 'hidden');
+    _play.setAttribute('hidden', 'hidden');
     _playerControlsBottom.setAttribute('hidden', 'hidden');
 }
 
@@ -238,43 +238,46 @@ function scheduleHideControls() {
     }, 5000);
 }
 _playerControlOverlay.addEventListener('click', event => {
+    if (!_video.src) {
+        const customDialog = document.createElement('CUSTOM-DIALOG');
+        customDialog.setAttribute('title', '视频');
+        customDialog.setAttribute('placeholder', '请输入视频网址');
+        customDialog.setAttribute('ok', '确定');
+        document.body.appendChild(customDialog);
+        customDialog.addEventListener('ok', async ev => {
+            console.log(ev);
+            if (ev.detail.string)
+                await fetchUri(ev.detail.string)
+            customDialog.remove();
+        });
+        return;
+    }
     showControls();
-    scheduleHideControls();
+    //scheduleHideControls();
+
 });
 
 
-document.getElementById('fetchVideoUrl')
-    .addEventListener('click', async event => {
-        const uri = document.getElementById('uri').value.trim();
-        if (!uri || !uri.length) return;
-        const res = await getJSON(uri);
-        try {
-            const obj = JSON.parse(res);
-            renderYouTube(obj);
-        } catch (error) {
-            decode91Porn(res);
-        }
-    });
-
-
+async function fetchUri(uri) {
+    const res = await getJSON(uri);
+    try {
+        const obj = JSON.parse(res);
+        renderYouTube(obj);
+    } catch (error) {
+        decode91Porn(res);
+    }
+}
 
 function decode91Porn(value) {
     const m3u8 = strencode2(value).match(/(?<=src\=')[^']*(?=')/g);
     document.getElementById('uri').value = m3u8;
-    _html5MainVideo.pause();
-    _html5MainVideo.src = m3u8;
+    _video.pause();
+    _video.src = m3u8;
 
 }
 
 
-document.getElementById('pasteButton').addEventListener('click', async event => {
-    const string = await readText();
-    document.getElementById('uri').value = string;
-});
-document.getElementById('copyButton').addEventListener('click', event => {
-    //_html5MainVideo.src = m3u8;
-    navigator.clipboard.writeText(document.getElementById('uri').value);
-});
+
 
 
 function renderYouTube(obj) {
@@ -294,7 +297,7 @@ function renderYouTube(obj) {
     a.style.padding = '0 12px';
     a.style.color = '#333';
     a.addEventListener('click', ev => {
-        _html5MainVideo.src = a.dataset.src;
+        _video.src = a.dataset.src;
         navigator.clipboard.writeText(a.dataset.src);
     })
 
@@ -304,7 +307,7 @@ function renderYouTube(obj) {
         console.log(iterator);
         const amp = a.cloneNode();
         amp.addEventListener('click', ev => {
-            _html5MainVideo.src = amp.dataset.src;
+            _video.src = amp.dataset.src;
         })
         amp.textContent = iterator.videoQuality.label;
         amp.dataset.src = iterator.url;

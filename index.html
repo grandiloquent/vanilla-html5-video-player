@@ -13,6 +13,9 @@
     <script src="./components/spinner.js"></script>
     <script src="./components/timedisplay.js"></script>
     <script src="./components/progressbar.js"></script>
+    <script src="./components/toast.js"></script>
+    <script src="./components/dialog.js"></script>
+    <script src="./components/toolbaritem.js"></script>
 </head>
 
 <body>
@@ -32,7 +35,7 @@
             <div id="player-control-overlay">
                 <div id="player-controls-content">
                     <div id="player-controls-middle">
-                        <custom-play-button id="player-control-play-pause-icon" hidden></custom-play-button>
+                        <custom-play-button id="player-control-play-pause-icon"></custom-play-button>
                         <custom-spinner class="spinner" hidden></custom-spinner>
                     </div>
                     <div id="player-controls-bottom" hidden>
@@ -66,24 +69,22 @@
             </header>
         </div>
         <div class="player-size"></div>
-        <div style="padding:12px 12px 0;display: flex;">
-            <input id="uri" type="text" placeholder="请在此输入视频网站地址">
+        <footer style="background-color: #def1ff;padding: 12px;box-sizing: border-box;">
+            <div style="padding-top: 8px;border-top: 1px solid rgba(0,0,0,0.102);"></div>
+            <a href="https://lucidu.cn/article?id=1">VPN</a>
+        </footer>
+        <div class="slim-video-metadata-header-content"></div>
+        <div class="slim-video-metadata-actions">
+            <custom-toolbar-item ></custom-toolbar-item>
         </div>
-        <div style="padding:0 12px 12px;display: flex;justify-content:flex-end;">
-            <button class="btn" id="pasteButton">粘贴</button>
-            <button class="btn" id="copyButton">复制</button>
-            <button class="btn" id="fetchVideoUrl">获取</button>
-        </div>
+        <div style="border-top: 1px solid rgba(0,0,0,0.102);"></div>
 
     </div>
-    <footer style="background-color: #def1ff;padding: 12px;box-sizing: border-box;">
-        <div style="padding-top: 8px;border-top: 1px solid rgba(0,0,0,0.102);"></div>
-        <a href="https://lucidu.cn/article?id=1">VPN</a>
-    </footer>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> -->
+
+    <custom-toast></custom-toast>
     <script src="encode.js"></script>
-    <script src="toasts.js"></script>
     <script type="module" src="index.js"></script>
+    <!-- ToolbarItem -->
 </body>
 
 </html>
