@@ -86,8 +86,10 @@ registerEvents(_html5MainVideo, {
         _progressBarLoaded.style.width = '0';
     },
     loadeddata: ev => {
-        _playerControlPlayPauseIcon.querySelector('path').setAttribute('d',
-            'M6,4l12,8L6,20V4z');
+        console.log('======================')
+        _playerControlPlayPauseIcon.setAttribute('status', 'pause');
+        //querySelector('path').setAttribute('d',
+        //  'M6,4l12,8L6,20V4z');
 
     }
 
@@ -116,9 +118,8 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
             }
             case 'ended': {
                 console.log("ended");
-                _playerControlPlayPauseIcon.querySelector('path').setAttribute('d',
-                    'M22,12c0,5.51-4.49,10-10,10S2,17.51,2,12h1c0,4.96,4.04,9,9,9s9-4.04,9-9s-4.04-9-9-9C8.81,3,5.92,4.64,4.28,7.38 C4.17,7.56,4.06,7.75,3.97,7.94C3.96,7.96,3.95,7.98,3.94,8H8v1H1.96V3h1v4.74C3,7.65,3.03,7.57,3.07,7.49 C3.18,7.27,3.3,7.07,3.42,6.86C5.22,3.86,8.51,2,12,2C17.51,2,22,6.49,22,12z'
-                );
+                _playerControlPlayPauseIcon.setAttribute('status', 'restart');
+
                 break;
             }
             case 'error': {
@@ -135,15 +136,18 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 
             case 'pause': {
                 console.log("pause");
-                _playerControlPlayPauseIcon.querySelector('path').setAttribute('d',
-                    'M6,4l12,8L6,20V4z');
+                _playerControlPlayPauseIcon.setAttribute('status', 'pause');
+
+                //.querySelector('path').setAttribute('d',
+                //  'M6,4l12,8L6,20V4z');
                 scheduleHideControls();
                 break;
             }
             case 'play': {
                 console.log("play");
-                _playerControlPlayPauseIcon.querySelector('path').setAttribute('d',
-                    'M9,19H7V5H9ZM17,5H15V19h2Z');
+                _playerControlPlayPauseIcon.setAttribute('status', 'play');
+                //.querySelector('path').setAttribute('d',
+                //  'M9,19H7V5H9ZM17,5H15V19h2Z');
                 scheduleHideControls();
                 break;
             }
@@ -272,7 +276,7 @@ document.getElementById('pasteButton').addEventListener('click', async event => 
     document.getElementById('uri').value = string;
 });
 document.getElementById('copyButton').addEventListener('click', event => {
-    _html5MainVideo.src = m3u8;
+    //_html5MainVideo.src = m3u8;
     navigator.clipboard.writeText(document.getElementById('uri').value);
 });
 

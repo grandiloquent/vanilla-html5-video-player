@@ -8,6 +8,8 @@
     <title>视频播放 - 回形针</title>
     <link rel="stylesheet" href="index.css">
     <script src="./components/moreitem.js"></script>
+    <script src="./components/playbutton.js"></script>
+    <script src="./components/spinner.js"></script>
 </head>
 
 <body>
@@ -26,17 +28,8 @@
             <div id="player-control-overlay">
                 <div id="player-controls-content">
                     <div id="player-controls-middle">
-                        <button id="player-control-play-pause-icon" hidden>
-                            <c3-icon>
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
-                                    enable-background="new 0 0 24 24">
-                                    <g>
-                                        <path d="M6,4l12,8L6,20V4z"></path>
-                                    </g>
-                                </svg>
-                            </c3-icon>
-                        </button>
-                        <div class="spinner" hidden></div>
+                        <custom-play-button id="player-control-play-pause-icon" hidden></custom-play-button>
+                        <custom-spinner class="spinner" hidden></custom-spinner>
                     </div>
                     <div id="player-controls-bottom" hidden>
                         <div id="time-display">
@@ -85,7 +78,9 @@
         <div id="header-bar">
             <header id="mobile-topbar-header">
                 <div id="mobile-topbar-header-content">
-                    <custom-more-item d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></custom-more-item>
+                    <custom-more-item
+                        d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z">
+                    </custom-more-item>
                     <custom-more-item></custom-more-item>
                 </div>
             </header>
