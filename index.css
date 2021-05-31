@@ -421,3 +421,57 @@ input {
     appearance: unset;
     border: 1px solid #ccc;
 }
+button {
+    padding: 0;
+    border: none;
+    outline: none;
+    font: inherit;
+    text-transform: inherit;
+    color: inherit;
+    background: transparent;
+}
+
+button,
+select,
+[role="button"],
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+#header-bar {
+    top: 0;
+    transition: transform 225ms cubic-bezier(0.0, 0.0, 0.2, 1);
+    transition-property: all;
+    position: fixed;
+    padding: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: block;
+    background-color: #ffffff;
+}
+
+#mobile-topbar-header {
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+
+#mobile-topbar-header-content {
+    flex-grow: 1;
+    justify-content: flex-end;
+    color: #606060;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+ 

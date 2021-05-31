@@ -7,95 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>视频播放 - 回形针</title>
     <link rel="stylesheet" href="index.css">
-    <style>
-        button {
-            padding: 0;
-            border: none;
-            outline: none;
-            font: inherit;
-            text-transform: inherit;
-            color: inherit;
-            background: transparent;
-        }
-
-        button,
-        select,
-        [role="button"],
-        input[type="checkbox"] {
-            cursor: pointer;
-        }
-
-        a {
-            color: currentColor;
-            text-decoration: none;
-        }
-
-        #header-bar {
-            top: 0;
-            transition: transform 225ms cubic-bezier(0.0, 0.0, 0.2, 1);
-            transition-property: all;
-            position: fixed;
-            padding: 0;
-            left: 0;
-            right: 0;
-            z-index: 3;
-            display: block;
-            background-color: #ffffff;
-        }
-
-        #mobile-topbar-header {
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
-            display: flex;
-            align-items: center;
-            height: 48px;
-        }
-
-        #mobile-topbar-header-content {
-            flex-grow: 1;
-            justify-content: flex-end;
-            color: #606060;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .icon-button {
-            border: none;
-            background: transparent;
-            width: 40px;
-            height: 40px;
-            padding: 8px;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        #mobile-topbar-header-content .icon-button {
-            padding: 12px;
-            height: 48px;
-            width: 48px;
-        }
-
-        c3-icon {
-            display: inline-block;
-            -webkit-flex-shrink: 0;
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-            stroke: none;
-        }
-
-        c3-icon>svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .icon-button path {
-            fill: #606060;
-        }
-    </style>
+    <script src="./components/moreitem.js"></script>
 </head>
 
 <body>
@@ -173,16 +85,8 @@
         <div id="header-bar">
             <header id="mobile-topbar-header">
                 <div id="mobile-topbar-header-content">
-                    <button class="icon-button " aria-label="Account" aria-haspopup="true">
-                        <c3-icon>
-                            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
-                                viewBox="0 0 24 24" width="24">
-                                <path
-                                    d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z">
-                                </path>
-                            </svg>
-                        </c3-icon>
-                    </button>
+                    <custom-more-item d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></custom-more-item>
+                    <custom-more-item></custom-more-item>
                 </div>
             </header>
         </div>
