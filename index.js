@@ -3,7 +3,8 @@ import {
 } from './modules/datetime.js';
 
 import {
-    readText
+    readText,
+    writeText
 } from './modules/clipboard.js';
 import {
     getJSON
@@ -318,3 +319,10 @@ function renderYouTube(obj) {
 
     app.appendChild(div);
 }
+
+document.querySelector('#copy').addEventListener('click', event => {
+    if (_video.src) {
+        writeText(_video.src);
+        _toast.setAttribute('message', '成功复制到剪切板');
+    }
+});
