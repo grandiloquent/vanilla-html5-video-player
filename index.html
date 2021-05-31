@@ -7,6 +7,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>视频播放 - 回形针</title>
     <link rel="stylesheet" href="index.css">
+    <style>
+        button {
+            padding: 0;
+            border: none;
+            outline: none;
+            font: inherit;
+            text-transform: inherit;
+            color: inherit;
+            background: transparent;
+        }
+
+        button,
+        select,
+        [role="button"],
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        a {
+            color: currentColor;
+            text-decoration: none;
+        }
+
+        #header-bar {
+            top: 0;
+            transition: transform 225ms cubic-bezier(0.0, 0.0, 0.2, 1);
+            transition-property: all;
+            position: fixed;
+            padding: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            display: block;
+            background-color: #ffffff;
+        }
+
+        #mobile-topbar-header {
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
+            display: flex;
+            align-items: center;
+            height: 48px;
+        }
+
+        #mobile-topbar-header-content {
+            flex-grow: 1;
+            justify-content: flex-end;
+            color: #606060;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-button {
+            border: none;
+            background: transparent;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        #mobile-topbar-header-content .icon-button {
+            padding: 12px;
+            height: 48px;
+            width: 48px;
+        }
+
+        c3-icon {
+            display: inline-block;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            stroke: none;
+        }
+
+        c3-icon>svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon-button path {
+            fill: #606060;
+        }
+    </style>
 </head>
 
 <body>
@@ -81,6 +170,22 @@
         </div>
     </div>
     <div class="app">
+        <div id="header-bar">
+            <header id="mobile-topbar-header">
+                <div id="mobile-topbar-header-content">
+                    <button class="icon-button " aria-label="Account" aria-haspopup="true">
+                        <c3-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                                viewBox="0 0 24 24" width="24">
+                                <path
+                                    d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z">
+                                </path>
+                            </svg>
+                        </c3-icon>
+                    </button>
+                </div>
+            </header>
+        </div>
         <div class="player-size"></div>
         <div style="padding:12px 12px 0;display: flex;">
             <input id="uri" type="text" placeholder="请在此输入视频网站地址">
@@ -90,8 +195,12 @@
             <button class="btn" id="copyButton">复制</button>
             <button class="btn" id="fetchVideoUrl">获取</button>
         </div>
-       
+
     </div>
+    <footer style="background-color: #def1ff;padding: 12px;box-sizing: border-box;">
+        <div style="padding-top: 8px;border-top: 1px solid rgba(0,0,0,0.102);"></div>
+        <a href="https://lucidu.cn/article?id=1">VPN</a>
+    </footer>
     <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> -->
     <script src="encode.js"></script>
     <script src="toasts.js"></script>
