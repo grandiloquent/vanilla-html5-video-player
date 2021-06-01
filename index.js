@@ -14,19 +14,20 @@ import {
     calculateLoadedPercent,
     progressBarClickHandler
 } from './modules/video.js'
+
 //-------------------------//
+
 const _video = document.getElementById("html5-main-video");
-const _playerControlOverlay = document.getElementById("player-control-overlay");
+const _overlay = document.getElementById("player-control-overlay");
 const _playerControlsContent = document.getElementById("player-controls-content");
-const _playerControlsMiddle = document.getElementById("player-controls-middle");
 const _play = document.getElementById("player-control-play-pause-icon");
-const _playerControlsBottom = document.getElementById("player-controls-bottom");
+const _controlsBottom = document.getElementById("player-controls-bottom");
 const _timeDisplay = document.getElementById("time-display");
 const _progressBar = document.getElementById("progress-bar");
 const _fullscreenIcon = document.getElementById("fullscreen-icon");
 const _spinner = document.querySelector('.spinner');
 const _toast = document.querySelector('custom-toast');
-let _timerout;
+let _timer;
 registerEvents(_video, {
     loadstart: event => {
         hideControls();
@@ -61,7 +62,7 @@ registerEvents(_video, {
     },
     timeupdate: ev => {
         // console.log("timeupdate");
-        if (_playerControlsBottom.hasAttribute('hidden')) return;
+        if (_controlsBottom.hasAttribute('hidden')) return;
         _timeDisplay.setAttribute('current', formatDuration(_video.currentTime));
         var percent = calculateProgressPercent(_video);
         _progressBar.setAttribute('played', percent);
@@ -76,8 +77,6 @@ registerEvents(_video, {
     },
     loadeddata: ev => {
         _play.setAttribute('status', 'pause');
-        //querySelector('path').setAttribute('d',
-        //  'M6,4l12,8L6,20V4z');
     }
 });
 const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
@@ -103,10 +102,10 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
             }
             case 'error': {
                 console.log("error");
-                _playerControlOverlay.addEventListener('transitionend', ev => {
+                _overlay.addEventListener('transitionend', ev => {
                     _playerControlsContent.style.visibility = 'hidden';
                 });
-                _playerControlOverlay.classList.remove('fadein');
+                _overlay.classList.remove('fadein');
                 _spinner.setAttribute('hidden', 'hidden');
                 showToast('无法播放视频');
                 break;
@@ -180,27 +179,43 @@ _play.addEventListener('click', event => {
     }
 });
 _progressBar.addEventListener('click', progressBarClickHandler(_video, _progressBar));
-function showControls() {
-    _play.removeAttribute('hidden');
-    _playerControlsBottom.removeAttribute('hidden');
-}
-function hideControls() {
-    _play.setAttribute('hidden', 'hidden');
-    _playerControlsBottom.setAttribute('hidden', 'hidden');
-}
-function scheduleHideControls() {
-    if (_timerout) {
-        clearTimeout(_timerout);
-    }
-    _timerout = setTimeout(() => {
-        hideControls();
-    }, 5000);
-}
-_playerControlOverlay.addEventListener('click', event => {
+
+_overlay.addEventListener('click', event => {
     if (showDialog()) return;
     showControls();
     scheduleHideControls();
 });
+
+
+
+
+document.querySelector('#copy').addEventListener('click', event => {
+    if (_video.src) {
+        writeText(_video.src);
+        _toast.setAttribute('message', '成功复制到剪切板');
+    }
+});
+// -------------------
+
+
+function showControls() {
+    _play.removeAttribute('hidden');
+    _controlsBottom.removeAttribute('hidden');
+}
+
+function hideControls() {
+    _play.setAttribute('hidden', 'hidden');
+    _controlsBottom.setAttribute('hidden', 'hidden');
+}
+
+function scheduleHideControls() {
+    if (_timer) {
+        clearTimeout(_timer);
+    }
+    _timer = setTimeout(() => {
+        hideControls();
+    }, 5000);
+}
 async function fetchUri(uri) {
     const res = await getJSON(uri);
     try {
@@ -211,19 +226,31 @@ async function fetchUri(uri) {
         decode91Porn(res);
     }
 }
+
 function decode91Porn(value) {
     const m3u8 = strencode2(value).match(/(?<=src\=')[^']*(?=')/g);
     document.getElementById('uri').value = m3u8;
     _video.pause();
     _video.src = m3u8;
 }
+
+
+function appendDialog() {
+    const customDialog = document.createElement('CUSTOM-DIALOG');
+    customDialog.setAttribute('title', '视频');
+    customDialog.setAttribute('placeholder', '请输入视频网址');
+    customDialog.setAttribute('ok', '确定');
+
+    document.body.appendChild(customDialog);
+
+    return customDialog;
+}
+
 function showDialog() {
     if (!_video.src) {
-        const customDialog = document.createElement('CUSTOM-DIALOG');
-        customDialog.setAttribute('title', '视频');
-        customDialog.setAttribute('placeholder', '请输入视频网址');
-        customDialog.setAttribute('ok', '确定');
-        document.body.appendChild(customDialog);
+
+        const customDialog = appendDialog();
+
         customDialog.addEventListener('ok', async ev => {
             customDialog.remove();
             if (ev.detail.string) {
@@ -234,6 +261,7 @@ function showDialog() {
     }
     return false;
 }
+
 function renderYouTube(obj) {
     const app = document.querySelector('.app');
     const div = document.createElement('div');
@@ -283,9 +311,10 @@ function renderYouTube(obj) {
     }
     app.appendChild(div);
 }
-document.querySelector('#copy').addEventListener('click', event => {
-    if (_video.src) {
-        writeText(_video.src);
-        _toast.setAttribute('message', '成功复制到剪切板');
-    }
+
+
+document.getElementById('help').addEventListener('click', event => {
+    event.stopPropagation();
+    event.preventDefault();
+    window.location.href = '/help';
 });
