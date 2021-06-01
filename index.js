@@ -269,7 +269,6 @@ async function fetchUri(uri) {
 
 function decode91Porn(value) {
     const m3u8 = strencode2(value).match(/(?<=src\=')[^']*(?=')/g);
-    document.getElementById('uri').value = m3u8;
     _video.pause();
     _video.src = m3u8;
 }
