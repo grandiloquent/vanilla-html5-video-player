@@ -296,32 +296,53 @@ function renderYouTube(obj) {
 
     const a = document.createElement('a');
     a.textContent = '音频';
-    a.dataset.src = obj.audio.url;
     a.style.display = 'block';
     a.style.lineHeight = '32px';
     a.style.textDecoration = 'none';
     a.style.borderBottom = '1px solid #ccc';
     a.style.padding = '0 12px';
     a.style.color = '#333';
-    a.addEventListener('click', ev => {
-        _video.src = a.dataset.src;
-        navigator.clipboard.writeText(a.dataset.src);
-    })
 
-    div.appendChild(a);
+    if (obj.audio.url) {
 
-    for (const iterator of obj.mp4) {
-        console.log(iterator);
-        const amp = a.cloneNode();
-        amp.addEventListener('click', ev => {
-            _video.src = amp.dataset.src;
+        a.dataset.src = obj.audio.url;
+        a.addEventListener('click', ev => {
+            _video.src = a.dataset.src;
+            navigator.clipboard.writeText(a.dataset.src);
         })
-        amp.textContent = iterator.videoQuality.label;
-        amp.dataset.src = iterator.url;
-        navigator.clipboard.writeText(amp.dataset.src);
 
-        div.appendChild(amp);
+        div.appendChild(a);
     }
+
+    if (obj.mp4) {
+        for (const iterator of obj.mp4) {
+            console.log(iterator);
+            const amp = a.cloneNode();
+            amp.addEventListener('click', ev => {
+                _video.src = amp.dataset.src;
+            })
+            amp.textContent = iterator.videoQuality.label;
+            amp.dataset.src = iterator.url;
+            navigator.clipboard.writeText(amp.dataset.src);
+
+            div.appendChild(amp);
+        }
+    }
+    if (obj.videos) {
+        for (const iterator of obj.videos) {
+            console.log(iterator);
+            const amp = a.cloneNode();
+            amp.addEventListener('click', ev => {
+                _video.src = amp.dataset.src;
+            })
+            amp.textContent = iterator.size;
+            amp.dataset.src = iterator.url;
+            navigator.clipboard.writeText(amp.dataset.src);
+
+            div.appendChild(amp);
+        }
+    }
+
 
     app.appendChild(div);
 }
