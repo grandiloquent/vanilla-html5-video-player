@@ -16,7 +16,7 @@
 
 ### 事件
 
-VM811:1 * `abort`
+* `abort`
 
 	Fired when the resource was not fully loaded, but not as the result of an error.
 
@@ -245,9 +245,37 @@ VM811:1 * `abort`
 
 	Is a double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest).
 
+* `height`
+
+	Is a DOMString that reflects the height HTML attribute, which specifies the height of the display area, in CSS pixels.
+
+* `poster`
+
+	Is a DOMString that reflects the poster HTML attribute, which specifies an image to show while no video data is available.
+
+* `videoHeight`
+
+	Returns an unsigned integer value indicating the intrinsic height of the resource in CSS pixels, or 0 if no media is available yet.
+
+* `videoWidth`
+
+	Returns an unsigned integer value indicating the intrinsic width of the resource in CSS pixels, or 0 if no media is available yet.
+
+* `width`
+
+	Is a DOMString that reflects the width HTML attribute, which specifies the width of the display area, in CSS pixels.
+
+* `autoPictureInPicture`
+
+	The autoPictureInPicture attribute will automatically enter and leave the picture-in-picture mode for a video element when the user switches tab and/or applications
+
+* `disablePictureInPicture`
+
+	The disablePictureInPicture property will hint the user agent to not suggest the picture-in-picture to users or to request it automatically
+    
 ###　方法
 
-VM1114:1 * `addTextTrack()`
+* `addTextTrack()`
 
 	Adds a text track (such as a track for subtitles) to a media element.
 
@@ -286,7 +314,7 @@ VM1114:1 * `addTextTrack()`
 * `setSinkId()`
 
 	Sets the ID of the audio device to use for output and returns a Promise. This only works when the application is authorized to use the specified device.
-    
+
 ```
 console.error([...$0.childNodes].filter(i=>i.nodeName==='DT' || i.nodeName=='DD').map((key,index)=>index%2==0?'* `'+key.textContent+'`\n':'\t'+key.textContent+'\n').join('\n'))
 ```
