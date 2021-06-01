@@ -38,7 +38,7 @@
 
 * `ended`
 
-	Fired when playback stops when end of the media (<audio> or <video>) is reached or because no further data is available.
+	Fired when playback stops when end of the media (`<audio>` or `<video>`) is reached or because no further data is available.
 
 * `error`
 
@@ -293,7 +293,7 @@
 
 * `load()`
 
-	Resets the media to the beginning and selects the best available source from the sources provided using the src attribute or the <source> element.
+	Resets the media to the beginning and selects the best available source from the sources provided using the src attribute or the `<source>` element.
 
 * `pause()`
 
@@ -317,4 +317,6 @@
 
 ```
 console.error([...$0.childNodes].filter(i=>i.nodeName==='DT' || i.nodeName=='DD').map((key,index)=>index%2==0?'* `'+key.textContent+'`\n':'\t'+key.textContent+'\n').join('\n'))
+
+console.error([...$0.childNodes].filter(i=>i.nodeName==='DT' || i.nodeName=='DD').map((key,index)=>index%2==0?'* `'+key.textContent.substr(key.textContent.lastIndexOf('.')+1).trim()+'`\n':'\t'+key.textContent+'\n').join('\n'))
 ```
