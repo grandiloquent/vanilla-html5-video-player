@@ -273,7 +273,7 @@
 
 	The disablePictureInPicture property will hint the user agent to not suggest the picture-in-picture to users or to request it automatically
     
-###　方法
+### 方法
 
 * `addTextTrack()`
 
