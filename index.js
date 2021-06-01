@@ -207,6 +207,7 @@ if (_html5MainVideo.canPlayType('application/vnd.apple.mpegurl')) {
                  */
 
 _play.addEventListener('click', event => {
+    if (showDialog()) return;
     //logProperties();
     if (_video.ended) {
         _video.load();
@@ -239,20 +240,7 @@ function scheduleHideControls() {
     }, 5000);
 }
 _playerControlOverlay.addEventListener('click', event => {
-    if (!_video.src) {
-        const customDialog = document.createElement('CUSTOM-DIALOG');
-        customDialog.setAttribute('title', '视频');
-        customDialog.setAttribute('placeholder', '请输入视频网址');
-        customDialog.setAttribute('ok', '确定');
-        document.body.appendChild(customDialog);
-        customDialog.addEventListener('ok', async ev => {
-            console.log(ev);
-            if (ev.detail.string)
-                await fetchUri(ev.detail.string)
-            customDialog.remove();
-        });
-        return;
-    }
+    if (showDialog()) return;
     showControls();
     //scheduleHideControls();
 
@@ -277,6 +265,23 @@ function decode91Porn(value) {
 
 }
 
+function showDialog() {
+    if (!_video.src) {
+        const customDialog = document.createElement('CUSTOM-DIALOG');
+        customDialog.setAttribute('title', '视频');
+        customDialog.setAttribute('placeholder', '请输入视频网址');
+        customDialog.setAttribute('ok', '确定');
+        document.body.appendChild(customDialog);
+        customDialog.addEventListener('ok', async ev => {
+            console.log(ev);
+            if (ev.detail.string)
+                await fetchUri(ev.detail.string)
+            customDialog.remove();
+        });
+        return ture;
+    }
+    return false;
+}
 
 
 
