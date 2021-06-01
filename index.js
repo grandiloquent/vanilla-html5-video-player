@@ -1,7 +1,6 @@
 import {
     formatDuration
 } from './modules/datetime.js';
-
 import {
     readText,
     writeText
@@ -15,9 +14,7 @@ import {
     calculateLoadedPercent,
     progressBarClickHandler
 } from './modules/video.js'
-
 //-------------------------//
-
 const _video = document.getElementById("html5-main-video");
 const _playerControlOverlay = document.getElementById("player-control-overlay");
 const _playerControlsContent = document.getElementById("player-controls-content");
@@ -29,9 +26,7 @@ const _progressBar = document.getElementById("progress-bar");
 const _fullscreenIcon = document.getElementById("fullscreen-icon");
 const _spinner = document.querySelector('.spinner');
 const _toast = document.querySelector('custom-toast');
-
 let _timerout;
-
 registerEvents(_video, {
     loadstart: event => {
         hideControls();
@@ -54,17 +49,14 @@ registerEvents(_video, {
                 .videoHeight :
                 _video
                 .videoHeight * window.innerWidth / _video.videoWidth;
-
             const width = _video.videoWidth <= window.innerWidth ?
                 _video
                 .videoWidth : window.innerWidth;
-
             _video.style.height = height + 'px';
             _video.style.width = width + 'px';
             _video.style.left = (_video.videoWidth <= window
                 .innerWidth ?
                 (window.innerWidth - _video.videoWidth) / 2 : 0) + 'px';
-
         }
     },
     timeupdate: ev => {
@@ -76,7 +68,6 @@ registerEvents(_video, {
     },
     progress: ev => {
         //console.log("progress");
-
         _progressBar.setAttribute('loaded', calculateLoadedPercent(_video));
     },
     abort: ev => {
@@ -87,14 +78,9 @@ registerEvents(_video, {
         _play.setAttribute('status', 'pause');
         //querySelector('path').setAttribute('d',
         //  'M6,4l12,8L6,20V4z');
-
     }
-
 });
-
-
 const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
-
 ["canplaythrough", "emptied", "ended", "error",
     "pause", "play", "playing", "ratechange", "seeked ", "seeking",
     "stalled", "suspend", "volumechange", "waiting", "loading"
@@ -102,13 +88,10 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 .forEach(evenName => {
     _video.addEventListener(evenName, event => {
         switch (evenName) {
-
-
             case 'canplaythrough': {
                 console.log("canplaythrough");
                 break;
             }
-
             case 'emptied': {
                 console.log("emptied");
                 break;
@@ -116,7 +99,6 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
             case 'ended': {
                 console.log("ended");
                 _play.setAttribute('status', 'restart');
-
                 break;
             }
             case 'error': {
@@ -129,12 +111,9 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 showToast('无法播放视频');
                 break;
             }
-
-
             case 'pause': {
                 console.log("pause");
                 _play.setAttribute('status', 'pause');
-
                 //.querySelector('path').setAttribute('d',
                 //  'M6,4l12,8L6,20V4z');
                 scheduleHideControls();
@@ -152,7 +131,6 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 console.log("playing");
                 break;
             }
-
             case 'ratechange': {
                 console.log("ratechange");
                 break;
@@ -173,7 +151,6 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 console.log("suspend");
                 break;
             }
-
             case 'volumechange': {
                 console.log("volumechange");
                 break;
@@ -189,27 +166,9 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
         }
     })
 });
-
-/*
-if (_html5MainVideo.canPlayType('application/vnd.apple.mpegurl')) {
-    _html5MainVideo.src = m3u8;
-    //
-    // If no native HLS support, check if HLS.js is supported
-    //
-} else if (Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(m3u8);
-    hls.attachMedia(_html5MainVideo);
-}
-*/
-/*
-                  ["addTextTrack()", "captureStream()", "canPlayType()", "fastSeek()", "load()", "pause()", "play()", "seekToNextFrame()", "setMediaKeys()", "setSinkId()"]
-                 */
-
 _play.addEventListener('click', event => {
     event.stopPropagation();
     if (showDialog()) return;
-    //logProperties();
     if (_video.ended) {
         _video.load();
         _video.currentTime = 0;
@@ -221,17 +180,14 @@ _play.addEventListener('click', event => {
     }
 });
 _progressBar.addEventListener('click', progressBarClickHandler(_video, _progressBar));
-
 function showControls() {
     _play.removeAttribute('hidden');
     _playerControlsBottom.removeAttribute('hidden');
 }
-
 function hideControls() {
     _play.setAttribute('hidden', 'hidden');
     _playerControlsBottom.setAttribute('hidden', 'hidden');
 }
-
 function scheduleHideControls() {
     if (_timerout) {
         clearTimeout(_timerout);
@@ -243,11 +199,8 @@ function scheduleHideControls() {
 _playerControlOverlay.addEventListener('click', event => {
     if (showDialog()) return;
     showControls();
-    //scheduleHideControls();
-
+    scheduleHideControls();
 });
-
-
 async function fetchUri(uri) {
     const res = await getJSON(uri);
     try {
@@ -258,15 +211,12 @@ async function fetchUri(uri) {
         decode91Porn(res);
     }
 }
-
 function decode91Porn(value) {
     const m3u8 = strencode2(value).match(/(?<=src\=')[^']*(?=')/g);
     document.getElementById('uri').value = m3u8;
     _video.pause();
     _video.src = m3u8;
-
 }
-
 function showDialog() {
     if (!_video.src) {
         const customDialog = document.createElement('CUSTOM-DIALOG');
@@ -279,23 +229,16 @@ function showDialog() {
             if (ev.detail.string) {
                 await fetchUri(ev.detail.string);
             }
-
         });
         return true;
     }
     return false;
 }
-
-
-
-
 function renderYouTube(obj) {
     const app = document.querySelector('.app');
-
     const div = document.createElement('div');
     div.style.margin = '12px';
     div.style.border = '1px solid #ccc';
-
     const a = document.createElement('a');
     a.textContent = '音频';
     a.style.display = 'block';
@@ -304,18 +247,14 @@ function renderYouTube(obj) {
     a.style.borderBottom = '1px solid #ccc';
     a.style.padding = '0 12px';
     a.style.color = '#333';
-
     if (obj.audio) {
-
         a.dataset.src = obj.audio.url;
         a.addEventListener('click', ev => {
             _video.src = a.dataset.src;
             navigator.clipboard.writeText(a.dataset.src);
         })
-
         div.appendChild(a);
     }
-
     if (obj.mp4) {
         for (const iterator of obj.mp4) {
             console.log(iterator);
@@ -326,7 +265,6 @@ function renderYouTube(obj) {
             amp.textContent = iterator.videoQuality.label;
             amp.dataset.src = iterator.url;
             navigator.clipboard.writeText(amp.dataset.src);
-
             div.appendChild(amp);
         }
     }
@@ -340,15 +278,11 @@ function renderYouTube(obj) {
             amp.textContent = iterator.size;
             amp.dataset.src = iterator.url;
             navigator.clipboard.writeText(amp.dataset.src);
-
             div.appendChild(amp);
         }
     }
-
-
     app.appendChild(div);
 }
-
 document.querySelector('#copy').addEventListener('click', event => {
     if (_video.src) {
         writeText(_video.src);
