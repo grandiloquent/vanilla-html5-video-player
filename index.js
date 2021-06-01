@@ -253,6 +253,7 @@ async function fetchUri(uri) {
         const obj = JSON.parse(res);
         renderYouTube(obj);
     } catch (error) {
+        console.log(error);
         decode91Porn(res);
     }
 }
@@ -278,7 +279,7 @@ function showDialog() {
                 await fetchUri(ev.detail.string)
             customDialog.remove();
         });
-        return ture;
+        return true;
     }
     return false;
 }

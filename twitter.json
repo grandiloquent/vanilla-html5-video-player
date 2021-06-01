@@ -1,0 +1,31 @@
+{
+    "videos": [{
+        "source": "Twitter Media Studio",
+        "text": "People in Tokyo said they were surprised and sympathetic in the wake of Naomi Osaka's withdrawal from the French Open https:\/\/t.co\/dY2bf6iQwA #RolandGarros https:\/\/t.co\/zMzo2BJjwp",
+        "thumb": "http:\/\/pbs.twimg.com\/amplify_video_thumb\/1399684159547744256\/img\/6_MOU-NjVGyGpQSS.jpg",
+        "type": "video",
+        "duration": 115916,
+        "bitrate": 2176000,
+        "url": "https:\/\/video.twimg.com\/amplify_video\/1399684159547744256\/vid\/1280x720\/XgQDpvizAFjXHlpI.mp4",
+        "size": 18839837
+    }, {
+        "source": "Twitter Media Studio",
+        "text": "People in Tokyo said they were surprised and sympathetic in the wake of Naomi Osaka's withdrawal from the French Open https:\/\/t.co\/dY2bf6iQwA #RolandGarros https:\/\/t.co\/zMzo2BJjwp",
+        "thumb": "http:\/\/pbs.twimg.com\/amplify_video_thumb\/1399684159547744256\/img\/6_MOU-NjVGyGpQSS.jpg",
+        "type": "video",
+        "duration": 115916,
+        "bitrate": 288000,
+        "url": "https:\/\/video.twimg.com\/amplify_video\/1399684159547744256\/vid\/480x270\/h3uMDNiP9sTntKqJ.mp4",
+        "size": 2399785
+    }, {
+        "source": "Twitter Media Studio",
+        "text": "People in Tokyo said they were surprised and sympathetic in the wake of Naomi Osaka's withdrawal from the French Open https:\/\/t.co\/dY2bf6iQwA #RolandGarros https:\/\/t.co\/zMzo2BJjwp",
+        "thumb": "http:\/\/pbs.twimg.com\/amplify_video_thumb\/1399684159547744256\/img\/6_MOU-NjVGyGpQSS.jpg",
+        "type": "video",
+        "duration": 115916,
+        "bitrate": 832000,
+        "url": "https:\/\/video.twimg.com\/amplify_video\/1399684159547744256\/vid\/640x360\/8SVsPFubfnxYrZA1.mp4",
+        "size": 6547647
+    }],
+    "state": "success"
+}
