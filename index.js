@@ -31,7 +31,7 @@ let _timer;
 registerEvents(_video, {
     loadstart: event => {
         hideControls();
-        _spinner.setAttribute('hidden', 'hidden');
+        _spinner.removeAttribute('hidden');
     },
     durationchange: ev => {
         _timeDisplay.setAttribute('duration', formatDuration(_video.duration));
@@ -41,6 +41,9 @@ registerEvents(_video, {
         showControls();
     },
     loadedmetadata: ev => {
+
+        console.log('loadedmetadata');
+        
         if (_video.videoWidth && _video
             .videoHeight) {
             const ratio = Math.min(_video.videoWidth / _video
@@ -83,12 +86,15 @@ registerEvents(_video, {
         if (_video.muted) {
             _toast.setAttribute('message', '已静音');
         }
+    },
+    loading: ev => {
+        _spinner.removeAttribute('hidden');
     }
 });
 const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 ["canplaythrough", "emptied", "ended", "error",
     "pause", "play", "playing", "ratechange", "seeked ", "seeking",
-    "stalled", "suspend", "waiting", "loading"
+    "stalled", "suspend", "waiting",
 ]
 .forEach(evenName => {
     _video.addEventListener(evenName, event => {
@@ -113,7 +119,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 });
                 _overlay.classList.remove('fadein');
                 _spinner.setAttribute('hidden', 'hidden');
-                showToast('无法播放视频');
+                _toast.setAttribute('message', '无法播放视频');
                 break;
             }
             case 'pause': {
@@ -235,6 +241,12 @@ document.getElementById('download').addEventListener('click', event => {
 
 
 });
+
+document.getElementById('analyze').addEventListener('click', event => {
+    if (!_video.paused)
+        _video.pause();
+    showDialog();
+});
 // -------------------
 
 
@@ -260,6 +272,12 @@ async function fetchUri(uri) {
     const res = await getJSON(uri);
     try {
         const obj = JSON.parse(res);
+        // Twitter
+        if (obj.state && obj.state === 'error') {
+            _play.removeAttribute('hidden');
+            _toast.setAttribute('message', '无法获取视频地址');
+            return;
+        }
         renderYouTube(obj);
     } catch (error) {
         console.log(error);
@@ -293,7 +311,14 @@ function showDialog() {
         customDialog.addEventListener('ok', async ev => {
             customDialog.remove();
             if (ev.detail.string) {
-                await fetchUri(ev.detail.string);
+                _play.setAttribute('hidden', 'hidden');
+                _spinner.removeAttribute('hidden');
+                try {
+                    await fetchUri(ev.detail.string);
+                } catch (error) {
+
+                }
+                _spinner.setAttribute('hidden', 'hidden');
             }
         });
         return true;

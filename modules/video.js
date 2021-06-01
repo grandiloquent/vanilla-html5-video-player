@@ -22,7 +22,8 @@
          "progress",
          "abort",
          "loadeddata",
-         "volumechange"
+         "volumechange",
+         "loading",
      ].forEach(x => video.addEventListener(x, params[x]));
      // 
  }
