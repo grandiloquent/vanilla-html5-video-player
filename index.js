@@ -303,7 +303,7 @@ function renderYouTube(obj) {
     a.style.padding = '0 12px';
     a.style.color = '#333';
 
-    if (obj.audio.url) {
+    if (obj.audio) {
 
         a.dataset.src = obj.audio.url;
         a.addEventListener('click', ev => {
