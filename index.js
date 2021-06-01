@@ -274,10 +274,10 @@ function showDialog() {
         customDialog.setAttribute('ok', '确定');
         document.body.appendChild(customDialog);
         customDialog.addEventListener('ok', async ev => {
-            console.log(ev);
+            customDialog.remove();
             if (ev.detail.string)
                 await fetchUri(ev.detail.string)
-            customDialog.remove();
+
         });
         return true;
     }
