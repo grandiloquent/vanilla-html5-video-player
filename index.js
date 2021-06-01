@@ -207,6 +207,7 @@ if (_html5MainVideo.canPlayType('application/vnd.apple.mpegurl')) {
                  */
 
 _play.addEventListener('click', event => {
+    event.stopPropagation();
     if (showDialog()) return;
     //logProperties();
     if (_video.ended) {
@@ -275,8 +276,9 @@ function showDialog() {
         document.body.appendChild(customDialog);
         customDialog.addEventListener('ok', async ev => {
             customDialog.remove();
-            if (ev.detail.string)
-                await fetchUri(ev.detail.string)
+            if (ev.detail.string) {
+                await fetchUri(ev.detail.string);
+            }
 
         });
         return true;
