@@ -14,16 +14,19 @@
 
  function registerEvents(video, params) {
      [
-         'loadstart',
-         'durationchange',
          'canplay',
+         'durationchange',
          'loadedmetadata',
-         "timeupdate",
-         "progress",
+         'loadstart',
          "abort",
          "loadeddata",
-         "volumechange",
          "loading",
+         "play",
+         "playing",
+         "progress",
+         "timeupdate",
+         "volumechange",
+         "waiting",
      ].forEach(x => video.addEventListener(x, params[x]));
      // 
  }
@@ -33,6 +36,7 @@
  }
 
  function calculateLoadedPercent(video) {
+     if (!video.buffered.length) return '0';
      return (video.buffered.end(0) / video.duration) * 100 + '%';
  }
 

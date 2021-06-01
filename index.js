@@ -29,21 +29,32 @@ const _spinner = document.querySelector('.spinner');
 const _toast = document.querySelector('custom-toast');
 let _timer;
 registerEvents(_video, {
-    loadstart: event => {
-        hideControls();
-        _spinner.removeAttribute('hidden');
-    },
-    durationchange: ev => {
-        _timeDisplay.setAttribute('duration', formatDuration(_video.duration));
+    abort: ev => {
+        console.log("abort, ");
+
+        _progressBar.setAttribute('played', '0');
+        _progressBar.setAttribute('loaded', '0');
     },
     canplay: ev => {
+        console.log("canplay, ");
+
         _spinner.setAttribute('hidden', 'hidden');
         showControls();
     },
-    loadedmetadata: ev => {
+    durationchange: ev => {
+        console.log("durationchange, ");
 
-        console.log('loadedmetadata');
-        
+        _timeDisplay.setAttribute('duration', formatDuration(_video.duration));
+    },
+    loadeddata: ev => {
+        console.log("loadeddata, ");
+
+    },
+    loadedmetadata: ev => {
+        console.log("loadedmetadata, ");
+
+
+
         if (_video.videoWidth && _video
             .videoHeight) {
             const ratio = Math.min(_video.videoWidth / _video
@@ -63,23 +74,37 @@ registerEvents(_video, {
                 (window.innerWidth - _video.videoWidth) / 2 : 0) + 'px';
         }
     },
+    loading: ev => {
+        console.log("loading, ");
+
+        _spinner.removeAttribute('hidden');
+    },
+    loadstart: event => {
+        console.log("loadstart, ");
+
+        hideControls();
+        _spinner.removeAttribute('hidden');
+    },
+    play: ev => {
+        console.log("play, ");
+
+        _play.setAttribute('status', 'play');
+        scheduleHideControls();
+    },
+    progress: ev => {
+        //console.log("progress, ");
+
+        //console.log("progress");
+        _progressBar.setAttribute('loaded', calculateLoadedPercent(_video));
+    },
     timeupdate: ev => {
+        //console.log("timeupdate, ");
+
         // console.log("timeupdate");
         if (_controlsBottom.hasAttribute('hidden')) return;
         _timeDisplay.setAttribute('current', formatDuration(_video.currentTime));
         var percent = calculateProgressPercent(_video);
         _progressBar.setAttribute('played', percent);
-    },
-    progress: ev => {
-        //console.log("progress");
-        _progressBar.setAttribute('loaded', calculateLoadedPercent(_video));
-    },
-    abort: ev => {
-        _progressBar.setAttribute('played', '0');
-        _progressBar.setAttribute('loaded', '0');
-    },
-    loadeddata: ev => {
-        _play.setAttribute('status', 'pause');
     },
     volumechange: ev => {
         console.log(_video.volume);
@@ -87,14 +112,17 @@ registerEvents(_video, {
             _toast.setAttribute('message', '已静音');
         }
     },
-    loading: ev => {
+    waiting: ev => {
         _spinner.removeAttribute('hidden');
+    },
+    playing: ev => {
+        _play.setAttribute('status', 'play');
     }
 });
 const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 ["canplaythrough", "emptied", "ended", "error",
-    "pause", "play", "playing", "ratechange", "seeked ", "seeking",
-    "stalled", "suspend", "waiting",
+    "pause", "ratechange", "seeked ", "seeking",
+    "stalled", "suspend",
 ]
 .forEach(evenName => {
     _video.addEventListener(evenName, event => {
@@ -130,18 +158,8 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 scheduleHideControls();
                 break;
             }
-            case 'play': {
-                console.log("play");
-                _play.setAttribute('status', 'play');
-                //.querySelector('path').setAttribute('d',
-                //  'M9,19H7V5H9ZM17,5H15V19h2Z');
-                scheduleHideControls();
-                break;
-            }
-            case 'playing': {
-                console.log("playing");
-                break;
-            }
+
+
             case 'ratechange': {
                 console.log("ratechange");
                 break;
@@ -163,10 +181,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 break;
             }
 
-            case 'waiting': {
-                console.log("waiting");
-                break;
-            }
+
             case 'loading': {
                 console.log("loading");
                 break;
@@ -245,7 +260,21 @@ document.getElementById('download').addEventListener('click', event => {
 document.getElementById('analyze').addEventListener('click', event => {
     if (!_video.paused)
         _video.pause();
-    showDialog();
+        const customDialog = appendDialog();
+
+        customDialog.addEventListener('ok', async ev => {
+            customDialog.remove();
+            if (ev.detail.string) {
+                _play.setAttribute('hidden', 'hidden');
+                _spinner.removeAttribute('hidden');
+                try {
+                    await fetchUri(ev.detail.string);
+                } catch (error) {
+
+                }
+                _spinner.setAttribute('hidden', 'hidden');
+            }
+        });
 });
 // -------------------
 
@@ -289,6 +318,7 @@ function decode91Porn(value) {
     const m3u8 = strencode2(value).match(/(?<=src\=')[^']*(?=')/g);
     _video.pause();
     _video.src = m3u8;
+    _video.play();
 }
 
 
