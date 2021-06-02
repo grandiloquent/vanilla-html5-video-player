@@ -36,8 +36,6 @@ registerEvents(_video, {
         _progressBar.setAttribute('loaded', '0');
     },
     canplay: ev => {
-        console.log("canplay, ");
-
         _spinner.setAttribute('hidden', 'hidden');
         showControls();
     },
@@ -48,7 +46,6 @@ registerEvents(_video, {
     },
     loadeddata: ev => {
         console.log("loadeddata, ");
-
     },
     loadedmetadata: ev => {
         console.log("loadedmetadata, ");
@@ -117,11 +114,14 @@ registerEvents(_video, {
     },
     playing: ev => {
         _play.setAttribute('status', 'play');
+    },
+    seeking: ev => {
+        _play.setAttribute('hidden', 'hidden');
     }
 });
 const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
 ["canplaythrough", "emptied", "ended", "error",
-    "pause", "ratechange", "seeked ", "seeking",
+    "pause", "ratechange", "seeked ",
     "stalled", "suspend",
 ]
 .forEach(evenName => {
@@ -168,10 +168,7 @@ const m3u8 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
                 console.log("seeked ");
                 break;
             }
-            case 'seeking': {
-                console.log("seeking");
-                break;
-            }
+
             case 'stalled': {
                 console.log("stalled");
                 break;
@@ -260,21 +257,21 @@ document.getElementById('download').addEventListener('click', event => {
 document.getElementById('analyze').addEventListener('click', event => {
     if (!_video.paused)
         _video.pause();
-        const customDialog = appendDialog();
+    const customDialog = appendDialog();
 
-        customDialog.addEventListener('ok', async ev => {
-            customDialog.remove();
-            if (ev.detail.string) {
-                _play.setAttribute('hidden', 'hidden');
-                _spinner.removeAttribute('hidden');
-                try {
-                    await fetchUri(ev.detail.string);
-                } catch (error) {
+    customDialog.addEventListener('ok', async ev => {
+        customDialog.remove();
+        if (ev.detail.string) {
+            _play.setAttribute('hidden', 'hidden');
+            _spinner.removeAttribute('hidden');
+            try {
+                await fetchUri(ev.detail.string);
+            } catch (error) {
 
-                }
-                _spinner.setAttribute('hidden', 'hidden');
             }
-        });
+            _spinner.setAttribute('hidden', 'hidden');
+        }
+    });
 });
 // -------------------
 

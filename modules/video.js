@@ -27,6 +27,7 @@
          "timeupdate",
          "volumechange",
          "waiting",
+         "seeking",
      ].forEach(x => video.addEventListener(x, params[x]));
      // 
  }
