@@ -165,6 +165,11 @@
                     <p></p>
                 </div>
                 <div>
+                    <p>今天</p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div>
                     <p>明天</p>
                     <p></p>
                     <p></p>
@@ -293,6 +298,9 @@
                     days[3].querySelector('p:nth-child(3)').textContent =
                         `${obj.data.forecast_24h[3].min_degree}/${obj.data.forecast_24h[3].max_degree}°`;
 
+                    days[4].querySelector('p:nth-child(2)').textContent = obj.data.forecast_24h[4].day_weather;
+                    days[4].querySelector('p:nth-child(3)').textContent =
+                        `${obj.data.forecast_24h[4].min_degree}/${obj.data.forecast_24h[4].max_degree}°`;
                 });
         }
     </script>
