@@ -226,7 +226,7 @@
             .forEach(x => {
                 x.addEventListener('click', event => {
                     document.title = x.textContent + '天气预报 - 回形针';
-                    loadWeather(`https://hxz315.com/api/weather${x.dataset.src}`);
+                    loadWeather(`https://lucidu.cn/api/weather${x.dataset.src}`);
                 });
             })
         loadWeather();
@@ -234,7 +234,7 @@
         let timer = 0;
 
         function loadWeather(uri) {
-            fetch(uri || 'https://hxz315.com/api/weather?province=湖南省&city=益阳市&county=桃江县')
+            fetch(uri || 'https://lucidu.cn/api/weather?province=湖南省&city=益阳市&county=桃江县')
                 .then(res => res.text())
                 .then(res => {
                     var obj = JSON.parse(res);
