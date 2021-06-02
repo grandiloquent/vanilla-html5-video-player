@@ -206,7 +206,7 @@ class CustomHeader extends HTMLElement {
             this.header.removeAttribute('data-mode');
         });
         this.mobileTopbarHeaderEndpoint.addEventListener('click', event => {
-            window.location.href = '/';
+            window.location.href = 'https://hxz315.com';
         });
     }
 
