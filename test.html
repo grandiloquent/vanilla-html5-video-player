@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: fixed;
+            padding: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            display: block;
+            background-color: #ffffff;
+        }
+
+        [hidden][hidden] {
+            display: none;
+            visibility: hidden
+        }
+
+
+        header {
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 2px -2px rgb(0 0 0 / 20%);
+            display: flex;
+            align-items: center;
+            height: 48px;
+        }
+
+
+        button {
+            padding: 0;
+            border: none;
+            outline: none;
+            font: inherit;
+            text-transform: inherit;
+            color: inherit;
+            background: transparent;
+        }
+
+        button,
+        select,
+        [role="button"],
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        c3-icon {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            stroke: none;
+        }
+
+        c3-icon>svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        input {
+            background-color: transparent;
+            padding-bottom: 4px;
+            outline: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border: none;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            margin-bottom: 1px;
+            font: inherit;
+            color: #030303;
+        }
+
+        input {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #737373;
+            text-overflow: ellipsis;
+        }
+
+        c3-overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .hidden-button {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 1px;
+            width: 1px;
+        }
+
+        .icon-button {
+            border: none;
+            background: transparent;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .mobile-topbar-header-endpoint {
+            display: flex;
+            align-items: center;
+            height: 48px;
+            text-align: left;
+        }
+
+        .mobile-topbar-logo.ringo-logo {
+            width: 89px;
+            height: 20px;
+            color: #212121;
+            margin-left: 0;
+            padding: 0 12px;
+            display: block;
+        }
+
+        .mobile-topbar-header-content {
+            flex-grow: 1;
+            justify-content: flex-end;
+            color: #606060;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .topbar-menu-button-avatar-button {
+            padding: 12px;
+            height: 48px;
+            width: 48px;
+        }
+
+        header[data-mode="searching"] {
+            z-index: 3;
+            background-color: #f1f1f1;
+        }
+
+        .mobile-topbar-back-arrow {
+            color: #606060;
+            padding: 12px;
+        }
+
+        .searchbox-form {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .searchbox-input-wrapper {
+            flex-grow: 1;
+        }
+
+        .searchbox-input {
+            outline: none;
+            width: 100%;
+            margin-top: 4px;
+            flex-grow: 1;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        .searchbox-dropdown {
+            position: absolute;
+            top: 48px;
+            left: 0;
+            right: 0;
+        }
+
+        .searchbox-dropdown-container {
+            width: 100%;
+            position: relative;
+            text-align: left;
+            font-size: 1.4rem;
+            color: #030303;
+            background-color: #ffffff;
+            margin-top: -1px;
+            z-index: 989;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .searchbox-dropdown-container>a {
+            padding: 10px 3px 11px 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <c3-overlay hidden><button class="hidden-button" aria-label="Close search"></button></c3-overlay>
+        <header data-mode="searching">
+            <button aria-label="YouTube" role="link" class="mobile-topbar-header-endpoint">
+                <c3-icon class="mobile-topbar-logo ringo-logo" id="home-icon"><svg viewBox="0 0 380.9 85.1">
+                        <path id="rectangle" fill="#ff0000"
+                            d="M 60.699219 0.30078125 C 60.699219 0.30078125 22.699219 0.30078125 13.199219 2.8007812 C 7.9992187 4.2007813 3.9 8.3 2.5 13.5 C 0 23 0 42.699219 0 42.699219 C 0 42.699219 0 62.500391 2.5 71.900391 C 3.9 77.100391 7.9992188 81.199609 13.199219 82.599609 C 22.699219 85.099609 60.699219 85.099609 60.699219 85.099609 C 60.699219 85.099609 98.699219 85.099609 108.19922 82.599609 C 113.39922 81.199609 117.50039 77.100391 118.90039 71.900391 C 121.40039 62.400391 121.40039 42.699219 121.40039 42.699219 C 121.40039 42.699219 121.40039 23 118.90039 13.5 C 117.50039 8.3 113.39922 4.2007812 108.19922 2.8007812 C 98.699219 0.30078125 60.699219 0.30078125 60.699219 0.30078125 z M 48.5 24.5 L 80.099609 42.800781 L 48.5 61 L 48.5 24.5 z ">
+                        </path>
+                        <path id="triangle" fill="#ffffff" d="M 48.5,61 80.1,42.8 48.5,24.5 Z"></path>
+                        <path
+                            d="M147.1 55.5L133.5 6.2h11.9l4.8 22.3c1.2 5.5 2.1 10.2 2.7 14.1h.3c.4-2.8 1.3-7.4 2.7-14l5-22.4h11.9L159 55.5v23.7h-11.8l-.1-23.7zm29.2 22.1c-2.4-1.6-4.1-4.1-5.1-7.6-1-3.4-1.5-8-1.5-13.6v-7.7c0-5.7.6-10.3 1.7-13.8 1.2-3.5 3-6 5.4-7.6 2.5-1.6 5.7-2.4 9.7-2.4 3.9 0 7.1.8 9.5 2.4s4.1 4.2 5.2 7.6 1.7 8 1.7 13.8v7.7c0 5.7-.5 10.2-1.6 13.7-1.1 3.4-2.8 6-5.2 7.6-2.4 1.6-5.7 2.4-9.8 2.4-4.3-.1-7.6-.9-10-2.5zm13.5-8.3c.7-1.7 1-4.6 1-8.5V44.2c0-3.8-.3-6.6-1-8.4s-1.8-2.6-3.5-2.6c-1.6 0-2.8.9-3.4 2.6-.7 1.8-1 4.6-1 8.4v16.6c0 3.9.3 6.8 1 8.5.6 1.7 1.8 2.6 3.5 2.6 1.5 0 2.7-.9 3.4-2.6zm51.7-43.4v53.3h-9.4l-1-6.5h-.3c-2.5 4.9-6.4 7.4-11.5 7.4-3.5 0-6.1-1.2-7.8-3.5-1.7-2.3-2.5-5.9-2.5-10.9V25.9h12V65c0 2.4.3 4.1.8 5.1s1.4 1.5 2.6 1.5c1 0 2-.3 3-1 1-.6 1.7-1.4 2.1-2.4V25.9h12z">
+                        </path>
+                        <path d="M274.1 15.9h-11.9v63.3h-11.7V16h-11.9V6.4h35.5v9.5z"></path>
+                        <path
+                            d="M303 25.9v53.3h-9.4l-1-6.5h-.3c-2.5 4.9-6.4 7.4-11.5 7.4-3.5 0-6.1-1.2-7.8-3.5-1.7-2.3-2.5-5.9-2.5-10.9V25.9h12V65c0 2.4.3 4.1.8 5.1s1.4 1.5 2.6 1.5c1 0 2-.3 3-1 1-.6 1.7-1.4 2.1-2.4V25.9h12zm39.7 8.5c-.7-3.4-1.9-5.8-3.5-7.3s-3.9-2.3-6.7-2.3c-2.2 0-4.3.6-6.2 1.9-1.9 1.2-3.4 2.9-4.4 4.9h-.1V3.5h-11.6v75.7h9.9l1.2-5h.3c.9 1.8 2.3 3.2 4.2 4.3 1.9 1 3.9 1.6 6.2 1.6 4.1 0 7-1.9 8.9-5.6 1.9-3.7 2.9-9.6 2.9-17.5v-8.4c0-6.2-.4-10.8-1.1-14.2zm-11 21.7c0 3.9-.2 6.9-.5 9.1-.3 2.2-.9 3.8-1.6 4.7-.8.9-1.8 1.4-3 1.4-1 0-1.9-.2-2.7-.7-.8-.5-1.5-1.2-2-2.1V38.3c.4-1.4 1.1-2.6 2.1-3.6 1-.9 2.1-1.4 3.2-1.4 1.2 0 2.2.5 2.8 1.4.7 1 1.1 2.6 1.4 4.8.3 2.3.4 5.5.4 9.6l-.1 7zm29.1.4v2.7c0 3.4.1 6 .3 7.7.2 1.7.6 3 1.3 3.7.6.8 1.6 1.2 3 1.2 1.8 0 3-.7 3.7-2.1.7-1.4 1-3.7 1.1-7l10.3.6c.1.5.1 1.1.1 1.9 0 4.9-1.3 8.6-4 11s-6.5 3.6-11.4 3.6c-5.9 0-10-1.9-12.4-5.6-2.4-3.7-3.6-9.4-3.6-17.2v-9.3c0-8 1.2-13.8 3.7-17.5s6.7-5.5 12.6-5.5c4.1 0 7.3.8 9.5 2.3s3.7 3.9 4.6 7c.9 3.2 1.3 7.6 1.3 13.2v9.1h-20.1v.2zm1.5-22.4c-.6.8-1 2-1.2 3.7s-.3 4.3-.3 7.8v3.8h8.8v-3.8c0-3.4-.1-6-.3-7.8-.2-1.8-.7-3-1.3-3.7-.6-.7-1.6-1.1-2.8-1.1-1.3 0-2.3.4-2.9 1.1z">
+                        </path>
+                    </svg>
+                </c3-icon>
+            </button>
+
+            <button hidden aria-label="Close search" class="mobile-topbar-back-arrow">
+                <c3-icon flip-for-rtl="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                        enable-background="new 0 0 24 24" height="24" width="24">
+                        <path d="M21,11v1H5.64l6.72,6.72l-0.71,0.71L3.72,11.5l7.92-7.92l0.71,0.71L5.64,11H21z"></path>
+                    </svg></c3-icon>
+            </button>
+
+            <div hidden class="mobile-topbar-header-content">
+                <form class="searchbox-form">
+                    <div class="searchbox-input-wrapper">
+                        <input class="searchbox-input title" name="search" placeholder="Search YouTube"
+                            autocomplete="off" autocorrect="off" spellcheck="false" type="text" aria-haspopup="false"
+                            role="combobox" aria-autocomplete="list" dir="ltr">
+                    </div>
+                    <input type="submit" hidden="">
+                    <button class="icon-button " aria-label="Search YouTube" aria-haspopup="false">
+                        <c3-icon><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                                viewBox="0 0 24 24" width="24">
+                                <path
+                                    d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z">
+                                </path>
+                            </svg></c3-icon>
+                    </button>
+                </form>
+                <div class="searchbox-dropdown">
+                    <div class="searchbox-dropdown-container">
+                        <a>Suggestion Removed</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-topbar-header-content">
+                <button class="icon-button topbar-menu-button-avatar-button" aria-label="Search YouTube"
+                    aria-haspopup="false">
+                    <c3-icon><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                            viewBox="0 0 24 24" width="24">
+                            <path
+                                d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z">
+                            </path>
+                        </svg>
+                    </c3-icon>
+                </button>
+                <button class="icon-button topbar-menu-button-avatar-button" aria-label="Account" aria-haspopup="true">
+                    <c3-icon><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                            viewBox="0 0 24 24" width="24">
+                            <path
+                                d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z">
+                            </path>
+                        </svg>
+                    </c3-icon>
+                </button>
+            </div>
+        </header>
+    </div>
+</body>
+
+</html>
