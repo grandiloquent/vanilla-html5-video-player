@@ -30,7 +30,7 @@
             content: "\B0";
             position: absolute;
             text-align: left;
-            top:66px;
+            top: 66px;
         }
 
         #weather {
@@ -226,7 +226,8 @@
                 });
             })
         loadWeather();
-        s
+
+        let timer = 0;
 
         function loadWeather(uri) {
             fetch(uri || 'https://hxz315.com/api/weather?province=湖南省&city=益阳市&county=桃江县')
@@ -253,7 +254,8 @@
                     items[1].textContent = `风速 ${obj.data.observe.wind_power}级`;
 
                     let first = true;
-                    setInterval(() => {
+                    clearInterval(timer);
+                    timer = setInterval(() => {
                         first = !first;
                         if (first) {
                             items[0].classList.add('show');
