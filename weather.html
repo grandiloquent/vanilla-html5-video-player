@@ -226,22 +226,31 @@
                 });
             })
         loadWeather();
-s
+        s
+
         function loadWeather(uri) {
             fetch(uri || 'https://hxz315.com/api/weather?province=湖南省&city=益阳市&county=桃江县')
                 .then(res => res.text())
                 .then(res => {
                     var obj = JSON.parse(res);
-                    document.getElementById('alarm').querySelector('h2').textContent = obj.data.alarm[0].type_name +
-                        '预警';
-                    document.getElementById('alarm').querySelector('div').textContent = obj.data.alarm[0].detail;
+                    if (obj.data.alarm.length) {
+                        document.getElementById('alarm').style.display = 'block';
+
+                        document.getElementById('alarm').querySelector('h2').textContent = obj.data.alarm[0]
+                            .type_name +
+                            '预警';
+                        document.getElementById('alarm').querySelector('div').textContent = obj.data.alarm[0]
+                            .detail;
+                    } else {
+                        document.getElementById('alarm').style.display = 'none';
+                    }
 
                     document.getElementById('temperature').textContent = obj.data.observe.degree;
                     document.getElementById('weather').textContent = obj.data.observe.weather_short;
 
                     const items = document.getElementById('wind-humidity').querySelectorAll('p');
                     items[0].textContent = `湿度 ${obj.data.observe.humidity}%`;
-                    items[1].textContent = `东风 ${obj.data.observe.wind_power}级`;
+                    items[1].textContent = `风速 ${obj.data.observe.wind_power}级`;
 
                     let first = true;
                     setInterval(() => {
