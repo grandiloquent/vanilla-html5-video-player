@@ -63,13 +63,14 @@ function loadWeather(uri) {
 
             const days = document.querySelector('#days')
             buildDays(obj, days);
+            buildHours(obj.data.forecast_1h, document.querySelector('#hours'));
 
 
 
         });
 }
 
- 
+/*
 navigator.geolocation.getCurrentPosition(position => {
     console.log(position);
     fetch(
@@ -99,8 +100,10 @@ navigator.geolocation.getCurrentPosition(position => {
     timeout : 5000,
     maximumAge: 0
 });
- 
+ */
+
 loadWeather();
+
 function windDirection(value) {
     var r = {
         0: "\u65e0\u6301\u7eed\u98ce\u5411",
@@ -171,4 +174,27 @@ function buildDays(obj, days) {
         }
     }
     days.innerHTML = buffer.join('');
+}
+
+function buildHours(obj, hours) {
+    const string = `<div>
+    <p>{{name}}</p>
+    <p>{{weather}}</p>
+    <img src="//mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/{{weather_code}}.svg">
+    <p>{{degree}}°</p>
+</div>`;
+    const templates = parseString(string);
+    const buffer = [];
+    for (let index = 0; index < 5; index++) {
+        for (let j = 0; j < templates.length; j++) {
+            const element = templates[j];
+            if (element[0] === '0')
+                buffer.push(element[1]);
+            else {
+                const string = element[1] === 'name' ? obj[index + '']['update_time'].substring(8, 10) + ':' + obj[index + '']['update_time'].substring(10, 12) : obj[index + ''][element[1]];
+                buffer.push(string);
+            }
+        }
+    }
+    hours.innerHTML = buffer.join('');
 }
