@@ -38,7 +38,7 @@ function loadWeather(uri) {
 
             const items = document.getElementById('wind-humidity').querySelectorAll('p');
             items[0].textContent = `湿度 ${obj.data.observe.humidity}%`;
-            items[1].textContent = `风速 ${obj.data.observe.wind_power}级`;
+            items[1].textContent = `${windDirection(obj.data.observe.wind_direction)} ${obj.data.observe.wind_power}级`;
 
             let first = true;
             clearInterval(timer);
@@ -62,27 +62,11 @@ function loadWeather(uri) {
             document.getElementById('tomorrow_weather').textContent =
                 `${obj.data.forecast_24h["2"].day_weather}转${obj.data.forecast_24h["2"].night_weather}`;
 
-            const days = document.querySelectorAll('#days>div>div')
+            const days = document.querySelector('#days')
+            buildDays(obj, days);
 
-            days[0].querySelector('p:nth-child(2)').textContent = obj.data.forecast_24h[0].day_weather;
-            days[0].querySelector('p:nth-child(3)').textContent =
-                `${obj.data.forecast_24h[0].min_degree}/${obj.data.forecast_24h[0].max_degree}°`;
 
-            days[1].querySelector('p:nth-child(2)').textContent = obj.data.forecast_24h[1].day_weather;
-            days[1].querySelector('p:nth-child(3)').textContent =
-                `${obj.data.forecast_24h[1].min_degree}/${obj.data.forecast_24h[1].max_degree}°`;
 
-            days[2].querySelector('p:nth-child(2)').textContent = obj.data.forecast_24h[2].day_weather;
-            days[2].querySelector('p:nth-child(3)').textContent =
-                `${obj.data.forecast_24h[2].min_degree}/${obj.data.forecast_24h[2].max_degree}°`;
-
-            days[3].querySelector('p:nth-child(2)').textContent = obj.data.forecast_24h[3].day_weather;
-            days[3].querySelector('p:nth-child(3)').textContent =
-                `${obj.data.forecast_24h[3].min_degree}/${obj.data.forecast_24h[3].max_degree}°`;
-
-            days[4].querySelector('p:nth-child(2)').textContent = obj.data.forecast_24h[4].day_weather;
-            days[4].querySelector('p:nth-child(3)').textContent =
-                `${obj.data.forecast_24h[4].min_degree}/${obj.data.forecast_24h[4].max_degree}°`;
         });
 }
 
@@ -100,7 +84,7 @@ navigator.geolocation.getCurrentPosition(position => {
                 console.log(res.result);
                 loadWeather();
             }
-            document.getElementById('current-location').textContent =res.result.address;
+            document.getElementById('current-location').textContent = res.result.address;
         })
         .catch(err => {
             console.log(err);
@@ -108,5 +92,78 @@ navigator.geolocation.getCurrentPosition(position => {
         })
 
 }, positionError => {
+    console.log(positionError);
     loadWeather();
 })
+
+function windDirection(value) {
+    var r = {
+        0: "\u65e0\u6301\u7eed\u98ce\u5411",
+        1: "\u4e1c\u5317\u98ce",
+        2: "\u4e1c\u98ce",
+        3: "\u4e1c\u5357\u98ce",
+        4: "\u5357\u98ce",
+        5: "\u897f\u5357\u98ce",
+        6: "\u897f\u98ce",
+        7: "\u897f\u5317\u98ce",
+        8: "\u5317\u98ce",
+        9: "\u65cb\u8f6c\u98ce"
+    };
+    return r[value];
+}
+
+
+function parseString(string) {
+    const array = [];
+    let offset = 0;
+    for (let index = 0; index < string.length; index++) {
+
+        if (index + 1 < string.length && string[index] === '{' && string[index + 1] === '{') {
+            array.push(['0', string.substring(offset, index)]);
+            index += 2;
+            offset = index;
+        }
+        if (index + 1 < string.length && string[index] === '}' && string[index + 1] === '}') {
+            array.push(['1', string.substring(offset, index)]);
+            index += 2;
+            offset = index;
+        }
+    }
+    if (offset < string.length) {
+        array.push(['0', string.substring(offset)]);
+    }
+    return array;
+}
+
+function buildDays(obj, days) {
+    const string = `<div>
+            <p>{{name}}</p>
+            <p>{{day_weather}}</p>
+            <img src="//mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/{{day_weather_code}}.svg">
+            <p>{{min_degree}}/{{max_degree}}°</p>
+        </div>`;
+    const templates = parseString(string);
+    const datas = [];
+    const names = ['昨天', '今天', '明天', '后天', '大后天'];
+    for (let index = 0; index < 5; index++) {
+        datas.push({
+            name: names[index],
+            obj: obj.data.forecast_24h[index]
+        })
+    }
+    const buffer = [];
+    for (let index = 0; index < 5; index++) {
+        for (let j = 0; j < templates.length; j++) {
+            const element = templates[j];
+            if (element[0] === '0')
+                buffer.push(element[1]);
+            else {
+                if (element[1] === 'name')
+                    buffer.push(datas[index].name);
+                else
+                    buffer.push(datas[index].obj[element[1]]);
+            }
+        }
+    }
+    days.innerHTML = buffer.join('');
+}
