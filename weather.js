@@ -70,7 +70,7 @@ function loadWeather(uri) {
         });
 }
 
-navigator.geolocation.getCurrentPosition(position => {
+navigator.geolocation.watchPosition(position => {
 
     fetch(
             `https://lucidu.cn/api/geo?location=${position.coords.latitude},${position.coords.longitude}`
