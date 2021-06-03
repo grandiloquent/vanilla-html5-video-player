@@ -71,10 +71,9 @@ function loadWeather(uri) {
 
 
         })
-        .catch(err=>{
+        .catch(err => {
             loadingDialog.setAttribute('hidden', 'hidden');
-        })
-        ;
+        });
 }
 
 /*
@@ -92,7 +91,7 @@ navigator.geolocation.getCurrentPosition(position => {
                 console.log(res.result);
                 loadWeather();
             }
-            document.getElementById('current-location').textContent = res.result.address;
+            
         })
         .catch(err => {
             console.log(err);
@@ -110,6 +109,9 @@ navigator.geolocation.getCurrentPosition(position => {
  */
 
 loadWeather();
+const lunar = chineseLunar.solarToLunar(new Date());
+
+document.getElementById('current-location').textContent = `农历${lunar.year}年${lunar.month}月${lunar.day}日`;
 
 function windDirection(value) {
     var r = {
