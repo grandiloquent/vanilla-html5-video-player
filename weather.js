@@ -95,7 +95,7 @@ navigator.geolocation.getCurrentPosition(position => {
     console.log(positionError);
     loadWeather();
 }, {
-    timeout: 5000
+    timeout: 30000
 });
 
 function windDirection(value) {
