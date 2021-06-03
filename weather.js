@@ -70,7 +70,7 @@ function loadWeather(uri) {
         });
 }
 
-/*
+ 
 navigator.geolocation.getCurrentPosition(position => {
     console.log(position);
     fetch(
@@ -96,9 +96,11 @@ navigator.geolocation.getCurrentPosition(position => {
     console.log(positionError);
     loadWeather();
 }, {
-    timeout: 30000
+    enableHighAccuracy: true,
+    timeout : 5000,
+    maximumAge: 0
 });
-*/
+ 
 loadWeather();
 function windDirection(value) {
     var r = {
