@@ -21,9 +21,8 @@ function loadWeather(uri) {
         .then(res => res.text())
         .then(res => {
             var obj = JSON.parse(res);
-            if (obj.data.alarm.length) {
+            if (Object.keys(obj.data.alarm).length) {
                 document.getElementById('alarm').style.display = 'block';
-
                 document.getElementById('alarm').querySelector('h2').textContent = obj.data.alarm[0]
                     .type_name +
                     '预警';
