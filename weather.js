@@ -15,8 +15,11 @@ document.querySelectorAll('#location>div')
 
 
 let timer = 0;
+const loadingDialog = document.querySelector('custom-load-dialog');
+
 
 function loadWeather(uri) {
+    loadingDialog.removeAttribute('hidden');
     fetch(uri || 'https://lucidu.cn/api/weather?province=湖南省&city=益阳市&county=桃江县')
         .then(res => res.text())
         .then(res => {
@@ -64,10 +67,14 @@ function loadWeather(uri) {
             const days = document.querySelector('#days')
             buildDays(obj, days);
             buildHours(obj.data.forecast_1h, document.querySelector('#hours'));
+            loadingDialog.setAttribute('hidden', 'hidden');
 
 
-
-        });
+        })
+        .catch(err=>{
+            loadingDialog.setAttribute('hidden', 'hidden');
+        })
+        ;
 }
 
 /*
