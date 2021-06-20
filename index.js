@@ -576,7 +576,7 @@ function createVideoThumbnailContainerLarge() {
     div.style.WebkitBoxAlign = "center";
     div.style.WebkitAlignItems = "center";
     div.style.alignItems = "center";
-    div.style.margin = "-13px -12px 0";
+    //div.style.margin = "-13px -12px 0";
     div.style.paddingTop = "13px";
     div.style.paddingBottom = "56.25%";
     div.style.position = "relative";
