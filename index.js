@@ -14,7 +14,7 @@ import {
     calculateLoadedPercent,
     progressBarClickHandler
 } from './modules/video.js'
-
+import datas from "/modules/datas.js";
 //-------------------------//
 
 const _video = document.getElementById("html5-main-video");
@@ -401,4 +401,211 @@ function renderYouTube(obj) {
         }
     }
     app.appendChild(div);
+}
+
+/* */
+
+const header = document.querySelector('custom-header');
+
+header.addEventListener('submit', event => {
+    const search = event.detail;
+    const results = [];
+    for (let index = 0; index < datas.length; index++) {
+        const element = datas[index];
+        if (element.Title.indexOf(search) !== -1) {
+            results.push(element);
+            if (results.length > 10) break;
+        }
+    }
+    const div = createElement();
+    results.forEach(element => {
+        const videoWithContextRenderer = createVideoWithContextRenderer();
+        const videoThumbnailContainerLarge = createVideoThumbnailContainerLarge();
+
+
+        const videoThumbnailBg = createVideoThumbnailBg();
+        videoThumbnailContainerLarge.appendChild(videoThumbnailBg);
+
+        const videoThumbnailImg = createVideoThumbnailImg();
+        videoThumbnailImg.src = "https://i.p04.space/thumb/" + element.Image;
+        videoThumbnailContainerLarge.appendChild(videoThumbnailImg);
+
+        const a = document.createElement('a');
+
+        a.appendChild(videoThumbnailContainerLarge);
+        a.dataset.src = element.Href;
+        videoWithContextRenderer.appendChild(a);
+
+
+        const details = createDetails();
+
+        const largeMediaItemInfo = createLargeMediaItemInfo();
+        const largeMediaItemMetadata = createLargeMediaItemMetadata();
+        largeMediaItemInfo.appendChild(largeMediaItemMetadata);
+
+        const a2 = document.createElement('a');
+        a2.dataset.src = element.Href;
+
+        const h3 = createH3();
+        h3.textContent = element.Title;
+        a2.appendChild(h3);
+
+        largeMediaItemMetadata.appendChild(a2);
+
+        details.appendChild(largeMediaItemInfo);
+
+        videoWithContextRenderer.appendChild(details);
+
+        div.appendChild(videoWithContextRenderer);
+
+        a.addEventListener('click',async event => {
+            _play.setAttribute('hidden', 'hidden');
+            _spinner.removeAttribute('hidden');
+            try {
+                await fetchUri("https://91porn.com/view_video.php?viewkey="+ event.currentTarget.dataset.src);
+            } catch (error) {
+
+            }
+            _spinner.setAttribute('hidden', 'hidden');
+        })
+        a2.addEventListener('click',async event => {
+            _play.setAttribute('hidden', 'hidden');
+            _spinner.removeAttribute('hidden');
+            try {
+                await fetchUri("https://91porn.com/view_video.php?viewkey="+ event.currentTarget.dataset.src);
+            } catch (error) {
+
+            }
+            _spinner.setAttribute('hidden', 'hidden');
+        })
+    });
+
+    document.body.appendChild(div);
+})
+
+function createH3() {
+    const div = document.createElement("h3");
+    div.style.fontSize = "1.4rem";
+    div.style.boxOrient = "vertical";
+    div.style.WebkitBoxOrient = "vertical";
+    div.style.display = "-webkit-box";
+    div.style.maxHeight = "2.5em";
+    div.style.WebkitLineClamp = "2";
+    div.style.overflow = "hidden";
+    div.style.lineHeight = "1.25";
+    div.style.textOverflow = "ellipsis";
+    div.style.fontWeight = "normal";
+    div.style.margin = "0 0 3px 0";
+    return div;
+}
+
+function createLargeMediaItemMetadata() {
+    const div = document.createElement("div");
+    div.style.display = "block";
+    div.style.WebkitBoxFlex = "1";
+    div.style.MsFlexPositive = "1";
+    div.style.WebkitFlexGrow = "1";
+    div.style.flexGrow = "1";
+    div.style.minWidth = "0";
+    return div;
+}
+
+function createLargeMediaItemInfo() {
+
+    const div = document.createElement("div");
+    div.style.MsFlexAlign = "start";
+    div.style.MozBoxAlign = "start";
+    div.style.WebkitBoxAlign = "start";
+    div.style.WebkitAlignItems = "flex-start";
+    div.style.alignItems = "flex-start";
+    div.style.marginLeft = "12px";
+    div.style.WebkitBoxFlex = "1";
+    div.style.MsFlexPositive = "1";
+    div.style.WebkitFlexGrow = "1";
+    div.style.flexGrow = "1";
+    div.style.minWidth = "0";
+    div.style.display = "block";
+    return div;
+}
+
+function createDetails() {
+    const div = document.createElement("div");
+    div.style.marginBottom = "24px";
+    div.style.WebkitBoxFlex = "1";
+    div.style.MsFlexPositive = "1";
+    div.style.WebkitFlexGrow = "1";
+    div.style.flexGrow = "1";
+    div.style.minWidth = "0";
+    div.style.marginTop = "12px";
+    div.style.display = "block";
+    return div;
+}
+
+function createVideoThumbnailImg() {
+    const div = document.createElement("img");
+    div.style.objectFit = "cover";
+    div.style.position = "absolute";
+    div.style.top = "0";
+    div.style.bottom = "0";
+    div.style.left = "0";
+    div.style.right = "0";
+    div.style.width = "100%";
+    div.style.margin = "auto";
+    div.style.minWidth = "1px";
+    div.style.minHeight = "1px";
+    div.style.filter = "none";
+    return div;
+}
+
+function createVideoWithContextRenderer() {
+    const div = document.createElement("div");
+    div.style.margin = "0";
+    div.style.marginTop = "12px";
+    div.style.display = "block";
+    return div;
+}
+
+function createVideoThumbnailContainerLarge() {
+    const div = document.createElement("div");
+    div.style.marginLeft = "0";
+    div.style.marginRight = "0";
+    div.style.marginTop = "0";
+    div.style.WebkitBoxPack = "center";
+    div.style.WebkitJustifyContent = "center";
+    div.style.justifyContent = "center";
+    div.style.WebkitBoxAlign = "center";
+    div.style.WebkitAlignItems = "center";
+    div.style.alignItems = "center";
+    div.style.margin = "-13px -12px 0";
+    div.style.paddingTop = "13px";
+    div.style.paddingBottom = "56.25%";
+    div.style.position = "relative";
+    div.style.WebkitFlexShrink = "0";
+    div.style.MsFlexNegative = "0";
+    div.style.flexShrink = "0";
+    div.style.overflow = "hidden";
+    div.style.display = "block";
+    return div;
+}
+
+
+function createElement() {
+    const div = document.createElement("div");
+    div.style.display = "block";
+    div.style.borderBottom = "1px solid rgba(0,0,0,0.102)";
+    return div;
+}
+
+function createVideoThumbnailBg() {
+    const div = document.createElement("div");
+    div.style.backgroundColor = "rgba(0,0,0,0.102)";
+    div.style.position = "absolute";
+    div.style.top = "0";
+    div.style.bottom = "0";
+    div.style.left = "0";
+    div.style.right = "0";
+    div.style.width = "100%";
+    div.style.minHeight = "100%";
+    div.style.margin = "auto";
+    return div;
 }

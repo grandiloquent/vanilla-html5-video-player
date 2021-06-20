@@ -155,6 +155,8 @@ class CustomHeader extends HTMLElement {
         this.mobileTopbarHeaderContent = mobileTopbarHeaderContent;
         this.mobileTopbarHeaderContent1 = mobileTopbarHeaderContent1;
         this.header = header;
+        this.searchboxForm = searchboxForm;
+        this.searchboxInput = searchboxInput;
     }
 
     makeLogo() {
@@ -208,6 +210,19 @@ class CustomHeader extends HTMLElement {
         this.mobileTopbarHeaderEndpoint.addEventListener('click', event => {
             window.location.href = 'https://hxz315.com';
         });
+
+        this.searchboxForm.addEventListener('submit', event => {
+            event.preventDefault();
+            this.dispatchEvent(new CustomEvent('submit', {
+                detail: this.searchboxInput.value
+            }));
+            this.c3Overlay.setAttribute('hidden', 'hidden');
+            this.mobileTopbarHeaderEndpoint.removeAttribute('hidden');
+            this.mobileTopbarBackArrow.setAttribute('hidden', 'hidden');
+            this.mobileTopbarHeaderContent.setAttribute('hidden', 'hidden');
+            this.mobileTopbarHeaderContent1.removeAttribute('hidden');
+            this.header.removeAttribute('data-mode');
+        })
     }
 
     // Fires when an instance was removed from the document
