@@ -407,6 +407,9 @@ function renderYouTube(obj) {
 
 const header = document.querySelector('custom-header');
 
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 header.addEventListener('submit', event => {
     if (document.getElementById('videos'))
         document.getElementById('videos').remove();
@@ -417,6 +420,13 @@ header.addEventListener('submit', event => {
         if (element.Title.indexOf(search) !== -1) {
             results.push(element);
             //if (results.length > 10) break;
+        }
+    }
+    if (!results.length) {
+        _toast.setAttribute('message', '没有找到相应结果，猜你可能喜欢的视频')
+        const total = datas.length;
+        while (results.length < 50) {
+            results.push(datas[getRandomArbitrary(0, total)]);
         }
     }
     const div = createElement();
