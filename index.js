@@ -408,6 +408,8 @@ function renderYouTube(obj) {
 const header = document.querySelector('custom-header');
 
 header.addEventListener('submit', event => {
+    if (document.getElementById('videos'))
+        document.getElementById('videos').remove();
     const search = event.detail;
     const results = [];
     for (let index = 0; index < datas.length; index++) {
@@ -418,6 +420,7 @@ header.addEventListener('submit', event => {
         }
     }
     const div = createElement();
+    div.id = 'videos';
     results.forEach(element => {
         const videoWithContextRenderer = createVideoWithContextRenderer();
         const videoThumbnailContainerLarge = createVideoThumbnailContainerLarge();
@@ -458,21 +461,21 @@ header.addEventListener('submit', event => {
 
         div.appendChild(videoWithContextRenderer);
 
-        a.addEventListener('click',async event => {
+        a.addEventListener('click', async event => {
             _play.setAttribute('hidden', 'hidden');
             _spinner.removeAttribute('hidden');
             try {
-                await fetchUri("https://91porn.com/view_video.php?viewkey="+ event.currentTarget.dataset.src);
+                await fetchUri("https://91porn.com/view_video.php?viewkey=" + event.currentTarget.dataset.src);
             } catch (error) {
 
             }
             _spinner.setAttribute('hidden', 'hidden');
         })
-        a2.addEventListener('click',async event => {
+        a2.addEventListener('click', async event => {
             _play.setAttribute('hidden', 'hidden');
             _spinner.removeAttribute('hidden');
             try {
-                await fetchUri("https://91porn.com/view_video.php?viewkey="+ event.currentTarget.dataset.src);
+                await fetchUri("https://91porn.com/view_video.php?viewkey=" + event.currentTarget.dataset.src);
             } catch (error) {
 
             }
