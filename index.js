@@ -410,6 +410,11 @@ const header = document.querySelector('custom-header');
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 header.addEventListener('submit', event => {
     if (document.getElementById('videos'))
         document.getElementById('videos').remove();
@@ -426,7 +431,8 @@ header.addEventListener('submit', event => {
         _toast.setAttribute('message', '没有找到相应结果，猜你可能喜欢的视频')
         const total = datas.length;
         while (results.length < 50) {
-            results.push(datas[getRandomArbitrary(0, total)]);
+           
+            results.push(datas[getRandomInt(0, total)]);
         }
     }
     const div = createElement();
