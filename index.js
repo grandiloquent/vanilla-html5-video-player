@@ -414,7 +414,7 @@ header.addEventListener('submit', event => {
         const element = datas[index];
         if (element.Title.indexOf(search) !== -1) {
             results.push(element);
-            if (results.length > 10) break;
+            //if (results.length > 10) break;
         }
     }
     const div = createElement();
