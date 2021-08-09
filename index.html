@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放器 - 回形针</title>
+    <link rel="stylesheet" href="index_v_CP8tnxM5G4ipaWs9Z3KZ-w.css">
+    <script src="components/header.js"></script>
+    <script src="components/toast.js"></script>
+    <script type="module" src="components/videoplayer_v_n9AzIxs7vOWIAssxWJoZbw.js"></script>
+    <script src="encode.js"></script>
+    
+</head>
+
+<body>
+    <template id="action-button">
+        <style>
+            .material-button {
+                font-size: 1.2rem;
+                text-transform: none;
+                min-width: 0;
+                align-items: flex-start;
+                margin: -0.7em 0;
+                flex: 1 1;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                box-sizing: border-box;
+                border-radius: 3px;
+            }
+
+            button {
+                padding: 0;
+                border: none;
+                outline: none;
+                font: inherit;
+                text-transform: inherit;
+                color: inherit;
+                background: transparent;
+            }
+
+            button,
+            select,
+            [role="button"],
+            input[type="checkbox"] {
+                cursor: pointer;
+            }
+
+            .material-button>button {
+                padding: .7em .57em;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .c3-icon {
+                display: inline-block;
+                flex-shrink: 0;
+                width: 24px;
+                height: 24px;
+                fill: currentColor;
+                stroke: none;
+                margin: 0 8px;
+            }
+
+            .button-renderer-text {
+                align-self: center;
+                min-height: 1em;
+                line-height: 1em;
+                font-weight: 500;
+                margin-top: 7px;
+            }
+
+        </style>
+        <div class="material-button">
+            <button>
+                <div class="c3-icon">
+                    <slot name="ico"></slot>
+                </div>
+                <div class="button-renderer-text">
+                    <slot name="title"></slot>
+                </div>
+            </button>
+        </div>
+    </template>
+    <script>
+        customElements.define('action-button',
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    var template = document
+                        .getElementById('action-button')
+                        .content;
+                    const shadowRoot = this.attachShadow({
+                            mode: 'open'
+                        })
+                        .appendChild(template.cloneNode(true));
+                }
+            })
+
+    </script>
+    <template id="custom-dialog">
+        <style>
+            .dialog-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 3;
+                margin: 0 40px;
+                padding: 0;
+                padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            }
+
+            .dialog {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                max-height: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                padding: 16px;
+                margin: 0 auto;
+                overflow-x: hidden;
+                overflow-y: auto;
+                font-size: 1.3rem;
+                color: #030303;
+                background-color: #ffffff;
+                border: none;
+                min-width: 250px;
+                max-width: 356px;
+            }
+
+            .c3-overlay {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            button {
+                padding: 0;
+                border: none;
+                outline: none;
+                font: inherit;
+                text-transform: inherit;
+                color: inherit;
+                background: transparent;
+            }
+
+            button,
+            select,
+            [role="button"],
+            input[type="checkbox"] {
+                cursor: pointer;
+            }
+
+            .hidden-button {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 1px;
+                width: 1px;
+            }
+
+            .dialog-body {
+                overflow-y: auto;
+                overflow-x: hidden;
+                max-height: 300px;
+                max-height: 100vh;
+            }
+
+            textarea {
+                background-color: transparent;
+                outline: none;
+                box-sizing: border-box;
+                border-radius: 0;
+                margin-bottom: 1px;
+                font: inherit;
+                color: #030303;
+            }
+
+            textarea {
+                -webkit-appearance: none;
+                appearance: none;
+                min-height: 8.4rem;
+                width: 100%;
+                border: 1px solid rgba(0, 0, 0, 0.102);
+                padding: 8px;
+            }
+
+            .comment-reply-input {
+                margin: 10px 0;
+            }
+
+            .dialog-buttons {
+                flex-shrink: 0;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin-top: 12px;
+            }
+
+            .button-renderer {
+                display: flex;
+                justify-content: center;
+                box-sizing: border-box;
+                user-select: none;
+                min-width: 5.14em;
+                margin: 0 .29em;
+                font-size: 1.4rem;
+                text-transform: uppercase;
+                border-radius: 3px;
+                position: relative;
+                margin: -0.7em -0.57em;
+            }
+
+            .button-renderer>button {
+                padding: .7em .57em;
+                display: flex;
+                align-items: center;
+            }
+
+            .button-renderer-text {
+                align-self: center;
+                min-height: 1em;
+                line-height: 1em;
+                font-weight: 500;
+            }
+
+            .button-renderer.btn-primary {
+                color: #ffffff;
+                background-color: #065fd4;
+                margin-left: .7em;
+            }
+
+        </style>
+        <div class="dialog-container">
+            <div class="dialog">
+                <div class="dialog-body">
+                    <textarea class="comment-reply-input" placeholder="请输入视频地址"></textarea>
+                </div>
+                <div class="dialog-buttons">
+                    <div class="button-renderer">
+                        <button id="close">
+                            <div class="button-renderer-text">
+                                取消
+                            </div>
+                        </button>
+                    </div>
+                    <div class="button-renderer btn-primary">
+                        <button id="submit">
+                            <div class="button-renderer-text">
+                                确定
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="c3-overlay">
+                <button class="hidden-button"></button>
+            </div>
+        </div>
+    </template>
+    <script>
+        customElements.define('custom-dialog',
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    var template = document
+                        .getElementById('custom-dialog')
+                        .content;
+                    const shadowRoot = this.attachShadow({
+                            mode: 'open'
+                        })
+                        .appendChild(template.cloneNode(true));
+                }
+                connectedCallback() {
+                    this.shadowRoot.querySelector('.c3-overlay').addEventListener('click', ev => {
+                        this.setAttribute('hidden', '');
+                    });
+                    this.shadowRoot.getElementById('close').addEventListener('click', ev => {
+                        this.setAttribute('hidden', '');
+                    });
+                    this.shadowRoot.getElementById('submit').addEventListener('click', ev => {
+                        this.dispatchEvent(new CustomEvent('submit', {
+                            detail: this.shadowRoot.querySelector('textarea').value.trim()
+                        }));
+                        this.setAttribute('hidden', '');
+                    });
+                }
+            })
+
+    </script>
+    <custom-header type="1"></custom-header>
+    <custom-video-player></custom-video-player>
+    <div class="section-renderer">
+        <div class="player-size" style="margin-bottom: 48px;"></div>
+        <div class="clarification-container">
+            <div class="clarification-endpoint">
+                <div class="clarification-content" style="display: none;">
+                    <div class="clarification-body">
+                        <div class="clarification-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="clarification-bottom-row" style="border: 0;padding: 0;">
+                    <a class="clarification-secondary-endpoint" href="https://lucidu.cn/music?v=100">
+                        <div class="clarification-source">点击在线听书
+                            <div class="clarification-source-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+                                    <path d="M21,21H3V3h9v1H4v16h16v-8h1V21z M15,3v1h4.32l-8.03,8.03L12,12.74l8-8V9h1V3H15z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="clarification-menu-button" style="display: none;">
+                <button class="icon-button">
+                    <c3-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+                            <path style="fill: #030303;" d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z">
+                            </path>
+                        </svg>
+                    </c3-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="section-renderer">
+        <div class="slim-video-metadata-standalone-badge"></div>
+        <div class="slim-video-metadata-header">
+            <div class="slim-video-metadata-header-content">
+                <div class="slim-video-metadata-title-and-badges">
+                    <h2 class="slim-video-metadata-title">
+                    </h2>
+                </div>
+                <div class="c3-icon" id="expand-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                        <path d="M18 9.28l-6.35 6.35-6.37-6.35.72-.71 5.64 5.65 5.65-5.65z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="slim-video-metadata-actions">
+            <action-button id="input-video">
+                <svg slot="ico" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M17.016 6.984q2.063 0 3.516 1.477t1.453 3.539-1.453 3.539-3.516 1.477h-4.031v-1.922h4.031q1.266 0 2.18-0.914t0.914-2.18-0.914-2.18-2.18-0.914h-4.031v-1.922h4.031zM8.016 12.984v-1.969h7.969v1.969h-7.969zM3.891 12q0 1.266 0.914 2.18t2.18 0.914h4.031v1.922h-4.031q-2.063 0-3.516-1.477t-1.453-3.539 1.453-3.539 3.516-1.477h4.031v1.922h-4.031q-1.266 0-2.18 0.914t-0.914 2.18z"></path>
+                </svg>
+                <span slot="title">地址</span>
+            </action-button>
+            <action-button id="share-video">
+                <svg slot="ico" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M15,5.63L20.66,12L15,18.37V15v-1h-1c-3.96,0-7.14,1-9.75,3.09c1.84-4.07,5.11-6.4,9.89-7.1L15,9.86V9V5.63 M14,3v6 C6.22,10.13,3.11,15.33,2,21c2.78-3.97,6.44-6,12-6v6l8-9L14,3L14,3z"></path>
+                </svg>
+                <span slot="title">分享</span>
+            </action-button>
+            <action-button id="help-video">
+                <svg slot="ico" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M12 6q1.641 0 2.813 1.172t1.172 2.813q0 1.266-1.5 2.602t-1.5 2.414h-1.969q0-1.078 0.469-1.852t1.031-1.125 1.031-0.867 0.469-1.172q0-0.797-0.609-1.383t-1.406-0.586-1.406 0.586-0.609 1.383h-1.969q0-1.641 1.172-2.813t2.813-1.172zM12 20.016q3.281 0 5.648-2.367t2.367-5.648-2.367-5.648-5.648-2.367-5.648 2.367-2.367 5.648 2.367 5.648 5.648 2.367zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93zM11.016 18v-2.016h1.969v2.016h-1.969z"></path>
+                </svg>
+                <span slot="title">帮助</span>
+            </action-button>
+        </div>
+    </div>
+    <div class="section-renderer">
+        <div class="autonav-bar">
+            <h3 class="autonav-title">播放列表</h3>
+        </div>
+    </div>
+    <custom-toast></custom-toast>
+    <custom-dialog hidden></custom-dialog>
+    <script type="module" src="index_v_fOPzNGSR8khQp-0f6dbBgw.js"></script>
+</body>
+
+</html>
