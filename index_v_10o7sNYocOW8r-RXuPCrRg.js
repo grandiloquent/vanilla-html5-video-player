@@ -16,7 +16,15 @@ const dialog = document.querySelector('custom-dialog');
 const autonavBar = document.querySelector('.autonav-bar');
 const items = [
     // 
-   
+    {
+        src: 'https://lucidu.cn/api/obs/麻团 煎堆 不开裂 不回缩的小技巧 Sesame Balls.mp4',
+        image: 'k3APkn.jpg',
+        title: '麻团 煎堆 不开裂 不回缩的小技巧 Sesame Balls'
+    },  {
+        src: 'https://lucidu.cn/api/obs/麻团 没有比这更详细的教程了 Fried Sesame Balls.mp4',
+        image: 'rCFttl.jpg',
+        title: '麻团 没有比这更详细的教程了 Fried Sesame Balls'
+    },
     {
         src: 'https://lucidu.cn/api/obs/%E5%B0%8F%E5%B2%9B%E4%B8%AD%E5%9B%BD%E6%95%99%E8%82%B2.mp4',
         image: 'xdzgjy.jpg',
