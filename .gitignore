@@ -3,3 +3,4 @@
 *.bat
 /bin
 /obj
+/node_modules
