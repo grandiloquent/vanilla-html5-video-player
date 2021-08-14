@@ -19,24 +19,64 @@ function generateIP() {
 }
 
 
-function getStringAsync(args) {
+function getStringAsync(args, isRaw) {
 
     const options = Object.assign({
         port: 443,
-        headers: {
-            'User-Agent': USER_AGENT
-        },
+
     }, args);
+    if (!options.headers) {
+        options.headers = {
+            'User-Agent': USER_AGENT
+        };
+    } else if (!options.headers['User-Agent']) {
+        options.headers['User-Agent'] = USER_AGENT;
+    }
     return new Promise((reslove, reject) => {
 
         const req = https.request(options, res => {
-            let data = '';
-            res.on('data', d => {
-                data += d;
+
+            //let data = '';
+            const chunks = [];
+            res.on('data', chunk => {
+                //data += d;
+                chunks.push(chunk);
             });
             res.on('end', () => {
-                reslove(data);
+                const body = Buffer.concat(chunks);
+                if (isRaw) {
+                    reslove(body);
+                } else {
+                    reslove(body.toString());
+                }
             });
+        });
+        req.on('error', error => {
+            reject(error);
+        })
+        req.on('timeout', () => {
+            reject(new Error('timeout'));
+        });
+        req.end();
+    })
+}
+
+function getHeadersAsync(args) {
+    const options = Object.assign({
+        port: 443,
+
+    }, args);
+    if (!options.headers) {
+        options.headers = {
+            'User-Agent': USER_AGENT
+        };
+    } else if (!options.headers['User-Agent']) {
+        options.headers['User-Agent'] = USER_AGENT;
+    }
+    return new Promise((reslove, reject) => {
+
+        const req = https.request(options, res => {
+            reslove(res.headers);
         });
         req.on('error', error => {
             reject(error);
@@ -44,7 +84,6 @@ function getStringAsync(args) {
         req.end();
     })
 }
-
 
 function splitUrl(string) {
     if (!string) return null;
@@ -114,6 +153,9 @@ function substringInclude(string, first, second) {
     return string.substring(start, end + second.length);
 }
 
+function timestamp() {
+    return ~~(+new Date / 1e3);
+}
 module.exports = {
     generateIP,
     getStringAsync,
@@ -123,5 +165,8 @@ module.exports = {
     substringAfterLast,
     substringBefore,
     substringBeforeLast,
-    substringInclude
+    substringInclude,
+    USER_AGENT,
+    getHeadersAsync,
+    timestamp
 }

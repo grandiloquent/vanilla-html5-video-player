@@ -23,9 +23,7 @@ async function extract(uri, agent) {
         method: 'GET',
         hostname: urlParts[0],
         path: urlParts[1],
-        // 'X-Forwarded-For': share.generateIP(),
         agent,
-        timeout: 3000
     });
     const pieces = string.split('\n');
     for (let i = 0; i < pieces.length; i++) {

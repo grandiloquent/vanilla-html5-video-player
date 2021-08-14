@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频解析 - 回形针</title>
+    <link rel="stylesheet" href="index_v_CP8tnxM5G4ipaWs9Z3KZ-w.css">
+    <script src="components/header.js"></script>
+    <script src="components/toast.js"></script>
+    <script type="module" src="components/videoplayer_v_n9AzIxs7vOWIAssxWJoZbw.js"></script>
+    <script src="encode.js"></script>
+
+</head>
+
+<body>
+
+    <custom-header type="1"></custom-header>
+
+    <style>
+        .input-wrapper {
+            display: flex;
+            z-index: 3;
+            box-shadow: ;
+            border-radius: 20px;
+            background: #fff;
+            border: 1px solid #dadce0;
+        }
+
+        .input-btn {
+            display: flex;
+            border-radius: 0 20px 20px 0;
+            padding: 0 8px;
+            background: transparent;
+            border: none;
+            margin-right: -1px;
+            padding-right: 0;
+            flex: 0 0 auto;
+        }
+
+        .input-btn-wrapper {
+            background: none;
+            color: #9aa0a6;
+            height: 24px;
+            width: 24px;
+            margin: auto;
+        }
+
+        .input-bnt-container {
+            display: inline-block;
+            fill: currentColor;
+            height: 24px;
+            line-height: 24px;
+            position: relative;
+            width: 24px;
+        }
+
+        .input-bnt-container svg {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        .input-text-wrapper {
+            flex: 1;
+            display: flex;
+            padding: 7px 0 6px;
+        }
+
+        .input-text-container {
+            display: flex;
+            flex: 1;
+        }
+
+        .input-text {
+            line-height: 25px;
+            background-color: transparent;
+            border: none;
+            margin: 0;
+            padding: 0 0 0 19px;
+            font-size: 18px;
+            font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+            color: rgba(0, 0, 0, .87);
+            word-wrap: break-word;
+            outline: none;
+            display: flex;
+            flex: 1;
+            -webkit-tap-highlight-color: transparent;
+            width: 100%;
+        }
+
+        .input-clear-wrapper {
+            display: flex;
+            flex: 0 0 auto;
+            margin: -7px 0;
+            align-items: stretch;
+            flex-direction: column;
+            margin-right: -3px;
+        }
+
+        .input-clear {
+            display: flex;
+            flex: 1;
+            color: #80868b;
+            cursor: pointer;
+            font: 27px/25px arial, sans-serif;
+            align-items: center;
+            padding: 0 10px;
+            border: 0;
+            background: transparent;
+        }
+
+        /*        */
+        .container {
+            padding-top: 174px;
+        }
+
+        .list-container-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .list-container {
+            display: flex;
+            margin-top: 24px;
+            font-size: 14px;
+            line-height: 21px;
+        }
+
+        .list-container>a {
+            color: rgba(0, 0, 0, .54);
+            display: block;
+            overflow: hidden;
+            padding: 4px 8px 4px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        /**/
+        ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: rgba(0, 0, 0, .54);
+        }
+
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: rgba(0, 0, 0, .54);
+        }
+
+        :-ms-input-placeholder {
+            /* IE 10+ */
+            color: rgba(0, 0, 0, .54);
+        }
+
+        :-moz-placeholder {
+            /* Firefox 18- */
+            color: rgba(0, 0, 0, .54);
+        }
+
+        /*        */
+        @-webkit-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg)
+            }
+
+            to {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+
+        @keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg)
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+            }
+        }
+
+        .spinner {
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 12px auto;
+            width: 32px;
+            height: 32px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            border: 2px solid #eee;
+            border-top-color: #666;
+            -webkit-animation: spinner .8s linear infinite;
+            -webkit-animation: spinner .8s linear infinite;
+            animation: spinner .8s linear infinite
+        }
+
+        .spinner:not([hidden]) {
+            color: #333;
+            font-size: 1.6rem
+        }
+
+        /*        */
+        .loading {
+            display: none
+        }
+
+    </style>
+    <div class="container">
+        <div style="margin: 8px">
+            <div class="input-wrapper">
+                <button class="input-btn">
+                    <div class="input-btn-wrapper">
+                        <span class="input-bnt-container">
+                            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </button>
+                <div class="input-text-wrapper">
+                    <div class="input-text-container">
+                        <input class="input-text" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="off" autocomplete="off" autocorrect="off" role="combobox" spellcheck="false" tabindex="0" title="" value="" aria-label="搜索" placeholder="视频网页地址或分享链接">
+                    </div>
+                </div>
+                <div class="input-clear-wrapper">
+                    <button class="input-clear">
+                        <span class="input-bnt-container"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 0px;text-align: center">
+            <div class="loading">
+                <div>正在解析视频地址...</div>
+                <div class="spinner"></div>
+            </div>
+            <a href="/" style="font-size: 18px;color: #1967d2;display: none">点击播放视频</a>
+        </div>
+        <div class="list-container-wrapper">
+            <div class="list-container">
+                <a>抖音</a>
+                <a>快手</a>
+                <a href="https://www.mgtv.com/">芒果TV</a>
+                <a href="https://www.bilibili.com/">B站</a>
+                <a href="https://91porn.com/">91Porn</a>
+                <a href="https://xvideos.com/">XVideos</a>
+            </div>
+
+        </div>
+
+
+    </div>
+    <custom-toast></custom-toast>
+    <script>
+        const loading = document.querySelector('.loading');
+        const playbtn = loading.parentNode.querySelector('a');
+        const input = document.querySelector('.input-text');
+        input.focus();
+        input.onkeydown = async (ev) => {
+            if (ev.keyCode === 13) {
+                try {
+                    fetchVideoUri()
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }
+        const inputButton = document.querySelector('.input-btn');
+        inputButton.addEventListener('click', async ev => {
+            try {
+                fetchVideoUri()
+            } catch (e) {
+                console.error(e);
+            }
+        });
+
+        async function fetchVideoUri() {
+            loading.parentNode.style.marginTop = '24px';
+            loading.style.display = 'block';
+            playbtn.style.display = 'none';
+            const value = input.value.trim();
+            if (!value) {
+                return;
+            }
+            const res = await fetch(`	
+https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${value}`);
+            const result = await res.text();
+            if (value.indexOf('91porn.com') !== -1) {
+                playbtn.href = `https://hxz315.com?v=${result}`;
+            } else {
+                playbtn.href = `${result}`;
+            }
+            playbtn.style.display = 'block';
+            loading.style.display = 'none';
+        }
+
+    </script>
+</body>
+
+</html>

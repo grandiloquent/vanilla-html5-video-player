@@ -315,11 +315,10 @@
 
 	Sets the ID of the audio device to use for output and returns a Promise. This only works when the application is authorized to use the specified device.
 
+### 代码段
+
 ```
 console.error([...$0.childNodes].filter(i=>i.nodeName==='DT' || i.nodeName=='DD').map((key,index)=>index%2==0?'* `'+key.textContent+'`\n':'\t'+key.textContent+'\n').join('\n'))
 
 console.error([...$0.childNodes].filter(i=>i.nodeName==='DT' || i.nodeName=='DD').map((key,index)=>index%2==0?'* `'+key.textContent.substr(key.textContent.lastIndexOf('.')+1).trim()+'`\n':'\t'+key.textContent+'\n').join('\n'))
 ```
-"# VideoBrowser" 
-"# VideoBrowser" 
-"# vanilla-html5-video-player" 

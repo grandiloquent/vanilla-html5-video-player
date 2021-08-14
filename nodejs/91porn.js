@@ -138,19 +138,6 @@ function strencode2(_0x4f0d7a) {
 
 const share = require('./share');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 async function extract(viewkey, agent) {
     const string = await share.getStringAsync({
         method: 'GET',
