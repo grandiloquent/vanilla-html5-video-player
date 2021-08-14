@@ -104,6 +104,18 @@ function substring(string, first, second) {
     return string.substring(start, end);
 }
 
+function substringExclude(string, first, second) {
+    let start = string.indexOf(first);
+    if (start === -1) return null;
+    start += first.length;
+    const end = string.indexOf(second, start);
+    if (end === -1) return null;
+    const tmp = string.lastIndexOf(first, end);
+    if (tmp !== -1) {
+        start = tmp + first.length;
+    }
+    return string.substring(start, end);
+}
 
 function substringAfter(string, delimiter, missingDelimiterValue) {
     const index = string.indexOf(delimiter);
@@ -168,5 +180,6 @@ module.exports = {
     substringInclude,
     USER_AGENT,
     getHeadersAsync,
-    timestamp
+    timestamp,
+    substringExclude
 }
