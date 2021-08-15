@@ -114,6 +114,7 @@ class CustomVideoPlayer extends HTMLElement {
             'click',
             this.progressBarClickHandler(this.video, this.progressBar));
         this.fullScreenHandler();
+        this.play.setAttribute('hidden', 'hidden');
         registerEvents(this.video, {
             abort: ev => {
                 this.progressBarPlayed.style.width = '0';
@@ -131,7 +132,6 @@ class CustomVideoPlayer extends HTMLElement {
                     this.path.setAttribute('d', 'M9,19H7V5H9ZM17,5H15V19h2Z');
                 }
                 this.spinner.setAttribute('hidden', 'hidden');
-                console.log("durationchange", "spinner hidden");
                 this.play.removeAttribute('hidden');
                 this.showControls();
                 this.timeSecond.textContent =
@@ -761,19 +761,22 @@ this.video.videoHeight = ${this.video.videoHeight},
 window.innerWidth = ${window.innerWidth},
 window.innerHeight = ${window.innerHeight}`);
 
-        if (!this.video.videoWidth || !this.video.videoHeight || (this.video.videoWidth < window.innerWidth &&
-                this.video.videoHeight < window.innerHeight)) return;
+        const maximumHeight = window.innerHeight * 0.65;
+        const maximumWidth = window.innerWidth;
+
+        if (!this.video.videoWidth || !this.video.videoHeight || (this.video.videoWidth < maximumWidth &&
+                this.video.videoHeight < maximumHeight)) return;
         const ratio = Math.max(
-            this.video.videoWidth / window.innerWidth,
-            this.video.videoHeight / window.innerHeight
+            this.video.videoWidth / maximumWidth,
+            this.video.videoHeight / maximumHeight
         );
-        this.video.style.width = `${this.video.videoWidth/ratio}px`;
         //this.player.style.paddingBottom='0';
 
         this.player.style.paddingBottom = '0';
         const height = this.video.videoHeight / ratio;
+        const width = this.video.videoWidth / ratio;
         this.player.style.height = `${height}px`;
-        this.video.style.width = `${window.innerWidth}px`;
+        this.video.style.width = `${width}px`;
         this.video.style.height = `${height}px`;
 
         this.dispatchEvent(new CustomEvent('resize', {
