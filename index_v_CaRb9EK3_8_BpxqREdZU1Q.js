@@ -15,12 +15,17 @@ const toast = document.querySelector('custom-toast');
 const dialog = document.querySelector('custom-dialog');
 const autonavBar = document.querySelector('.autonav-bar');
 const items = [
-    // 
+    // N9nkvj.jpg
+    {
+        src: 'https://lucidu.cn/api/obs/【小岛浪吹】地方教育改革政策出炉，上海取消英语考试，老外学生反而会越来越多？一个视频聊清楚未来五到十年教育改革.mp4',
+        image: 'k3APkn.jpg',
+        title: '【小岛浪吹】地方教育改革政策出炉，上海取消英语考试，老外学生反而会越来越多？一个视频聊清楚未来五到十年教育改革'
+    },
     {
         src: 'https://lucidu.cn/api/obs/麻团 煎堆 不开裂 不回缩的小技巧 Sesame Balls.mp4',
         image: 'k3APkn.jpg',
         title: '麻团 煎堆 不开裂 不回缩的小技巧 Sesame Balls'
-    },  {
+    }, {
         src: 'https://lucidu.cn/api/obs/麻团 没有比这更详细的教程了 Fried Sesame Balls.mp4',
         image: 'rCFttl.jpg',
         title: '麻团 没有比这更详细的教程了 Fried Sesame Balls'
