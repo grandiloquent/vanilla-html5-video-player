@@ -179,7 +179,7 @@ function buildItem(obj, index) {
 
 function play() {
     const item = items[playIndex];
-    document.title = `${item.title} - 视频播放 - 回形针`;
+    //document.title = `${item.title} - 视频播放 - 回形针`;
     player.setAttribute('src', item.src);
     document.querySelector('.slim-video-metadata-title').textContent = item.title;
 }
