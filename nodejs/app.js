@@ -2,16 +2,17 @@ const HttpsProxyAgent = require('https-proxy-agent');
 var proxy = process.env.http_proxy || 'http://127.0.0.1:10809';
 var agent = new HttpsProxyAgent(proxy);
 const share = require('./share');
-const qq = require('./qq');
+const porn91 = require('./91porn');
 //const fs = require('fs');
 //
 //fs.writeFileSync('xvideos.js');
 //return;
 
-qq.extract("https://v.qq.com/x/cover/mzc00200hozwipf/i3268i28vk9.html").then(res => {
+porn91.extract("373076ab1ab72b162597",agent).then(res => {
     console.log(res);
-}).catch(err => {
-    console.log(err);
+})
+.catch(err => {
+    console.log("error", err);
 })
 
 const readline = require('readline')
