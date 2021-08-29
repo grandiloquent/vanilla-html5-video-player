@@ -16,7 +16,11 @@ const dialog = document.querySelector('custom-dialog');
 const autonavBar = document.querySelector('.autonav-bar');
 const items = [
     // N9nkvj.jpg 
-    
+     {
+        src: 'https://lucidu.cn/api/obs/哥哥住别墅，弟弟街头流浪，亲兄弟为何贫富差距巨大？真实纪录片.mp4',
+        image: 'pYYlBc.jpg',
+        title: '哥哥住别墅，弟弟街头流浪，亲兄弟为何贫富差距巨大？真实纪录片'
+    },
     {
         src: 'https://lucidu.cn/api/obs/【小岛浪吹】作死整个大活儿，来自蓝星美丽国国主的自白，为什么我们要抛弃阿富汗，台湾的绿营需要学习点什么.mp4',
         image: 'X3IH2S.jpg',

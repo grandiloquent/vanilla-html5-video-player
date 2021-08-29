@@ -21,8 +21,18 @@ if (window.location.hostname === "91porn.com") {
     }
 }
 if (window.location.hostname === "m.iqiyi.com") {
-    const mIqyGuideLayer = document.querSelector(".m-iqyGuide-layer");
+    const mIqyGuideLayer = document.querySelector(".m-iqyGuide-layer");
     if (mIqyGuideLayer) {
         mIqyGuideLayer.style.display = 'none';
     }
+}
+if (window.location.hostname.indexOf("xvideos.com") !== -1) {
+    const adFooter = document.querySelector("#ad-footer");
+    if (adFooter) {
+        adFooter.style.display = 'none';
+    }
+    const thumbAd = [...document.querySelectorAll(".thumb-ad")];
+    thumbAd.forEach(i => {
+        i.style.display = 'none';
+    })
 }
