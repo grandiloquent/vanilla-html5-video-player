@@ -27,12 +27,27 @@ if (window.location.hostname === "m.iqiyi.com") {
     }
 }
 if (window.location.hostname.indexOf("xvideos.com") !== -1) {
+    const videoAd = document.querySelector(".video-ad");
+    if (videoAd) {
+        videoAd.remove();
+    }
+    const exOverTop = document.querySelector(".ex-over-top");
+    if (exOverTop) {
+        exOverTop.remove();
+    }
+
+    const adHeaderMobileContener = document.querySelector("#ad-header-mobile-contener");
+    if (adHeaderMobileContener) {
+        adHeaderMobileContener.remove();
+    }
+
     const adFooter = document.querySelector("#ad-footer");
     if (adFooter) {
-        adFooter.style.display = 'none';
+        adFooter.remove();
     }
     const thumbAd = [...document.querySelectorAll(".thumb-ad")];
     thumbAd.forEach(i => {
-        i.style.display = 'none';
-    })
+        i.remove();
+    });
+
 }

@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="x"></div>
+    <style>
+        .searchbox-dropdown {
+            position: absolute;
+            left: 0;
+            right: 0;
+            font-size: 14px;
+            top: 36px
+        }
+
+        .sbdd_a {
+            width: 100%;
+            position: relative;
+            text-align: left;
+            color: #030303;
+            background-color: #fff;
+            margin-top: -1px;
+            z-index: 989;
+        }
+
+        .item {
+            padding: 10px 3px 11px 8px;
+        }
+
+        button {
+            padding: 0;
+            border: none;
+            outline: none;
+            font: inherit;
+            text-transform: inherit;
+            color: inherit;
+            background: transparent;
+        }
+
+        button,
+        select,
+        [role="button"],
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            outline: 0;
+            border: 0;
+            border-bottom: 1px solid #eee;
+            resize: none;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+    <div style="display: flex;position: relative">
+        <input id="keywords" type="text" placeholder="关键字">
+        <button class="delimiter" style="flex-shrink: 0;">分隔符
+        </button>
+        <div class="searchbox-dropdown">
+            <div class="sbdd_a">
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        (function() {
+            const keywordsArray = ["音乐", "钓鱼", "逆向工程", "计算机视觉", "计算机科学", "视频编辑", "营销", "菜谱", "英语语法", "艺术", "自然语言处理", "网页开发", "网络安全", "网站开发", "编程语言", "编程", "统计数", "统计学", "经济学", "经济", "算法", "科普", "科幻", "畅销书", "畅销", "电子技术", "电子商务", "用户体验", "理财", "物理", "烹饪", "漫画", "游戏设计", "游戏开发", "深度学习", "机器视觉", "机器学习", "智能家居", "文学", "数据结构", "数据科学", "数据库", "数据分析", "数学", "教材", "摄影", "惊悚", "情色", "性生活", "心理学", "微积分", "小说", "密码学", "宠物", "天文学", "天文", "土木工程", "图像处理", "国学经典", "国学", "回忆录", "商业", "历史", "医学", "区块链", "化学", "动画", "加密货币", "农业", "养鱼", "养殖", "信息安全", "侦探", "传记", "人物传记", "人工智能", "乐器", "世界名著", "Word", "Web服务器", "Web开发", "WebAssembly", "Vue.js", "Unreal Engine", "Unity", "Ubuntu", "TensorFlow.js", "TensorFlow", "SQL", "Spark", "SEO", "Rust", "React", "Raspberry Pi", "Qt", "Python", "PowerShell", "PowerPoint", "Photoshop", "NGINX", "NET 5", "Linux", "Kotlin", "Jira", "JavaScript", "Java", "IoT", "HTML5", "GitHub", "Git", "Gatsby", "Expert C++", "Excel", "eBay", "C++20", "C++", "C#", "C", "Blender", "ASP.NET Core", "Arduino", "Android", "Adobe Premiere Pro", "Adobe Photoshop Elements", "Adobe Photoshop Elements", "Adobe Animate", "Adobe", "3D", ".NET Core"];
+
+            function fuzzysearch(needle, haystack) {
+                var hlen = haystack.length;
+                var nlen = needle.length;
+                if (nlen > hlen) {
+                    return false;
+                }
+                if (nlen === hlen) {
+                    return needle === haystack;
+                }
+                outer: for (var i = 0, j = 0; i < nlen; i++) {
+                    var nch = needle.charCodeAt(i);
+                    while (j < hlen) {
+                        if (haystack.charCodeAt(j++) === nch) {
+                            continue outer;
+                        }
+                    }
+                    return false;
+                }
+                return true;
+            }
+
+            const keywords = document.querySelector('#keywords');
+            let sbddA = document.querySelector('.sbdd_a');
+            const delimiter = document.querySelector('.delimiter');
+
+            if (delimiter) {
+                delimiter.addEventListener('click', ev => {
+                    keywords.value += " | "
+                });
+            }
+
+
+            if (keywords) {
+                keywords.addEventListener('input', ev => {
+                    let search = keywords.value;
+                    const si = keywords.value.lastIndexOf('|');
+                    if (si !== -1) {
+                        search = search.substring(si + 1).trim();
+                    }
+                    console.log(search);
+                    const items = keywordsArray.filter(x => {
+                        return fuzzysearch(search, x);
+                    });
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'sbdd_a';
+                    items.forEach(x => {
+                        const div = document.createElement('div');
+                        div.className = 'item';
+                        div.textContent = x;
+                        div.addEventListener('click', ev => {
+                            const index = keywords.value.lastIndexOf('|');
+                            if (index === -1)
+                                keywords.value = ev.currentTarget.textContent + " | ";
+                            else
+                                keywords.value = keywords.value.substring(0, index) +
+                                " | " + ev.currentTarget.textContent + " | ";
+                        })
+                        wrapper.appendChild(div);
+                    });
+                    sbddA.replaceWith(wrapper);
+                    sbddA = wrapper;
+                });
+            }
+        })();
+    </script>
+</body></html>

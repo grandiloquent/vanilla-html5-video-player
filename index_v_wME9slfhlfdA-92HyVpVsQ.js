@@ -16,6 +16,11 @@ const dialog = document.querySelector('custom-dialog');
 const autonavBar = document.querySelector('.autonav-bar');
 const items = [
     // N9nkvj.jpg 
+    {
+        src: 'https://lucidu.cn/api/obs/【小岛浪吹】脑洞最大的一期，从郑爽，第三次财富分配，取消996，未成年人游戏受限，中产家庭资产上升，推导出赵薇.mp4',
+        image: '1749267253.jpg',
+        title: '【小岛浪吹】脑洞最大的一期，从郑爽，第三次财富分配，取消996，未成年人游戏受限，中产家庭资产上升，推导出赵薇'
+    },
      {
         src: 'https://lucidu.cn/api/obs/哥哥住别墅，弟弟街头流浪，亲兄弟为何贫富差距巨大？真实纪录片.mp4',
         image: 'pYYlBc.jpg',
