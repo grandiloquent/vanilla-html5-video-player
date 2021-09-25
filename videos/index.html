@@ -151,8 +151,6 @@
             left: 0;
             right: 0;
             display: flex;
-            display: -webkit-flex;
-            display: flex;
             -webkit-box-orient: vertical;
             -webkit-flex-direction: column;
             flex-direction: column;
@@ -383,7 +381,7 @@
                 results.push(template);
             }
             container.innerHTML = results.join('');
-            const largeMediaItems = document.querySelectorAll('#large-media-item');
+            const largeMediaItems = document.querySelectorAll('.large-media-item');
 
             largeMediaItems.forEach(largeMediaItem => {
                 largeMediaItem.addEventListener('click', ev => {
