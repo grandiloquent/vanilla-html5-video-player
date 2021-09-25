@@ -11,7 +11,7 @@
     <script src="components/toast.js"></script>
     <script type="module" src="components/videoplayer_v_7J_TYWTWjevG9hiqMi1pug.js"></script>
     <script src="encode.js"></script>
-    
+
 </head>
 
 <body>
@@ -385,6 +385,60 @@
     <custom-toast></custom-toast>
     <custom-dialog hidden></custom-dialog>
     <script type="module" src="index_v_wME9slfhlfdA-92HyVpVsQ.js"></script>
+    <script>
+        const items = $0.querySelectorAll('td');
+        const results = [];
+        for (let i = 0; i < items.length; i++) {
+            if (i % 2 == 0) {
+                results.push(`else if(extension=="${items[i].textContent}"){
+type="${items[i+1].textContent}";
+}`);
+                console.log(results.join(''));
+            }
+        }
+
+        (function() {
+            function process(element) {
+                const elements = [...element.querySelectorAll('tr td')].filter((v, i) => i % 2 === 1);
+                const results = elements.map(x => (x.querySelector('code') && x.querySelector('p')) && `
+## ${x.querySelector('code').textContent.trim()}
+        
+${x.querySelector('p').textContent.trim().replace(/\n\s+/g,' ')}
+`).join('');
+                return results;
+            }
+            const elements = document.querySelectorAll('table.responsive');
+            const results = [];
+            for (let i = 0; i < elements.length; i++) {
+                if (!elements[i].id.trim()) continue;
+                results.push(process(elements[i]));
+            }
+            console.log(results.join(''));
+        })();
+
+        (function() {
+            const items = $0.querySelectorAll('td');
+            const results = [];
+            for (let i = 0; i < items.length; i++) {
+                if (i % 2 == 0) {
+                    const first = items[i].textContent;
+                    const second = items[i + 1].textContent;
+                    console.log(first);
+                    if (first.indexOf(',') === -1) {
+                        results.push(`{"${first}","${second}"},`);
+                    } else {
+                        const pieces = first.split(',').map(i => i.trim());
+                        pieces.forEach(x => {
+                            results.push(`{"${x}","${second}"},`);
+                        })
+                    }
+
+                    console.log(results.join('\n'));
+                }
+            }
+        })();
+
+    </script>
 </body>
 
 </html>
