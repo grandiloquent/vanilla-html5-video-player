@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,">
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,">
     <style>
         html {
             font-size: 10px;
@@ -37,7 +38,11 @@
             text-decoration: none;
         }
 
-        h1, h2, h3, h4, .subhead {
+        h1,
+        h2,
+        h3,
+        h4,
+        .subhead {
             box-orient: vertical;
             -webkit-box-orient: vertical;
             display: box;
@@ -50,7 +55,10 @@
             font-weight: normal;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             margin: 0 0 3px 0;
         }
 
@@ -68,7 +76,10 @@
             background: transparent;
         }
 
-        button, select, [role="button"], input[type="checkbox"] {
+        button,
+        select,
+        [role="button"],
+        input[type="checkbox"] {
             cursor: pointer;
         }
 
@@ -89,7 +100,7 @@
 
         }
 
-        .large-media-item > a {
+        .large-media-item>a {
             display: block;
         }
 
@@ -268,68 +279,69 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="container" style="padding-top: 48px">
+    <div class="container" style="padding-top: 48px">
 
-</div>
-<script src="index.js"></script>
-<script>
-    function fuzzysearch(needle, haystack) {
-        var hlen = haystack.length;
-        var nlen = needle.length;
-        if (nlen > hlen) {
-            return false;
-        }
-        if (nlen === hlen) {
-            return needle === haystack;
-        }
-        outer: for (var i = 0, j = 0; i < nlen; i++) {
-            var nch = needle.charCodeAt(i);
-            while (j < hlen) {
-                if (haystack.charCodeAt(j++) === nch) {
-                    continue outer;
-                }
+    </div>
+    <script src="index.js"></script>
+    <script>
+        function fuzzysearch(needle, haystack) {
+            var hlen = haystack.length;
+            var nlen = needle.length;
+            if (nlen > hlen) {
+                return false;
             }
-            return false;
+            if (nlen === hlen) {
+                return needle === haystack;
+            }
+            outer: for (var i = 0, j = 0; i < nlen; i++) {
+                var nch = needle.charCodeAt(i);
+                while (j < hlen) {
+                    if (haystack.charCodeAt(j++) === nch) {
+                        continue outer;
+                    }
+                }
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
 
 
-    function formatDuration(ms) {
-        if (isNaN(ms)) return '0:00';
-        if (ms < 0) ms = -ms;
-        const time = {
-            hour: Math.floor(ms / 3600) % 24,
-            minute: Math.floor(ms / 60) % 60,
-            second: Math.floor(ms) % 60,
-        };
-        return Object.entries(time)
-            .filter((val, index) => index || val[1])
-            .map(val => (val[1] + '').padStart(2, '0'))
-            .join(':');
-    }
+        function formatDuration(ms) {
+            if (isNaN(ms)) return '0:00';
+            if (ms < 0) ms = -ms;
+            const time = {
+                hour: Math.floor(ms / 3600) % 24,
+                minute: Math.floor(ms / 60) % 60,
+                second: Math.floor(ms) % 60,
+            };
+            return Object.entries(time)
+                .filter((val, index) => index || val[1])
+                .map(val => (val[1] + '').padStart(2, '0'))
+                .join(':');
+        }
 
-    window.header.placeholder = "搜索";
-    window.header.submit = (value) => {
-        window.header.hide();
+        window.header.placeholder = "搜索";
+        window.header.submit = (value) => {
+            window.header.hide();
 
-        const videos = value === '*' ?
-            items.sort((x, y) => x.Duration - y.Duration)
-            : items.filter(i => fuzzysearch(value, i.Title))
-                .sort((x, y) => x.Duration - y.Duration);
+            const videos = value === '*' ?
+                items.sort((x, y) => x.Duration - y.Duration)
+                : items.filter(i => fuzzysearch(value, i.Title))
+                    .sort((x, y) => x.Duration - y.Duration);
 
-        render(videos);
-    }
+            render(videos);
+        }
 
 
-    function render(videos) {
-        const results = [];
-        for (let i = 0; i < videos.length; i++) {
-            const video = videos[i];
-            const template = `<div class="large-media-item">
-        <a href="${video.Url}">
+        function render(videos) {
+            const results = [];
+            for (let i = 0; i < videos.length; i++) {
+                const video = videos[i];
+                const template = `<div class="large-media-item" data-href="${video.Url}">
+        <a>
             <div class="video-thumbnail-container-large">
                 <div class="video-thumbnail-bg cover">
                 </div>
@@ -349,7 +361,7 @@
             </div>
             <div class="large-media-item-info">
                 <div class="large-media-item-metadata">
-                    <a href="${video.Url}">
+                    <a>
                         <h3 class="large-media-item-headline">
                             ${video.Title}
                         </h3>
@@ -368,24 +380,37 @@
             </div>
         </div>
     </div>`
-            results.push(template);
+                results.push(template);
+            }
+            container.innerHTML = results.join('');
+            const largeMediaItems = document.querySelectorAll('#large-media-item');
+
+            largeMediaItems.forEach(largeMediaItem => {
+                largeMediaItem.addEventListener('click', ev => {
+                    const href = largeMediaItem.getAttribute('data-href');
+                    if (href.startsWith("http://") || href.startsWith("https://"))
+                        window.location.href = href;
+                    else
+                        window.location.href = "http://968ck.cc" + href;
+                });
+            });
+
         }
-        container.innerHTML = results.join('');
-    }
 
-    const container = document.querySelector('.container');
-    let items;
+        const container = document.querySelector('.container');
+        let items;
 
-    fetch('videos.json')
-        .then(res => res.json())
-        .then(res => {
-            items = res
-                .filter(x => x.Duration > 3600)
-                .sort((x, y) => x.Duration - y.Duration);
-            render(items);
-        })
+        fetch('videos.json')
+            .then(res => res.json())
+            .then(res => {
+                items = res
+                    .filter(x => x.Duration > 3600)
+                    .sort((x, y) => x.Duration - y.Duration);
+                render(items);
+            })
 
 
-</script>
+    </script>
 </body>
+
 </html>
