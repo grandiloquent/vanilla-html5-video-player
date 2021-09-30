@@ -6,262 +6,114 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>美团红包天天领</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="tabs.js"></script>
 </head>
-
 <body>
+
+<div style="background: #f1f3f4;">
+    <div class="tabs"></div>
+    <div id="tab-1">
+
+
+    </div>
+    <div id="tab-2" style='display:none'>
+        敬请期待...
+    </div>
     <style>
-        html,
-        body,
-        h1 {
-            font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+        .footer {
+            padding-top: 16px;
+            padding-bottom: 28px;
         }
 
-        head,
-        body,
-        head *,
-        body * {
-            max-height: 999999px;
-        }
-
-        body,
-        h1 {
-            font-size: small;
-        }
-
-        body {
-            margin: 0;
-            background: #fff;
-            color: #4d5156;
-        }
-
-        a {
-            color: #1558d6;
-            text-decoration: none;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, .10)
-        }
-
-        a:visited {
-            color: #4b11a8
-        }
-
-        .tabs {
-            border-bottom: 1px solid #dadce0;
-            background-color: #fff;
-            padding: 0 16px;
-            display: block;
-            color: #fff;
-            position: relative;
-            z-index: 0;
-        }
-
-        .tabs-wrapper {
-            font-family: Roboto-Medium, HelveticaNeue-Medium, Helvetica Neue, sans-serif-medium, Arial, sans-serif;
-            overflow: hidden;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 14px;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-
-        .tabs-inner {
-            white-space: nowrap;
-            position: relative;
-            z-index: 1;
-            color: #202124;
-        }
-
-        .tabs-indicator {
-            background-color: white;
-            bottom: 0;
-            height: 2px;
-            left: -1px;
-            right: 0;
-            position: absolute;
-            width: 0;
-        }
-
-        .tabs-item {
-            box-sizing: border-box;
-            cursor: pointer;
-            display: inline-block;
-            text-align: center;
-            text-overflow: ellipsis;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            white-space: normal;
-            outline: 0;
-            color: #202124;
-            width: 50%;
-            border-color: #3172E0;
-            height: 45px;
-            padding: 0 16px;
-        }
-
-        .tabs-text-wrapper {
-            display: inline-block;
-            vertical-align: middle;
-            font-family: Google Sans, Roboto-Medium, HelveticaNeue-Medium, Helvetica Neue, sans-serif-medium, Arial, sans-serif !important;
-            font-size: 14px !important;
-            font-weight: 500 !important;
-            display: -webkit-inline-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        .footer-section {
+            display: flex;
+            font-size: 12px;
             line-height: 16px;
-            word-break: break-word;
+            border-top: 1px solid #dfe1e5;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #dfe1e5;
         }
 
-        .tabs-text {
-            font: 14px/20px Google Sans, Roboto-Medium, HelveticaNeue-Medium, Helvetica Neue, sans-serif-medium, Arial, sans-serif;
-            text-transform: none;
-            font-family: Google Sans, Roboto, Helvetica Neue, Arial, sans-serif;
-            font-weight: 400;
+        .footer-effect {
+            height: 64px;
+            position: absolute;
+            pointer-events: none;
+            right: 0;
+            width: 30px;
+            z-index: 2;
+            background: -webkit-linear-gradient(right, #fff, rgba(255, 255, 255, 0.0));
         }
 
-        @-webkit-keyframes qs-timer {
-            0% {}
+        .footer-box {
+            margin: 8px 0;
+            white-space: nowrap;
+            overflow-x: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
     </style>
-    <div style="background: #f1f3f4;">
-        <div class="tabs">
-            <div class="tabs-wrapper">
-                <div class="tabs-inner">
-                    <div class="tabs-indicator" style="background-color: rgb(49, 114, 224);width:32px;">
-                    </div>
-                    <a class="tabs-item">
-                        <div class="tabs-text-wrapper">
-                            <div class="tabs-text">美团</div>
-                        </div>
-                        <div style="min-height: 45px;display: inline-block;vertical-align: middle;"></div>
-                    </a>
-                    <a class="tabs-item">
-                        <div class="tabs-text-wrapper">
-                            <div class="tabs-text">滴滴</div>
-                        </div>
-                        <div style="min-height: 45px;display: inline-block;vertical-align: middle;"></div>
-                    </a>
-                </div>
+    <div class="footer">
+        <div class="footer-section">
+            <div class="footer-effect">
             </div>
-        </div>
+            <div class="footer-box">
 
-        <div id="tab-1">
-            <div
-                style="box-shadow: 0px 2px 5px 0px rgb(60 64 67 / 16%);padding: 12px;background: #fff;margin: 12px;border-radius: 12px;">
-                <a href="http://dpurl.cn/NiQeiGkz" style="outline: 0;display: block">
-                    <img style="max-width: 100%;" src="1507072232.jpg">
+                <a href="https://lucidu.cn"
+                   style="outline: 0;color: #1558d6;line-height: 48px;font-size: 14px;display: inline-block;padding: 0 12px;">
+                    回形针
                 </a>
-            </div>
-
-            <div
-                style="box-shadow: 0px 2px 5px 0px rgb(60 64 67 / 16%);padding: 12px;background: #fff;margin: 12px;border-radius: 12px;">
-                <a href="http://dpurl.cn/HplOAGYz" style="outline: 0;display: block">
-                    <img style="max-width: 100%;" src="670216631.jpg">
-                </a>
-            </div>
-
-
-            <!-- <div
-                style="box-shadow: 0 0 0 1px #ebedef;border-radius: 0;background-color: #fff;margin: 0 0 8px 0;font-size: 14px;line-height: 20px;">
-                <div
-                    style="flex-shrink: 0;border-top-left-radius: 8px;border-top-right-radius: 8px;padding-top: 12px;display: flex;flex-direction: column;position: relative;overflow: hidden;">
-                    <a style="outline: 0;display: block;padding-left: 16px;padding-right: 16px;padding-bottom: 12px;">
-                        <div>
-                            123213213213213
-                        </div>
-                        <div>
-                            123213213213213
-                        </div>
-                    </a>
-
-                </div>
-            </div> -->
-
-        </div>
-        <div id="tab-2" style='display:none'>
-            敬请期待...
-        </div>
-        <style>
-            .footer {
-                padding-top: 16px;
-                padding-bottom: 28px;
-            }
-
-            .footer-section {
-                display: flex;
-                font-size: 12px;
-                line-height: 16px;
-                border-top: 1px solid #dfe1e5;
-                margin-bottom: 12px;
-                border-bottom: 1px solid #dfe1e5;
-            }
-
-            .footer-effect {
-                height: 64px;
-                position: absolute;
-                pointer-events: none;
-                right: 0;
-                width: 30px;
-                z-index: 2;
-                background: -webkit-linear-gradient(right, #fff, rgba(255, 255, 255, 0.0));
-            }
-
-            .footer-box {
-                margin: 8px 0;
-                white-space: nowrap;
-                overflow-x: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-            }
-        </style>
-        <div class="footer">
-            <div class="footer-section">
-                <div class="footer-effect">
-                </div>
-                <div class="footer-box">
-
-                    <a href="https://lucidu.cn"
-                        style="outline: 0;color: #1558d6;line-height: 48px;font-size: 14px;display: inline-block;padding: 0 12px;">
-                        回形针
-                    </a>
-                </div>
             </div>
         </div>
     </div>
+</div>
 
+<script>
+    const tabsElement = document.querySelector('.tabs');
 
-    <!-- transform: translate3d(79px, 0px, 0px) scale3d(4.359375, 1, 1); -->
-    <script>
-        const tabsIndicator = document.querySelector('.tabs-indicator');
-        const tabsItems = document.querySelectorAll('.tabs-item');
-        const width = tabsItems[0].getBoundingClientRect().width;
-        const x = tabsItems[1].getBoundingClientRect().x;
-        const scale = width / 32;
-        const middle = (width - 32) / 2;
-        tabsIndicator.style.transform = `translate3d(${middle}px, 0px, 0px) scale3d(${scale}, 1, 1)`;
-        tabsItems[0].addEventListener('click', ev => {
-            tabsIndicator.style.transform = `translate3d(${middle}px, 0px, 0px) scale3d(${scale}, 1, 1)`;
-            tabsIndicator.style.transition = '400ms cubic-bezier(0.4, 0, 0.2, 1) 0ms';
-            tabsIndicator.style.animation = '400ms ease 0s 1 normal none running qs-timer';
+    const tabs = new Tabs();
+    tabs.initialize(tabsElement).show();
+    tabs.onLeft = () => {
+        document.getElementById('tab-1').style.display = "block";
+        document.getElementById('tab-2').style.display = "none";
+    };
+    tabs.onRight = () => {
+        document.getElementById('tab-1').style.display = "none";
+        document.getElementById('tab-2').style.display = "block";
+    };
 
-            document.getElementById('tab-1').style.display = 'block';
-            document.getElementById('tab-2').style.display = 'none';
-        });
-        tabsItems[1].addEventListener('click', ev => {
-            tabsIndicator.style.transform = `translate3d(${middle + x}px, 0px, 0px) scale3d(${scale}, 1, 1)`;
-            tabsIndicator.style.transition = '400ms cubic-bezier(0.4, 0, 0.2, 1) 0ms';
-            tabsIndicator.style.animation = '400ms ease 0s 1 normal none running qs-timer';
-            document.getElementById('tab-1').style.display = 'none';
-            document.getElementById('tab-2').style.display = 'block';
-        });
-
-        tabsIndicator.addEventListener('transitionend', ev => {
-            tabsIndicator.style.transition = '';
-            tabsIndicator.style.animation = '';
-        });
-
-    </script>
+    const items = [
+        {
+            "href": "http://dpurl.cn/NiQeiGkz",
+            "image": "1507072232.jpg",
+        },
+        {
+            "href": "http://dpurl.cn/HplOAGYz",
+            "image": "670216631.jpg",
+        }
+    ];
+    let results = [];
+    items.forEach(item => {
+        results.push(`<div class="card">
+            <a href="${item.href}" class="card-wrapper">
+                <img data-src="${item.image}">
+            </a>
+        </div>`);
+    });
+    document.getElementById('tab-1').innerHTML = results.join('');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.src = entry.target.dataset.src;
+                observer.unobserve(entry.target);
+            }
+        })
+    });
+    document.querySelectorAll('.card-wrapper>img')
+        .forEach(img => observer.observe(img));
+</script>
 </body>
 
 </html>
