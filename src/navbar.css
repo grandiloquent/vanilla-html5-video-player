@@ -1,0 +1,70 @@
+.navbar {
+    margin-top: 4px;
+    padding-bottom: 16px;
+    height: 36px;
+    line-height: 28px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.navbar-effect {
+    background: -webkit-linear-gradient(
+            0deg, rgba(255, 255, 255, 0), #fff);
+    height: 40px;
+    position: absolute;
+    pointer-events: none;
+    right: 0;
+    top: 0;
+    width: 24px;
+    z-index: 2;
+}
+
+.navbar-wrapper {
+    -webkit-user-select: none;
+    display: block;
+    overflow-y: hidden;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 8%);
+    height: 36px;
+    margin-left: -3px;
+    margin-right: -3px;
+    padding-bottom: 8px;
+}
+
+.navbar-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-inner {
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 8px;
+    padding-left: 11px;
+    margin-left: -4px;
+}
+
+.navbar-item {
+    display: inline-block;
+    line-height: 27px;
+    height: 28px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+    font-family: Roboto-Medium, Roboto-Regular, Roboto-Medium, HelveticaNeue-Medium, Helvetica Neue, sans-serif-medium, Arial, sans-serif;
+    font-family: Google Sans, Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+.navbar-item > a {
+    outline: 0;
+    color: rgba(0, 0, 0, 0.54);
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 12px 8px 12px;
+
+}

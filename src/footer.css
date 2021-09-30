@@ -1,0 +1,33 @@
+.footer {
+    padding-top: 16px;
+    padding-bottom: 28px;
+}
+
+.footer-section {
+    display: flex;
+    font-size: 12px;
+    line-height: 16px;
+    border-top: 1px solid #dfe1e5;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #dfe1e5;
+}
+
+.footer-effect {
+    height: 64px;
+    position: absolute;
+    pointer-events: none;
+    right: 0;
+    width: 30px;
+    z-index: 2;
+    background: -webkit-linear-gradient(right, #fff, rgba(255, 255, 255, 0.0));
+}
+
+.footer-box {
+    margin: 8px 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
