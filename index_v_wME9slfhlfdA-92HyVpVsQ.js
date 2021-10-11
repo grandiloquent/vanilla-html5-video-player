@@ -17,7 +17,7 @@ const autonavBar = document.querySelector('.autonav-bar');
 const items = [
     // N9nkvj.jpg 
     {
-        src: 'https://sod.bunediy.com/20210917/vDass7Tb/index.m3u8',
+        src: 'https://v.jsjinfu.com:8443/p2p/?url=https://sod.bunediy.com/20210917/vDass7Tb/index.m3u8',
         image: '1749267253.jpg',
         title: '【小岛浪吹】脑洞最大的一期，从郑爽，第三次财富分配，取消996，未成年人游戏受限，中产家庭资产上升，推导出赵薇'
     }
