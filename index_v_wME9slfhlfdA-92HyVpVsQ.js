@@ -8,19 +8,60 @@ import {
     substringBeforeLast,
     writeText
 }
-from "./modules/share.js";
+    from "./modules/share.js";
 const player = document.querySelector('custom-video-player');
 const header = document.querySelector('custom-header');
 const toast = document.querySelector('custom-toast');
 const dialog = document.querySelector('custom-dialog');
 const autonavBar = document.querySelector('.autonav-bar');
 const items = [
-    // N9nkvj.jpg 
     {
         src: 'https://sod.bunediy.com/20210917/vDass7Tb/index.m3u8',
-        image: '1749267253.jpg',
-        title: '【小岛浪吹】脑洞最大的一期，从郑爽，第三次财富分配，取消996，未成年人游戏受限，中产家庭资产上升，推导出赵薇'
-    }
+        image: '1.jpg',
+        title: '鱿鱼游戏 第1集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/K1PuWPVE/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第2集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/xaB03If7/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第3集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/9Qu2lbaJ/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第4集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/DjD1On8u/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第5集'
+    },
+    
+
+    {
+        src: 'https://sod.bunediy.com/20210917/dg4kytdQ/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第6集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/AqX5DqmJ/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第7集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/BipmPOIS/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第8集'
+    },
+    {
+        src: 'https://sod.bunediy.com/20210917/eZMp814m/index.m3u8',
+        image: '1.jpg',
+        title: '鱿鱼游戏 第9集'
+    },
 ];
 let playIndex = 0;
 /**/
