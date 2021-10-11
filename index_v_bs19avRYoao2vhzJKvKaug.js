@@ -1,12 +1,8 @@
 import {
     getSearchParam,
     getStringAsync,
-    readText,
     substringAfter,
-    substringAfterLast,
     substringBefore,
-    substringBeforeLast,
-    writeText
 }
     from "./modules/share.js";
 const player = document.querySelector('custom-video-player');
