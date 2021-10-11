@@ -20,55 +20,6 @@ const items = [
         src: 'https://lucidu.cn/api/obs/【小岛浪吹】脑洞最大的一期，从郑爽，第三次财富分配，取消996，未成年人游戏受限，中产家庭资产上升，推导出赵薇.mp4',
         image: '1749267253.jpg',
         title: '【小岛浪吹】脑洞最大的一期，从郑爽，第三次财富分配，取消996，未成年人游戏受限，中产家庭资产上升，推导出赵薇'
-    },
-     {
-        src: 'https://lucidu.cn/api/obs/哥哥住别墅，弟弟街头流浪，亲兄弟为何贫富差距巨大？真实纪录片.mp4',
-        image: 'pYYlBc.jpg',
-        title: '哥哥住别墅，弟弟街头流浪，亲兄弟为何贫富差距巨大？真实纪录片'
-    },
-    {
-        src: 'https://lucidu.cn/api/obs/【小岛浪吹】作死整个大活儿，来自蓝星美丽国国主的自白，为什么我们要抛弃阿富汗，台湾的绿营需要学习点什么.mp4',
-        image: 'X3IH2S.jpg',
-        title: '【小岛浪吹】作死整个大活儿，来自蓝星美丽国国主的自白，为什么我们要抛弃阿富汗，台湾的绿营需要学习点什么'
-    },
-    {
-        src: 'https://lucidu.cn/api/obs/【小岛浪吹】地方教育改革政策出炉，上海取消英语考试，老外学生反而会越来越多？一个视频聊清楚未来五到十年教育改革.mp4',
-        image: 'N9nkvj.jpg',
-        title: '【小岛浪吹】地方教育改革政策出炉，上海取消英语考试，老外学生反而会越来越多？一个视频聊清楚未来五到十年教育改革'
-    },
-    {
-        src: 'https://lucidu.cn/api/obs/麻团 煎堆 不开裂 不回缩的小技巧 Sesame Balls.mp4',
-        image: 'k3APkn.jpg',
-        title: '麻团 煎堆 不开裂 不回缩的小技巧 Sesame Balls'
-    }, {
-        src: 'https://lucidu.cn/api/obs/麻团 没有比这更详细的教程了 Fried Sesame Balls.mp4',
-        image: 'rCFttl.jpg',
-        title: '麻团 没有比这更详细的教程了 Fried Sesame Balls'
-    },
-    {
-        src: 'https://lucidu.cn/api/obs/%E5%B0%8F%E5%B2%9B%E4%B8%AD%E5%9B%BD%E6%95%99%E8%82%B2.mp4',
-        image: 'xdzgjy.jpg',
-        title: '【小岛浪吹】中国教育改革“双减”能成功吗，你愿意生三胎吗，聊聊中国近几年的几个失误'
-    },
-    {
-        src: 'https://lucidu.cn/api/obs/%E6%97%A5%E6%9C%AC%E6%8B%89%E9%9D%A2%E5%B1%8B.mp4',
-        image: 'japanese-ramen-stall.jpg',
-        title: '日本拉面屋'
-    },
-    {
-        src: 'https://psycho.obs.cn-south-1.myhuaweicloud.com/YiGuoLiangZhi.mp4',
-        image: '961174231.jpg',
-        title: '【小岛浪吹】一个视频说清楚一国两制的前世今生，五十年不变到底变没变，未来一国两制还会继续吗？'
-    },
-    {
-        src: 'https://psycho.obs.cn-south-1.myhuaweicloud.com/LaoGao1.mp4',
-        image: '972251131.jpg',
-        title: '打疫苗前你該知道的事 _ 老高與小茉 Mr & Mrs Gao'
-    },
-    {
-        src: 'https://psycho.obs.cn-south-1.myhuaweicloud.com/LaoGao2.mp4',
-        image: '1895394361.jpg',
-        title: '人為什麼是人，人類最不可思議的六個特征 _ 老高與小茉 Mr & Mrs Gao'
     }
 ];
 let playIndex = 0;
