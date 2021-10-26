@@ -24,6 +24,9 @@ function makeOverlay() {
 async function start(uri) {
     const q = uri || new URL(window.location).searchParams.get('q');
     if (!q) return;
+    if (/^\/video\d+\//.test(q)) {
+        q = "https://www.xvideos.com" + q;
+    }
     const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${q}`);
     video.src = await response.text();
     try {

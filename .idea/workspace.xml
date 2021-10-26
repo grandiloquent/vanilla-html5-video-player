@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="76b2d369-4381-45e9-98b8-1879bbe6a078" name="Changes" comment="更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +39,7 @@
       <workItem from="1634673366739" duration="28000" />
       <workItem from="1635221605509" duration="2541000" />
       <workItem from="1635229829784" duration="1330000" />
+      <workItem from="1635237417482" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1635221735023</created>
