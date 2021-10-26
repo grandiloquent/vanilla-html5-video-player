@@ -106,11 +106,7 @@ async function applyVideos() {
                 progressBarPlayed.style.width = '0';
                 progressBarLoaded.style.width = '0';
                 progressBarPlayheadWrapper.style.marginLeft = '0';
-
-                if (href.startsWith("http://") || href.startsWith("https://"))
-                    window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
-                else
-                    window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
+                start(href);
             });
 
             documentFragment.appendChild(ytmLargeMediaItem);

@@ -21,9 +21,11 @@ function makeOverlay() {
     ytpCuedThumbnailOverlay.appendChild(ytpButton);
 }
 
-function start(obj) {
-    videos = JSON.parse(obj).videos;
-    video.src = videos[0];
+async function start(uri) {
+    const q = uri || new URL(window.location).searchParams.get('q');
+    if (!q) return;
+    const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${q}`);
+    video.src = await response.text();
     video.play();
 }
 
@@ -271,3 +273,6 @@ video.addEventListener('volumechange', ev => {
 video.addEventListener('waiting', ev => {
     console.log('waiting', video.videoWidth, video.videoHeight, video.duration);
 });
+
+//
+start();
