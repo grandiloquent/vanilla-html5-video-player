@@ -25,20 +25,6 @@ async function applyVideos() {
 
     async function loadVideos() {
 
-
-        async function getBaseUri() {
-            const response = await fetch("http://47.106.105.122/api/video/ck");
-            if (!response.ok) throw new Error(response.statusText);
-            return await response.text();
-        }
-
-        let baseUri;
-        try {
-            baseUri = await getBaseUri();
-        } catch (e) {
-            baseUri = await getBaseUri();
-        }
-
         const videos = await getRandomVideos();
         const documentFragment = document.createDocumentFragment();
 
@@ -121,11 +107,10 @@ async function applyVideos() {
                 progressBarLoaded.style.width = '0';
                 progressBarPlayheadWrapper.style.marginLeft = '0';
 
-
                 if (href.startsWith("http://") || href.startsWith("https://"))
-                    window.JInterface.parse(href);
+                    window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
                 else
-                    window.JInterface.parse(baseUri + href);
+                    window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
             });
 
             documentFragment.appendChild(ytmLargeMediaItem);
