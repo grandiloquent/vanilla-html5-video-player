@@ -1,5 +1,4 @@
 
-
 .player {
     position: fixed;
     top: 0;
@@ -446,7 +445,6 @@ c3-icon > svg {
 /**/
 
 
-
 /**/
 .ytm-item-section-renderer {
     display: block;
@@ -666,7 +664,8 @@ c3-icon > svg {
     -ms-flex: 0 1 auto;
 
 }
-.slim-video-action-bar-action-button{
+
+.slim-video-action-bar-action-button {
     overflow: hidden;
     padding: .7em .57em;
     cursor: pointer;
@@ -678,7 +677,8 @@ c3-icon > svg {
     background: transparent;
 
 }
-.box{
+
+.box {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -689,10 +689,12 @@ c3-icon > svg {
     align-items: center;
 
 }
+
 .button-renderer-icon {
     margin: 0 8px;
 }
-.button-renderer-text{
+
+.button-renderer-text {
     margin-top: 7px;
     -webkit-align-self: center;
     align-self: center;
@@ -702,3 +704,6 @@ c3-icon > svg {
 
 }
 
+.context-renderer::-webkit-scrollbar {
+    display: none;
+}
