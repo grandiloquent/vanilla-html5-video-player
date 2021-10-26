@@ -61,7 +61,6 @@ video.addEventListener('timeupdate', ev => {
 });
 
 video.addEventListener('loadedmetadata', ev => {
-    document.body.setAttribute()
 });
 video.addEventListener('loadeddata', ev => {
 
