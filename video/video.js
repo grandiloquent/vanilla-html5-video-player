@@ -91,6 +91,8 @@ video.addEventListener('playing', ev => {
     spinner.style.display = 'none';
     playerControlPlayPauseIcon.style.display = 'block';
     playerControlsBottom.removeAttribute('hidden');
+    playerControlPlayPauseIcon.querySelector('svg')
+        .innerHTML = `<path d="M9,19H7V5H9ZM17,5H15V19h2Z"></path>`;
     clearTimeout(timer);
     timer = setTimeout(() => {
         playerControlOverlay.style.display = 'none';
