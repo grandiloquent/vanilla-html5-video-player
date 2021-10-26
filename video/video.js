@@ -77,7 +77,8 @@ video.addEventListener('waiting', ev => {
 
     playing = false;
     spinner.style.display = 'block';
-    playerControlPlayPauseIcon.style.display = 'none';
+    playerControlPlayPauseIcon.setAttribute('hidden', '');
+    playerControlsBottom.setAttribute('hidden', '');
     playerControlOverlay.style.display = 'block';
     clearTimeout(timer);
 });

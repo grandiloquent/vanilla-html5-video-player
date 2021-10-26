@@ -10,7 +10,7 @@ ytpAutohide.addEventListener('click', ev => {
 let playing = false;
 const player = document.querySelector('#player');
 player.addEventListener('click', ev => {
-    if (!playing) return;
+    if (video.paused) return;
     playerControlOverlay.style.display = 'block';
     playerControlOverlay.className = playerControlOverlay.className + ' fadein';
 
