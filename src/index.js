@@ -101,10 +101,10 @@ function makeItem(video) {
         fetch(`http://47.106.105.122/api/video/record?id=${id}`).then(res => res.text()).then(res => {
             console.log(res);
         })
-        if (href.startsWith("http://") || href.startsWith("https://"))
-            window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
+        if (href.startsWith("https://www.xvideos.com/") )
+            window.location.href = `/video?q=${encodeURIComponent(new URL(href).pathname)}`;
         else
-            window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
+            window.location.href = `/video?q=${encodeURIComponent(href)}`;
     });
     largeMediaItemMenu.addEventListener('click', ev => {
         ev.stopPropagation();
