@@ -1,24 +1,3 @@
-async function getBaseAddress() {
-    const response = await fetch('/api/video/ck');
-    return response.text();
-}
-
-/**/
-let isMobile = false;
-const mobile = new URL(window.location).searchParams.get('platform');
-if (mobile === 'mobile') {
-    isMobile = true;
-}
-/**/
-let baseUri;
-if (!isMobile) {
-    fetch('/api/video/ck')
-        .then(res => res.text())
-        .then(res => {
-            baseUri = res;
-        });
-}
-
 // Set video options menu
 window.menu.attach(document.querySelector('.menu'));
 window.menu.eventHandler = (what, href) => {
@@ -119,20 +98,13 @@ function makeItem(video) {
     largeMediaItem.addEventListener('click', ev => {
         const href = largeMediaItem.getAttribute('data-href');
         const id = largeMediaItem.getAttribute('data-id');
-        fetch(`/api/video/record?id=${id}`).then(res => res.text()).then(res => {
+        fetch(`http://47.106.105.122/api/video/record?id=${id}`).then(res => res.text()).then(res => {
             console.log(res);
         })
-        if (!isMobile) {
-            if (href.startsWith("http://") || href.startsWith("https://"))
-                window.JInterface.handleRequest(href);
-            else
-                window.JInterface.handleRequest(baseUri + href);
-        } else {
-            if (href.startsWith("http://") || href.startsWith("https://"))
-                window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
-            else
-                window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
-        }
+        if (href.startsWith("http://") || href.startsWith("https://"))
+            window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
+        else
+            window.location.href = `/video.html?q=${decodeURIComponent(href)}`;
     });
     largeMediaItemMenu.addEventListener('click', ev => {
         ev.stopPropagation();
@@ -242,7 +214,7 @@ window.filter.regionCallback = async (value) => {
 
 // Try to update the videos
 async function tryUpdateVideos() {
-    const response = await fetch('/api/video/57ck');
+    const response = await fetch('http://47.106.105.122/api/video/57ck');
     if (!response.ok) {
         throw new Error(response.statusText);
     }
