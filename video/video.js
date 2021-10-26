@@ -104,7 +104,7 @@ video.addEventListener('canplaythrough', ev => {
 
 video.addEventListener('ended', ev => {
     spinner.style.display = 'none';
-    playerControlPlayPauseIcon.style.display = 'block';
+    playerControlPlayPauseIcon.removeAttribute('hidden');
     clearTimeout(timer);
     playerControlOverlay.style.display = 'block';
     playerControlPlayPauseIcon.querySelector('svg')
@@ -119,7 +119,7 @@ video.addEventListener('durationchange', ev => {
         timeSecond.textContent = formatDuration(video.duration);
         playing = true;
         spinner.style.display = 'none';
-        playerControlPlayPauseIcon.style.display = 'block';
+        playerControlPlayPauseIcon.removeAttribute('hidden');
         //clearTimeout(timer);
         // timer = setTimeout(() => {
         //     playerControlOverlay.style.display = 'none';
