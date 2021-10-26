@@ -36,13 +36,6 @@ async function start(uri) {
     }
 }
 
-
-const actionDownload = document.querySelector('#action-download');
-actionDownload.addEventListener('click', ev => {
-    ev.stopPropagation();
-    window.JInterface.download(videos[0]);
-})
-
 const timeFirst = document.querySelector('.time-first');
 const timeSecond = document.querySelector('.time-second');
 const progressBarPlayed = document.querySelector('.progress-bar-played');
@@ -53,11 +46,12 @@ const ytmProgressBar = document.querySelector('.ytm-progress-bar');
 const playerControlOverlay = document.querySelector('.player-control-overlay');
 const spinner = document.querySelector('#spinner');
 const playerControlPlayPauseIcon = document.querySelector('.player-control-play-pause-icon');
+const playerControlsBottom = document.querySelector('.player-controls-bottom');
+
 let timer = 0;
 let precent, videos, waiting = false;
 
 const video = document.querySelector('.html5-main-video');
-video.volume = 0;
 
 video.addEventListener('timeupdate', ev => {
     timeFirst.textContent = formatDuration(video.currentTime);
@@ -67,7 +61,7 @@ video.addEventListener('timeupdate', ev => {
 });
 
 video.addEventListener('loadedmetadata', ev => {
-
+    document.body.setAttribute()
 });
 video.addEventListener('loadeddata', ev => {
 
@@ -92,17 +86,15 @@ video.addEventListener('play', ev => {
 });
 video.addEventListener('playing', ev => {
 
-    if (waiting) {
-        timeSecond.textContent = formatDuration(video.duration);
-        playing = true;
-        spinner.style.display = 'none';
-        playerControlPlayPauseIcon.style.display = 'block';
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            playerControlOverlay.style.display = 'none';
-        }, 5000);
-        waiting = false;
-    }
+    timeSecond.textContent = formatDuration(video.duration);
+    playing = true;
+    spinner.style.display = 'none';
+    playerControlPlayPauseIcon.style.display = 'block';
+    playerControlsBottom.removeAttribute('hidden');
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+        playerControlOverlay.style.display = 'none';
+    }, 5000);
 });
 video.addEventListener('canplaythrough', ev => {
 

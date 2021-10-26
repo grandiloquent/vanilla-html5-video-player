@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76b2d369-4381-45e9-98b8-1879bbe6a078" name="Changes" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/video/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +28,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -38,7 +42,8 @@
       <workItem from="1634673366739" duration="28000" />
       <workItem from="1635221605509" duration="2541000" />
       <workItem from="1635229829784" duration="1330000" />
-      <workItem from="1635237417482" duration="480000" />
+      <workItem from="1635237417482" duration="1112000" />
+      <workItem from="1635289723470" duration="500000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1635221735023</created>

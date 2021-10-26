@@ -1,9 +1,8 @@
 const ytpAutohide = document.querySelector('.ytp-autohide');
 ytpAutohide.addEventListener('click', ev => {
     video.removeAttribute('muted');
-    video.muted = false;
-    video.volume = 1.0;
-    ytpAutohide.style.display = 'none';
+    video.muted = false
+    ytpAutohide.setAttribute('hidden', '');
 })
 
 
