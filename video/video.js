@@ -26,12 +26,11 @@ async function start(uri) {
     if (!q) return;
     const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${q}`);
     video.src = await response.text();
-       try {
-           await video.play();
-       }catch (e) {
-           
-       }
+    try {
+        await video.play();
+    } catch (e) {
 
+    }
 }
 
 
@@ -126,9 +125,9 @@ video.addEventListener('durationchange', ev => {
         spinner.style.display = 'none';
         playerControlPlayPauseIcon.style.display = 'block';
         clearTimeout(timer);
-        timer = setTimeout(() => {
-            playerControlOverlay.style.display = 'none';
-        }, 5000);
+        // timer = setTimeout(() => {
+        //     playerControlOverlay.style.display = 'none';
+        // }, 5000);
     }
 
 });
