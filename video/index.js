@@ -40,7 +40,6 @@ playerControlPlayPauseIcon.addEventListener('click', ev => {
     }
 })
 
-
 const iconButton = document.querySelector('.full-screen');
 iconButton.addEventListener('click', async ev => {
     ev.stopPropagation();
