@@ -124,7 +124,7 @@ video.addEventListener('durationchange', ev => {
         playing = true;
         spinner.style.display = 'none';
         playerControlPlayPauseIcon.style.display = 'block';
-        clearTimeout(timer);
+        //clearTimeout(timer);
         // timer = setTimeout(() => {
         //     playerControlOverlay.style.display = 'none';
         // }, 5000);
