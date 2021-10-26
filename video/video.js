@@ -74,8 +74,6 @@ video.addEventListener('error', ev => {
     customToast.setAttribute('message', '无法播放视频');
 });
 video.addEventListener('waiting', ev => {
-
-    playing = false;
     spinner.style.display = 'block';
     playerControlPlayPauseIcon.setAttribute('hidden', '');
     playerControlsBottom.setAttribute('hidden', '');
