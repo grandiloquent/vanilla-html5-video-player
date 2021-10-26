@@ -89,7 +89,7 @@ video.addEventListener('playing', ev => {
     timeSecond.textContent = formatDuration(video.duration);
     playing = true;
     spinner.style.display = 'none';
-    playerControlPlayPauseIcon.style.display = 'block';
+    playerControlPlayPauseIcon.removeAttribute('hidden');
     playerControlsBottom.removeAttribute('hidden');
     playerControlPlayPauseIcon.querySelector('svg')
         .innerHTML = `<path d="M9,19H7V5H9ZM17,5H15V19h2Z"></path>`;
