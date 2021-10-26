@@ -27,7 +27,7 @@ async function applyVideos() {
 
 
         async function getBaseUri() {
-            const response = await fetch("/api/video/ck");
+            const response = await fetch("http://47.106.105.122/api/video/ck");
             if (!response.ok) throw new Error(response.statusText);
             return await response.text();
         }
@@ -111,7 +111,7 @@ async function applyVideos() {
             ytmLargeMediaItem.addEventListener('click', ev => {
                 const href = ytmLargeMediaItem.getAttribute('data-href');
                 const id = ytmLargeMediaItem.getAttribute('data-id');
-                fetch(`/api/video/record?id=${id}`).then(res => res.text()).then(res => {
+                fetch(`http://47.106.105.122/api/video/record?id=${id}`).then(res => res.text()).then(res => {
                     console.log(res);
                 });
 
