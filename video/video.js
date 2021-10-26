@@ -22,7 +22,7 @@ function makeOverlay() {
 }
 
 async function start(uri) {
-    const q = uri || new URL(window.location).searchParams.get('q');
+    let q = uri || new URL(window.location).searchParams.get('q');
     if (!q) return;
     if (/^\/video\d+\//.test(q)) {
         q = "https://www.xvideos.com" + q;
