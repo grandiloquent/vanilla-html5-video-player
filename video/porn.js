@@ -2,7 +2,7 @@ const contextRenderer = document.querySelector('.context-renderer');
 
 async function applyVideos() {
     async function getRandomVideos() {
-        const response = await fetch("/api/video/random");
+        const response = await fetch("http://47.106.105.122/api/video/random");
         if (!response.ok) throw new Error(response.statusText);
         return await response.json();
     }
