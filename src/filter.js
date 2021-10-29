@@ -177,7 +177,7 @@ overflow: hidden;
       <div class="pro_filter_items">
         <a class="item">
           <div>
-            综合
+            推荐
           </div>
           <i class="icon_tri_up">
             </i>
@@ -191,7 +191,7 @@ overflow: hidden;
       <div class="item_options">
         <div class="selection">
           <div class="selected" data-order="2">
-            综合
+            推荐
           </div>
           <div data-order="4">
           时间最长
