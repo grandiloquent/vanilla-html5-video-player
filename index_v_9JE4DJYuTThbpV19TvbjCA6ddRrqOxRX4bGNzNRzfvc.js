@@ -529,13 +529,16 @@ overflow: hidden;
       <div class="item_options">
         <div class="selection">
           <div class="selected" data-order="2">
-            最新
+            综合
           </div>
           <div data-order="4">
           时间最长
           </div>
           <div data-order="5">
          播放最多
+          </div>
+           <div data-order="6">
+         最新发布
           </div>
         </div>
       </div>
