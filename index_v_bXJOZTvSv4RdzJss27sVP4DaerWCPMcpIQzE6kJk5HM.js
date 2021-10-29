@@ -515,7 +515,7 @@ overflow: hidden;
       <div class="pro_filter_items">
         <a class="item">
           <div>
-            最新
+            综合
           </div>
           <i class="icon_tri_up">
             </i>
