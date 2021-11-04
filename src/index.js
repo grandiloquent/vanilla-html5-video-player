@@ -102,9 +102,9 @@ function makeItem(video) {
             console.log(res);
         })
         if (href.startsWith("https://www.xvideos.com/") )
-            window.location.href = `/video?q=${encodeURIComponent(new URL(href).pathname)}`;
+            window.location.href = `/video?q=${encodeURIComponent(new URL(href).pathname)}&t=${encodeURIComponent(video.title)}`;
         else
-            window.location.href = `/video?q=${encodeURIComponent(href)}`;
+            window.location.href = `/video?q=${encodeURIComponent(href)}&t=${encodeURIComponent(video.title)}`;
     });
     largeMediaItemMenu.addEventListener('click', ev => {
         ev.stopPropagation();
