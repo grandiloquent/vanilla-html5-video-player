@@ -95,6 +95,7 @@ async function applyVideos() {
             ytmLargeMediaItem.appendChild(details);
 
             ytmLargeMediaItem.addEventListener('click', ev => {
+                slimVideoInformationTitle.textContent = v.title;
                 const href = ytmLargeMediaItem.getAttribute('data-href');
                 const id = ytmLargeMediaItem.getAttribute('data-id');
                 fetch(`http://47.106.105.122/api/video/record?id=${id}`).then(res => res.text()).then(res => {

@@ -178,22 +178,16 @@
         </div>
     </div>
     <custom-toast></custom-toast>
+    <script>
+        const slimVideoInformationTitle = document.querySelector('.slim-video-information-title');
+        slimVideoInformationTitle.textContent = new URL(window.location).searchParams.get('t');
+    </script>
     <script src="toast.js"></script>
     <script src="shared.js"></script>
     <script src="video.js"></script>
     <script src="index.js"></script>
     <script src="porn.js"></script>
-    <script>
-        const slimVideoInformationTitle = document.querySelector('.slim-video-information-title');
-        slimVideoInformationTitle.textContent = new URL(window.location).searchParams.get('t');
-        if (slimVideoInformationTitle) {
-            slimVideoInformationTitle.addEventListener('click', ev => {
-                ev.stopPropagation();
-            });
-        }
-
-
-    </script>
+    
 </body>
 
 </html>
