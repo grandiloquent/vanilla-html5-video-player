@@ -7,7 +7,7 @@ window.menu.eventHandler = (what, href) => {
         else
             writeText(baseUri + href);
     } else {
-        fetch(`/api/video?id=${href}`, {
+        fetch(`http://47.106.105.122/api/video?id=${href}`, {
             method: 'DELETE'
         })
     }
