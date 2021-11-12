@@ -28,7 +28,7 @@ async function start(uri) {
         q = "https://www.xvideos.com" + q;
     }
     const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${q}`);
-    video.src = await response.text();
+    video.src = (await response.json()).videoUri;
     try {
         await video.play();
     } catch (e) {

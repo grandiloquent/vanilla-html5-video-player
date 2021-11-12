@@ -1,5 +1,11 @@
 const contextRenderer = document.querySelector('.context-renderer');
 
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 async function applyVideos() {
     async function getRandomVideos() {
         const response = await fetch("http://47.106.105.122/api/video/random");
@@ -95,7 +101,7 @@ async function applyVideos() {
             ytmLargeMediaItem.appendChild(details);
 
             ytmLargeMediaItem.addEventListener('click', ev => {
-                slimVideoInformationTitle.textContent = v.title;
+                slimVideoInformationTitle.textContent = decodeHtml(v.title);
                 const href = ytmLargeMediaItem.getAttribute('data-href');
                 const id = ytmLargeMediaItem.getAttribute('data-id');
                 fetch(`http://47.106.105.122/api/video/record?id=${id}`).then(res => res.text()).then(res => {
