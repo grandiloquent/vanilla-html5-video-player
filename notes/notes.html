@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档</title>
+</head>
+<body>
+<div id="content"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.getElementById('content').innerHTML =
+        marked.parse(`
+1. 颜色 FEE667
+2. 描边宽度 4
+3. 不透明 50
+4. 路径偏移 -2
+5. 高斯模糊 15
+6. 向上复制
+7. 描边宽度 2
+8. 路径偏移 -1
+9. 不透明 25 叠加
+
+        `);
+</script>
+</body>
+</html>
