@@ -22,13 +22,14 @@ function makeOverlay() {
 }
 
 async function start(uri) {
-    let q = uri || new URL(window.location).searchParams.get('q');
-    if (!q) return;
-    if (/^\/video\d+\//.test(q)) {
-        q = "https://www.xvideos.com" + q;
-    }
-    const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${q}`);
-    video.src = (await response.json()).videoUri;
+    // let q = uri || new URL(window.location).searchParams.get('q');
+    // if (!q) return;
+    // if (/^\/video\d+\//.test(q)) {
+    //     q = "https://www.xvideos.com" + q;
+    // }
+    // const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/?v=${q}`);
+    // video.src = (await response.json()).videoUri;
+    video.src ='https://lucidu.cn/api/obs/001_5.mp4';
     try {
         await video.play();
     } catch (e) {
