@@ -257,7 +257,7 @@
 <script>
     document.querySelector('.ytm-large-media-item')
         .addEventListener('click', ev => {
-            video.src = `https://lucidu.cn/api/obs/`+ev.target.dataset.href;
+            video.src = `https://lucidu.cn/api/obs/`+ev.currentTarget.dataset.href;
             video.play();
         });
 </script>
