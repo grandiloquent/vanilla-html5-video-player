@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76b2d369-4381-45e9-98b8-1879bbe6a078" name="Changes" comment="更新">
-      <change afterPath="$PROJECT_DIR$/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index_v_NzllLQMBstOueLArqxfQGTtYbTtrDwapaXZyUDBXX8s.js" beforeDir="false" afterPath="$PROJECT_DIR$/index_v_3LsLKu5M2E_gvMZ4Sj48AqVUc5CJ2YijZO9LDPtrrVI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/video/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/video/video.js" afterDir="false" />
     </list>
@@ -82,6 +80,7 @@
       <workItem from="1638063436961" duration="297000" />
       <workItem from="1638115171021" duration="9000" />
       <workItem from="1638139262649" duration="324000" />
+      <workItem from="1638194434209" duration="195000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1635221735023</created>
