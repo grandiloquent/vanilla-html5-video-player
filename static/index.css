@@ -1,0 +1,166 @@
+html {
+    box-sizing: border-box;
+    touch-action: manipulation;
+    color: #202124;
+    font: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    margin: 0;
+    text-size-adjust: 100%;
+}
+body {
+    box-sizing: inherit;
+    padding: 0;
+    color: #202124;
+    font: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    margin: 0;
+    text-size-adjust: 100%;
+    background-color: #fff;
+
+}
+.markdown *,
+.markdown:after,
+.markdown:before {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit
+}
+.markdown h1 {
+    font: 600 40px / 48px Android Euclid, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    letter-spacing: -0.5px;
+    margin: 0 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline;
+    vertical-align: middle;
+    margin-inline-end: 52px;
+}
+.markdown h2 {
+    font: 600 24px / 32px Android Euclid, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    letter-spacing: normal;
+    margin: 56px -40px 16px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 0;
+    padding: 0 40px 0 0;
+}
+.markdown h3 {
+    font: 500 20px / 28px Android Euclid, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    letter-spacing: -0.25px;
+    margin: 32px -40px 16px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 40px;
+
+}
+.markdown p {
+    margin: 16px 0;
+    padding: 0;
+}
+.markdown ul {
+    margin: 0;
+    padding-left: 40px;
+    list-style: disc outside;
+}
+.markdown li {
+    margin: 12px 0;
+    padding: 0;
+
+}
+.markdown pre {
+
+    background: #f8f9fa;
+    color: #37474f;
+    direction: ltr !important;
+    text-align: left !important;
+    font: Roboto Mono, monospace;
+    overflow-x: auto;
+    position: relative;
+    margin: 0;
+    padding: 24px;
+
+}
+.markdown code {
+    background: #f8f9fa;
+    color: #37474f;
+    direction: ltr !important;
+    padding: 1px 4px;
+    text-align: left !important;
+    border: 1px solid #e8eaed;
+    border-radius: 4px;
+    font: Roboto Mono, monospace;
+    word-break: break-word;
+}
+.markdown a {
+    color: #1769e0;
+    outline: 0;
+    text-decoration: underline;
+    word-break: break-word;
+
+}
+
+.markdown img,
+.markdown video {
+    border: 0;
+    height: auto;
+    max-width: 100%
+}
+.markdown ol {
+    margin: 0;
+    padding-left: 40px;
+    list-style: decimal outside;
+
+}
+.markdown table {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    width: 100%;
+    margin: 0;
+    font-size: 12px;
+
+}
+.markdown tr {
+    background: #e4f7fb;
+    border: 0;
+    border-bottom: 1px solid #dadce0;
+}
+
+.markdown tr:first-child {
+    border-top: 1px solid #dadce0;
+}
+
+.markdown tr {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #dadce0;
+}
+.markdown tr:first-child {
+    border-top: 1px solid #dadce0;
+}
+
+
+.markdown th {
+    border: 0;
+    margin: 0;
+    text-align: left;
+    height: 48px;
+    padding: 16px;
+    vertical-align: middle;
+    font: 500 16px / 24px Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    background: #f1f3f4;
+    color: #000;
+}
+.markdown td {
+
+    border: 0;
+    margin: 0;
+    padding: 15px 16px 16px;
+    background: hsla(0, 0%, 100%, 0.95);
+    vertical-align: top;
+    border-right: 1px solid #cfd8dc;
+    text-align: center;
+
+}
