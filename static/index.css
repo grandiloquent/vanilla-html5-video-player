@@ -2,7 +2,7 @@ html {
     box-sizing: border-box;
     touch-action: manipulation;
     color: #202124;
-    font: 400 16px/24px Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
+    font: 400 16px / 24px Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
     -webkit-font-smoothing: antialiased;
     height: 100%;
     margin: 0;
@@ -25,6 +25,9 @@ body {
     -moz-box-sizing: inherit;
     box-sizing: inherit
 }
+.markdown {
+    padding: 16px;
+}
 .markdown h1 {
     font: 600 40px / 48px Android Euclid, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
     letter-spacing: -0.5px;
@@ -35,10 +38,11 @@ body {
     vertical-align: middle;
     margin-inline-end: 52px;
 }
+
 .markdown h2 {
     font: 600 24px / 32px Android Euclid, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
     letter-spacing: normal;
-    margin: 56px -40px 16px 0;
+    margin: 56px 0 16px;
     overflow: hidden;
     text-overflow: ellipsis;
     border-bottom: 0;
@@ -47,11 +51,9 @@ body {
 .markdown h3 {
     font: 500 20px / 28px Android Euclid, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
     letter-spacing: -0.25px;
-    margin: 32px -40px 16px 0;
+    margin: 32px 0 16px;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-right: 40px;
-
 }
 .markdown p {
     margin: 16px 0;
@@ -73,7 +75,7 @@ body {
     color: #37474f;
     direction: ltr !important;
     text-align: left !important;
-    font: Roboto Mono, monospace;
+    font: 14px / 20px Consolas, monospace;
     overflow-x: auto;
     position: relative;
     margin: 0;
@@ -88,13 +90,23 @@ body {
     text-align: left !important;
     border: 1px solid #e8eaed;
     border-radius: 4px;
-    font: Roboto Mono, monospace;
+    font: 500 90% / 1 Consolas, monospace;
     word-break: break-word;
 }
+.markdown pre code {
+    font-weight: 400;
+    word-break: normal;
+    background: 0;
+    border: 0;
+    font-size: 14px;
+    padding: 0;
+}
+
+
 .markdown a {
     color: #1769e0;
     outline: 0;
-    text-decoration: underline;
+    text-decoration: none;
     word-break: break-word;
 
 }
