@@ -28,6 +28,9 @@
         <div id="content" style="flex-grow: 1;max-width: 50%;padding: 12px;overflow-y: auto;"></div>
     </div>
     <script>
+        document.getElementById('content').addEventListener('click',evt=>{
+            navigator.clipboard.writeText(document.getElementById('content').innerHTML);
+        })
         const textarea = document.getElementById('textarea');
         textarea.addEventListener('input', evt => {
             document.getElementById('content').innerHTML =
@@ -37,6 +40,8 @@
             localStorage.setItem('key', textarea.value);
         });
         textarea.value = localStorage.getItem('key');
+
+        
     </script>
 </body>
 
