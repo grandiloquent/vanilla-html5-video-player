@@ -28,10 +28,28 @@
         <div id="content" style="flex-grow: 1;max-width: 50%;padding: 12px;overflow-y: auto;"></div>
     </div>
     <script>
-        document.getElementById('content').addEventListener('click',evt=>{
+        document.getElementById('content').addEventListener('click', evt => {
             navigator.clipboard.writeText(document.getElementById('content').innerHTML);
         })
         const textarea = document.getElementById('textarea');
+
+        textarea.addEventListener('keydown', function (e) {
+            if (e.keyCode === 9) { // tab was pressed
+                // get caret position/selection
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                const target = e.target;
+                const value = target.value;
+                // set textarea value to: text before caret + tab + text after caret
+                target.value = value.substring(0, start) +
+                    "\t" +
+                    value.substring(end);
+                // put caret at right position again (add one for the tab)
+                this.selectionStart = this.selectionEnd = start + 1;
+                // prevent the focus lose
+                e.preventDefault();
+            }
+        }, false);
         textarea.addEventListener('input', evt => {
             document.getElementById('content').innerHTML =
                 marked.parse(textarea.value);
@@ -41,7 +59,7 @@
         });
         textarea.value = localStorage.getItem('key');
 
-        
+
     </script>
 </body>
 
