@@ -961,6 +961,24 @@ a:after {
     <script>
         const textarea = document.querySelector('textarea');
         textarea.value = localStorage.getItem('storage');
+        textarea.addEventListener('keydown', function (e) {
+        if (e.keyCode === 9) { // tab was pressed
+            // get caret position/selection
+            const start = this.selectionStart;
+            const end = this.selectionEnd;
+            const target = e.target;
+            const value = target.value;
+            // set textarea value to: text before caret + tab + text after caret
+            target.value = value.substring(0, start) +
+                "\t" +
+                value.substring(end);
+            // put caret at right position again (add one for the tab)
+            this.selectionStart = this.selectionEnd = start + 1;
+            // prevent the focus lose
+            e.preventDefault();
+        }
+    }, false);
+    
         document.addEventListener("visibilitychange", function () {
             localStorage.setItem('storage', textarea.value);
         });
