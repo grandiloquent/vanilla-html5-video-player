@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 12px;
+            line-height: 18px;
+            color: #666;
+            margin: 0;
+            padding: 12px;
+        }
+
+        .container {
+            display: grid;
+            /* repeat(2, 1fr) */
+            grid-template-columns: 100px 1fr;
+            border: 1px solid #dadada;
+            border-bottom: 0;
+        }
+
+        .row {
+            padding: 8px;
+            border-bottom: 1px solid #dadada;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <textarea>https://wis.qq.com/weather/common?source=xw&refer=h5&weather_type=air|observe|rise|forecast_1h|forecast_24h|index|alarm|limit|tips&province=湖南省&city=益阳市&county=桃江县</textarea>
+    <div class="container">
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+        integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+
+
+        function render(value) {
+            const obj = JSON.parse(value);
+            const container = document.querySelector('.container');
+            function createRow(s1, s2) {
+                const div = document.createElement('div');
+                div.className = "row";
+                div.textContent = s1;
+                container.appendChild(div);
+                const div2 = document.createElement('div');
+                div2.className = "row";
+                div2.textContent = s2;
+                container.appendChild(div2);
+            }
+            const wind_directions = ["微风",
+                "东北风",
+                "东风",
+                "东南风",
+                "南风",
+                "西南风",
+                "西风",
+                "西北风",
+                "北风",
+                "旋转风"];
+
+            createRow("今日", `${obj.data.observe.degree}度 ${obj.data.observe.weather} ${wind_directions[obj.data.observe.wind_direction]}${obj.data.observe.wind_power}级 湿度${obj.data.observe.humidity}%`);
+            createRow("空气污染指数", `${obj.data.air.aqi} ${obj.data.air.aqi_name}`);
+            var days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            for (let index = 0; index < Object.keys(obj.data.forecast_24h).length; index++) {
+                const element = obj.data.forecast_24h[index];
+                let key = `前天`;
+                if (index === 1) {
+                    key = "昨天";
+                } else if (index === 2) {
+                    key = `今天`;
+                } else if (index === 3) {
+                    key = "明天";
+                } else if (index === 4) {
+                    key = "后天";
+                } else if (index === 5) {
+                    key = "大后天";
+                } else if (index !== 0) {
+                    const matched = /(\d{4})-(\d{2})-(\d{2})/.exec(element.time);
+
+                    const date = new Date(parseInt(matched[1]), parseInt(matched[2]) - 1, parseInt(matched[3]));
+
+                    key = `${days[date.getDay()]}`
+                }
+                createRow(key, `${element.min_degree}-${element.max_degree}度 ${element.day_weather}/${element.day_wind_direction}/${element.day_wind_power}级 ${element.night_weather}/${element.night_wind_direction}/${element.night_wind_power}级`);
+
+            }
+            for (let index = 0; index < Object.keys(obj.data.forecast_1h).length; index++) {
+                const element = obj.data.forecast_1h[index];
+                const matched = /\d{4}(\d{2})(\d{2})(\d{2})/.exec(element.update_time);
+                createRow(`${matched[1]}月${matched[2]}日${matched[3]}点`, `${element.degree}度 ${element.weather} ${element.wind_direction}`);
+            }
+            var node = document.querySelector('.container');
+
+            domtoimage.toPng(node)
+                .then(function (dataUrl) {
+                    var img = new Image();
+                    img.src = dataUrl;
+                    document.body.appendChild(img);
+                })
+                .catch(function (error) {
+                    console.error('oops, something went wrong!', error);
+                });
+        }
+        document.querySelector('textarea')
+        .addEventListener('keydown',evt=>{
+            if(evt.keyCode===13){
+                render( document.querySelector('textarea').value);
+            }
+        })
+
+    </script>
+</body>
+
+</html>
