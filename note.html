@@ -129,9 +129,8 @@
             }, "粗体");
             container.appendChild(element);
         }
-        async function google(value) {
-            const to = new URL(window.location.href).searchParams.get('to');
-            const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/translate?q=${value.trim()}&to=zh`);
+        async function google(value, english) {
+            const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/translate?q=${value.trim()}&to=${english ? "en" : "zh"}}`);
             const obj = await response.text();
             const lines = [];
             const translated = JSON.parse(obj.replaceAll(/您/g, '你').replaceAll(/ - /g, "——"));
@@ -154,7 +153,7 @@
         }
 
 
-        async function trans(editor) {
+        async function trans(editor, english) {
             let start = editor.selectionStart;
             let end = editor.selectionEnd;
 
@@ -169,7 +168,7 @@
             }
             const value = string.substring(start, end);
             if (!value.trim()) return;
-            const lines = await google(value);
+            const lines = await google(value, english);
 
             editor.setRangeText(`${lines.join('\n')}`, start, end);
 
@@ -178,7 +177,7 @@
         function appendTrans(container, editor) {
             const d = 'M20.484 18l-3 3v-2.016h-12.469v-1.969h12.469v-2.016zM10.125 9.984h3.75l-1.875-5.016zM12.75 3l4.734 11.016h-2.063l-0.938-2.203h-4.969l-0.938 2.203h-2.063l4.734-11.016h1.5z'
             const element = makeItem(d, async event => {
-                await trans(editor);
+                await trans(editor, 1);
 
             }, "粗体");
             container.appendChild(element);
@@ -372,13 +371,14 @@
             if (!editor) throw new Error(`The 'editor' cant be null!`);
             const d = "M15.891 17.016h3.234l-1.641-4.359zM18.516 9.984l4.5 12h-2.016l-1.125-3h-4.734l-1.125 3h-2.016l4.5-12h2.016zM12.891 15.047l-0.797 2.063-3.094-3.094-5.016 4.969-1.406-1.406 5.109-5.016q-1.875-2.063-3-4.547h2.016q0.984 1.875 2.297 3.328 2.156-2.391 3.188-5.344h-11.203v-2.016h7.031v-1.969h1.969v1.969h7.031v2.016h-2.953q-0.469 1.5-1.547 3.398t-2.156 3.117l-0.047 0.047z";
             const element = makeItem(d, async event => {
-                const start = editor.selectionStart;
-                const end = editor.selectionEnd;
-                if (end - start <= 0) return;
-                const string = editor.value.substring(start, end);
-                const result = await translate(string);
-                const obj = JSON.parse(result);
-                appendModal(obj);
+                // const start = editor.selectionStart;
+                // const end = editor.selectionEnd;
+                // if (end - start <= 0) return;
+                // const string = editor.value.substring(start, end);
+                // const result = await translate(string);
+                // const obj = JSON.parse(result);
+                // appendModal(obj);
+                await trans(editor, 0);
             }, "单词翻译");
             container.appendChild(element);
         }
@@ -752,7 +752,7 @@
                 appendDecreaseIndent(this.root, this.editor);
                 appendCopy(this.root, this.editor);
                 appendPaste(this.root, this.editor);
-               
+
                 //appendVerticalSplit(this.root, this.editor);
             }
 
@@ -978,7 +978,7 @@ a:after {
                 e.preventDefault();
             }
         }, false);
-        
+
         document.addEventListener("visibilitychange", function () {
             localStorage.setItem('storage', textarea.value);
         });
