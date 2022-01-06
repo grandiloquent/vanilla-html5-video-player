@@ -585,16 +585,15 @@
         }
 
         function indent(editor, increase) {
-            console.log("indent, ");
             const string = editor.value;
             const p = findExtendPosition(editor);
             editor.focus();
             const selection = string.substring(p[0], p[1]);
             editor.setRangeText(selection.split('\n').map(i => {
                 if (increase) {
-                    return `  ${i}`;
+                    return `\t${i}`;
                 } else {
-                    return i.replace(/^ {2}/, '');
+                    return i.replace(/^\t/, '');
                 }
             }).join('\n'), p[0], p[1]);
         }
@@ -739,7 +738,7 @@
                     }
                 });
                 appendTrans(this.root, this.editor);
-                appendRemove1(this.root, this.editor);
+                appendRemove2(this.root, this.editor);
                 //appendRemove2(this.root, this.editor);;
                 //appendSplit(this.root, this.editor);
                 // appendCut(this.root, this.editor);
