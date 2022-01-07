@@ -104,7 +104,7 @@
             }
             var node = document.querySelector('.container');
 
-            domtoimage.toJpeg(node)
+            domtoimage.toPng(node)
                 .then(function (dataUrl) {
                     var img = new Image();
                     img.src = dataUrl;
