@@ -32,7 +32,8 @@
 </head>
 
 <body>
-
+    <a
+        href="https://wis.qq.com/weather/common?source=xw&refer=h5&weather_type=air|observe|rise|forecast_1h|forecast_24h|index|alarm|limit|tips&province=湖南省&city=益阳市&county=桃江县">桃江县</a>
     <textarea>https://wis.qq.com/weather/common?source=xw&refer=h5&weather_type=air|observe|rise|forecast_1h|forecast_24h|index|alarm|limit|tips&province=湖南省&city=益阳市&county=桃江县</textarea>
     <div class="container">
     </div>
@@ -103,7 +104,7 @@
             }
             var node = document.querySelector('.container');
 
-            domtoimage.toPng(node)
+            domtoimage.toJpeg(node)
                 .then(function (dataUrl) {
                     var img = new Image();
                     img.src = dataUrl;
@@ -114,11 +115,11 @@
                 });
         }
         document.querySelector('textarea')
-        .addEventListener('keydown',evt=>{
-            if(evt.keyCode===13){
-                render( document.querySelector('textarea').value);
-            }
-        })
+            .addEventListener('keydown', evt => {
+                if (evt.keyCode === 13) {
+                    render(document.querySelector('textarea').value);
+                }
+            })
 
     </script>
 </body>
