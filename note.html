@@ -130,7 +130,7 @@
             container.appendChild(element);
         }
         async function google(value, english) {
-            const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/translate?q=${value.trim()}&to=${english ? "en" : "zh"}}`);
+            const response = await fetch(`https://service-mayeka3y-1258705152.hk.apigw.tencentcs.com/release/translate?q=${value.trim()}&to=${english ? "zh" : "en"}`);
             const obj = await response.text();
             const lines = [];
             const translated = JSON.parse(obj.replaceAll(/您/g, '你').replaceAll(/ - /g, "——"));
