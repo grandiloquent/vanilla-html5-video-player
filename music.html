@@ -420,6 +420,35 @@
         </div>
     </div>
     <script>
+        function formatDuration(ms) {
+            if (isNaN(ms)) return '0:00';
+            if (ms < 0) ms = -ms;
+            const time = {
+                hour: Math.floor(ms / 3600) % 24,
+                minute: Math.floor(ms / 60) % 60,
+                second: Math.floor(ms) % 60,
+            };
+            return Object.entries(time)
+                .filter((val, index) => index || val[1])
+                .map(val => (val[1] + '').padStart(2, '0'))
+                .join(':');
+        }
+        function jump() {
+            const values = /((\d+)h)?((\d+)m)?(\d+)s/.exec(location.hash);
+            let currentTime = 0;
+            if (values[2]) {
+                currentTime += parseInt(values[2]) * 3600;
+            }
+            if (values[4]) {
+                currentTime += parseInt(values[4]) * 60;
+            }
+            if (values[5]) {
+                currentTime += parseInt(values[5]);
+            }
+            audio.currentTime = currentTime;
+        }
+        /////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////
         const audio = document.querySelector('audio');
 
         async function play() {
@@ -453,19 +482,7 @@
             //sliderKnob.style.left = `${value * 100}%`;
             byline.textContent = formatDuration(audio.currentTime);
         })
-        function formatDuration(ms) {
-            if (isNaN(ms)) return '0:00';
-            if (ms < 0) ms = -ms;
-            const time = {
-                hour: Math.floor(ms / 3600) % 24,
-                minute: Math.floor(ms / 60) % 60,
-                second: Math.floor(ms) % 60,
-            };
-            return Object.entries(time)
-                .filter((val, index) => index || val[1])
-                .map(val => (val[1] + '').padStart(2, '0'))
-                .join(':');
-        }
+
         function substringAfterLast(string, delimiter, missingDelimiterValue) {
             const index = string.lastIndexOf(delimiter);
             if (index === -1) {
@@ -484,11 +501,12 @@
                 name: "晚清官场镜像"
             },
         ]
+        let index = 0;
         async function fetchItems() {
 
             const strings = [];
-            items.forEach(element => {
-                const string = `<div class="list-item" data-path="${element.src}">
+            items.forEach((element, index) => {
+                const string = `<div class="list-item" data-path="${element.src}" data-index="${index}">
             <a class="simple-endpoint">
             </a>
             <div class="left-items">
@@ -515,41 +533,47 @@
 
             document.querySelectorAll('.list-item')
                 .forEach(listItem => listItem.addEventListener('click', ev => {
+                    save();
                     audio.src = listItem.dataset.path;
                     title.textContent = listItem.querySelector('.title-column div').textContent;
+                    index = parseInt(listItem.dataset.index);
                     play();
+                    restore();
                 }));
 
 
         }
+
+
+
+
         fetchItems();
         window.addEventListener('hashchange', ev => {
-            const values = /((\d+)h)?((\d+)m)?(\d+)s/.exec(location.hash);
-            let currentTime = 0;
-            if (values[2]) {
-                currentTime += parseInt(values[2]) * 3600;
-            }
-            if (values[4]) {
-                currentTime += parseInt(values[4]) * 60;
-            }
-            if (values[5]) {
-                currentTime += parseInt(values[5]);
-            }
-            audio.currentTime = currentTime;
+            jump();
         });
         audio.src = items[0].src;
         title.textContent = items[0].name;
+        restore();
         play();
 
-        if (window.localStorage.getItem('currentTime')) {
-            audio.currentTime = parseFloat(window.localStorage.getItem('currentTime'))
-        }
         document.addEventListener('visibilitychange', evt => {
-            console.log(audio.currentTime);
-            window.localStorage.setItem('currentTime', audio.currentTime);
+            save();
         });
 
+        function save() {
+            const obj = JSON.parse(localStorage.getItem('musics') || '{}');
+            obj[items[index].name] = audio.currentTime;
+            localStorage.setItem('musics', JSON.stringify(obj));
+        }
+        function restore() {
+            const obj = JSON.parse(localStorage.getItem('musics') || '{}');
+            if (obj[items[index].name]) {
+            console.log(obj[items[index].name]);
 
+                audio.currentTime = obj[items[index].name];
+            }
+
+        }
         const paperSlider = document.querySelector('.paper-slider');
         paperSlider.addEventListener('click', ev => {
             const rects = paperSlider.getClientRects();
