@@ -530,10 +530,7 @@ img {
     }
 }
 customElements.define('custom-toast', CustomToast);
-/*<custom-toast id="toast"></custom-toast>
- <script src="toast.js"></script>
- document.getElementById('toast').setAttribute('message','');
-*/
+
 function formatDuration(ms) {
     if (isNaN(ms)) return '0:00';
     if (ms < 0) ms = -ms;
