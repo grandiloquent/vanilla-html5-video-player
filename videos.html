@@ -870,6 +870,7 @@
             }
 
             fullscreenHandler() {
+                this.html5MainVideo.requestFullscreen();
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen();
                     if (document.requestFullscreen) document.requestFullscreen();
