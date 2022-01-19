@@ -589,66 +589,6 @@
                         </div>
                     </button>
                 </div>
-                <div class="button-renderer">
-                    <button class="c3-material-button-button" id="action-move">
-                        <div class="cbox">
-                            <div class="button-renderer-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
-                                    viewBox="0 0 24 24" width="24">
-                                    <path d="M18.984 12.984h-13.969v-1.969h13.969v1.969z"></path>
-                                </svg>
-                            </div>
-                            <div class="button-renderer-text">移动</div>
-                        </div>
-                    </button>
-                </div>
-                <div class="button-renderer">
-                    <button class="c3-material-button-button" id="action-remove">
-                        <div class="cbox">
-                            <div class="button-renderer-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
-                                    viewBox="0 0 24 24" width="24">
-                                    <path
-                                        d="M18.984 3.984v2.016h-13.969v-2.016h3.469l1.031-0.984h4.969l1.031 0.984h3.469zM6 18.984v-12h12v12q0 0.797-0.609 1.406t-1.406 0.609h-7.969q-0.797 0-1.406-0.609t-0.609-1.406z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="button-renderer-text">删除</div>
-                        </div>
-                    </button>
-                </div>
-                <div class="button-renderer">
-                    <button class="c3-material-button-button">
-                        <div class="cbox">
-                            <div class="button-renderer-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
-                                    viewBox="0 0 24 24" width="24">
-                                    <path
-                                        d="M18.984 3.984v2.016h-13.969v-2.016h3.469l1.031-0.984h4.969l1.031 0.984h3.469zM6 18.984v-12h12v12q0 0.797-0.609 1.406t-1.406 0.609h-7.969q-0.797 0-1.406-0.609t-0.609-1.406z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="button-renderer-text">删除</div>
-                        </div>
-                    </button>
-                </div>
-                <div class="button-renderer">
-                    <button class="c3-material-button-button">
-                        <div class="cbox">
-                            <div class="button-renderer-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
-                                    viewBox="0 0 24 24" width="24">
-                                    <path
-                                        d="M18.984 3.984v2.016h-13.969v-2.016h3.469l1.031-0.984h4.969l1.031 0.984h3.469zM6 18.984v-12h12v12q0 0.797-0.609 1.406t-1.406 0.609h-7.969q-0.797 0-1.406-0.609t-0.609-1.406z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="button-renderer-text">删除</div>
-                        </div>
-                    </button>
-                </div>
-
-
             </div>
             <div class="item-section-renderer">
 
@@ -1550,64 +1490,6 @@ c3-icon svg path
             </div>`;
                 buffer.push(template);
             });
-            // http://47.106.105.122/api/video/query?keyword=51
-            //         try {
-            //             response = await fetch(`http://47.106.105.122/api/video/ck`);
-            //             const baseUri = await response.text();
-            //             response = await fetch(`http://47.106.105.122/api/video/query?keyword=51`);
-            //             items = await response.json();
-            //             items.forEach(x => {
-            //                 const template = `<div class="context-renderer">
-            //                 <div class="large-media-item">
-            //                     <a class="large-media-item-thumbnail-container" data-href="${baseUri}${x.url}">
-            //                         <div class="video-thumbnail-container-large">
-            //                             <div class="video-thumbnail-bg">
-            //                             </div><img class="video-thumbnail-img" src="${x.thumbnail}">
-            //                             <div class="video-thumbnail-overlay-bottom-group">
-            //                                 <div class="thumbnail-overlay-time-status-renderer">
-            //                                     ${formatDuration(x.duration)}
-            //                                 </div>
-            //                             </div>
-            //                         </div>
-            //                     </a>
-            //                     <div class="details">
-            //                         <div class="large-media-channel">
-            //                             <div class="channel-thumbnail-with-link-renderer">
-            //                                 <a>
-            //                                     <div class="channel-thumbnail-icon">
-            //                                         <img class="profile-icon-img">
-            //                                     </div>
-            //                                 </a>
-            //                             </div>
-            //                         </div>
-            //                         <div class="large-media-item-info">
-            //                             <div class="large-media-item-metadata">
-            //                                 <a href="${baseUri}${x.url}">
-            //                                     <h3 class="large-media-item-headline">
-            //                                     ${x.title}
-            //                                     </h3>
-            //                                     <div class="badge-and-byline-renderer">
-            //                                         <div class="badge-and-byline-item-byline">
-            //                                         </div>
-            //                                     </div>
-            //                                 </a>
-            //                             </div>
-
-            // <div class="large-media-item-menu">
-            // <button class="icon-button">
-            // <c3-icon><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewbox="0 0 24 24" width="24"><path d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z"></path></svg></c3-icon>
-            // </button>
-
-            // </div>
-            //                         </div>
-            //                     </div>
-            //                 </div>
-            //             </div>`;
-            //                 buffer.push(template);
-            //             });
-            //         } catch (e) {
-            //             console.log(e);
-            //         }
             document.querySelector('.results-renderer')
                 .innerHTML = buffer.join('');
 
@@ -1656,18 +1538,6 @@ c3-icon svg path
             }
             document.querySelector('.menu-container .menu-item-button')
                 .addEventListener('click', eventHandler);
-            document.querySelector('#action-move')
-                .addEventListener('click', async evt => {
-                    const element = evt.target;
-                    let v = new URL(customVideo.src).searchParams.get("v");
-                    const response = await fetch(`${host}/api/move?v=${v}`);
-                });
-            document.querySelector('#action-remove')
-                .addEventListener('click', async evt => {
-                    const element = evt.target;
-                    let v = new URL(customVideo.src).searchParams.get("v");
-                    const response = await fetch(`${host}/api/remove?v=${v}`);
-                });
         }
 
         function getRandomInt(min, max) {
@@ -1696,12 +1566,10 @@ c3-icon svg path
         customVideo.addEventListener('ended', evt => {
             customVideo.src = evt.detail;
         });
-        const slimVideoInformationTitle = document.querySelector('.slim-video-information-title');
-        slimVideoInformationTitle.addEventListener('click', evt => {
-            customVideo.muted = true;
-        })
         let videoList;
-        const host = "http://192.168.0.109:12345";
+        
+        const slimVideoInformationTitle = document.querySelector('.slim-video-information-title');
+
         bindingDeleteEvent();
         bindingHideMenuEvent();
         bindingRandomPlayEvent();
