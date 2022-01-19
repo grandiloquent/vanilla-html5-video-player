@@ -932,7 +932,10 @@
             fullscreenHandler() {
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen();
-                    screen.orientation.lock('landscape');
+                    if (document.requestFullscreen) document.requestFullscreen();
+                    if (screen.orientation && screen.orientation.lock) {
+                        screen.orientation.lock('landscape');
+                    }
                     // if (window.outerWidth >= 1200) {
                     //     this.playerContainer.style.position = 'fixed';
                     //     this.playerContainer.style.top = '0';
@@ -1391,7 +1394,7 @@ c3-icon svg path
                 } else {
                     if (value.indexOf('.mp4') !== -1 || this.html5MainVideo.canPlayType('application/vnd.apple.mpegurl')) {
                         this.html5MainVideo.src = value;
-                    } 
+                    }
                 }
                 this.playerControlOverlay.classList.add('fadein');
                 this.playHandler();
@@ -1487,14 +1490,14 @@ c3-icon svg path
         }
 
         async function loadData() {
-            
-            let items =[
-            {
-                "path":"http://lucidu.cn/api/obs/变形计.mp4",
-                "name":"变形计，一档毁灭无数家庭的节目",
-                "duration":"31:12",
-                "thumbnail":"../static/images/1803561464.jpg"
-            }
+
+            let items = [
+                {
+                    "path": "http://lucidu.cn/api/obs/变形计.mp4",
+                    "name": "变形计，一档毁灭无数家庭的节目",
+                    "duration": "31:12",
+                    "thumbnail": "../static/images/1803561464.jpg"
+                }
             ]
             const buffer = [];
             items.forEach(x => {
