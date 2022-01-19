@@ -932,15 +932,15 @@
             fullscreenHandler() {
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen();
-                    if (window.outerWidth >= 1200) {
-                        this.playerContainer.style.position = 'fixed';
-                        this.playerContainer.style.top = '0';
-                        this.playerContainer.style.width = "100%";
-                        this.html5MainVideo.style.width = window.outerWidth + 'px';
-                        this.html5MainVideo.style.height = Math.round((this.html5MainVideo.videoHeight
-                            / this.html5MainVideo.videoWidth) * window.outerWidth) + 'px';
-                        document.body.style.overflow = 'hidden';
-                    }
+                    // if (window.outerWidth >= 1200) {
+                    //     this.playerContainer.style.position = 'fixed';
+                    //     this.playerContainer.style.top = '0';
+                    //     this.playerContainer.style.width = "100%";
+                    //     this.html5MainVideo.style.width = window.outerWidth + 'px';
+                    //     this.html5MainVideo.style.height = Math.round((this.html5MainVideo.videoHeight
+                    //         / this.html5MainVideo.videoWidth) * window.outerWidth) + 'px';
+                    //     document.body.style.overflow = 'hidden';
+                    // }
                 } else {
                     if (document.exitFullscreen) {
                         document.exitFullscreen();
