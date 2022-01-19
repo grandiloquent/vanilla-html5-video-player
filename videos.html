@@ -677,7 +677,6 @@
             <button class="hidden-button" aria-label="close"></button>
         </c3-overlay>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.1.2/hls.min.js"></script>
     <script>
         function calculateLoadedPercent(video) {
             if (!video.buffered.length) {
@@ -1391,11 +1390,7 @@ c3-icon svg path
                 } else {
                     if (value.indexOf('.mp4') !== -1 || this.html5MainVideo.canPlayType('application/vnd.apple.mpegurl')) {
                         this.html5MainVideo.src = value;
-                    } else if (Hls.isSupported()) {
-                        const hls = new Hls();
-                        hls.loadSource(value);
-                        hls.attachMedia(this.html5MainVideo);
-                    }
+                    } 
                 }
                 this.playerControlOverlay.classList.add('fadein');
                 this.playHandler();
