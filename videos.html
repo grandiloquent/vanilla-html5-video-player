@@ -932,6 +932,7 @@
             fullscreenHandler() {
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen();
+                    screen.orientation.lock('landscape');
                     // if (window.outerWidth >= 1200) {
                     //     this.playerContainer.style.position = 'fixed';
                     //     this.playerContainer.style.top = '0';
