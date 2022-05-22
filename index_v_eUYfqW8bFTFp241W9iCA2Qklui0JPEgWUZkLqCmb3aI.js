@@ -1,1 +1,0 @@
-const video=document.querySelector("video"),player=document.querySelector(".player");video.addEventListener("durationchange",()=>{const n=video.videoHeight/video.videoWidth;player.style.width=`${window.innerWidth}px`;player.style.height=`${window.innerWidth*n}px`});video.play()
