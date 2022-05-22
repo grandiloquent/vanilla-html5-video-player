@@ -64,6 +64,7 @@ margin-top: 49px;
         <h2 class="furhpo">
              
         </h2>
+        <slot></slot>
     </div>
         `;
     }

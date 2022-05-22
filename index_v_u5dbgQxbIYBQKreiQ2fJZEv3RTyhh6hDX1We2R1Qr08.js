@@ -31,5 +31,6 @@ margin-top: 49px;
         <h2 class="furhpo">
              
         </h2>
+        <slot></slot>
     </div>
         `}}customElements.define("custom-section",CustomSection);const video=document.querySelector("video"),player=document.querySelector(".player");video.muted=!0;video.autoplay=!0;video.addEventListener("durationchange",()=>{const n=video.videoHeight/video.videoWidth;player.style.width=`${window.innerWidth}px`;player.style.height=`${window.innerWidth*n}px`});const playButton=document.querySelector(".csjovr");playButton.addEventListener("click",()=>{console.log("--------------------->"),video.play(),playButton.style.display="none"})

@@ -1,73 +1,3 @@
-html {
-    height: 100%;
-    overflow: hidden
-}
-
-body {
-    height: 100%;
-    overflow: hidden;
-    -webkit-font-smoothing: antialiased;
-    color: rgba(0, 0, 0, .87);
-    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-    margin: 0;
-    text-size-adjust: 100%
-}
-
-textarea {
-    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif
-}
-
-a {
-    text-decoration: none;
-    color: #2962ff
-}
-
-img {
-    border: none
-}
-
-* {
-    -webkit-tap-highlight-color: transparent
-}
-
-
-html {
-    overflow: visible
-}
-
-body {
-    overflow: visible;
-    overflow-y: scroll
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-size: 1em;
-    font-weight: normal;
-    margin: 0;
-    padding: 0
-}
-
-p {
-    margin: 0
-}
-
-a {
-    color: #1a73e8
-}
-
-body {
-    background: #fff;
-    margin: 0;
-    -webkit-font-smoothing: auto
-}
-
-button {
-    -webkit-font-smoothing: auto
-}
-
-::-ms-clear {
-    display: none
-}
 
 .player {
     position: relative;
@@ -88,14 +18,22 @@ button {
     fill: #fff;
 }
 
-
-.kwbzkv {
-
+.header {
     margin: 20px 24px 0;
 }
 
-.vgpvzt {
+.features {
+    margin: 16px 12px 0 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: #dadce0;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    overflow: hidden
+}
 
+.vgpvzt {
     margin: 0;
     padding: 0;
     font: 500 24px/32px "Google Sans", Roboto, Arial, sans-serif;
@@ -115,61 +53,29 @@ button {
 }
 
 .suvoqz {
-
     display: flex;
     justify-content: space-around;
     margin: 16px 12px 0 12px;
 }
 
 .bqwika {
-    text-size-adjust: 100%;
-    visibility: visible;
-    position: relative;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    box-sizing: border-box;
-    min-width: 64px;
-    border: none;
-    outline: none;
-    -webkit-user-select: none;
-    -webkit-appearance: none;
-    overflow: visible;
-    vertical-align: middle;
-    background: transparent;
-    -webkit-font-smoothing: antialiased;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    will-change: transform, opacity;
-    border-radius: 4px;
-    transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: none;
-    font: 400 12px/16px Roboto, Arial, sans-serif;
-    letter-spacing: .3px;
-    height: auto;
+    justify-content: center;
     flex-direction: column;
-    text-transform: uppercase;
-    margin-bottom: 0;
-    margin-top: 0;
-    flex: 0 1 auto;
-    justify-content: flex-start;
-    text-align: center;
     width: 84px;
-    background-color: transparent;
-    padding: 0 0 0 0;
     color: #1967d2;
+    font-size: 12px;
+}
+
+.bqwika > svg {
+    fill: currentColor;
+    margin-bottom: 8px;
 }
 
 .pfqyed {
-
     display: inline-block;
     padding: 14px 0;
-}
-
-svg {
-
-    fill: currentColor;
-    flex-shrink: 0;
-    margin-bottom: 8px;
 }
 
 .csjovr {
@@ -179,21 +85,15 @@ svg {
     z-index: 100;
 }
 
-.mrzjos {
+.feature {
     background-color: #fff;
     align-items: center;
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    position: relative;
-    width: 100%;
     min-height: 48px;
-    padding: 0;
-    border-top-left-radius: 4px;
 }
 
 .nhcamn {
-
     box-sizing: border-box;
     display: flex;
     flex: 1 1 100%;
@@ -206,51 +106,51 @@ svg {
 }
 
 .ucsrvw {
-
     color: #5f6368;
     line-height: 0;
 }
 
 .oapkiq {
-
     font: 500 14px/20px "Google Sans", Roboto, Arial, sans-serif;
     letter-spacing: .25px;
     color: #202124;
     margin-top: 8px;
 }
 
-.furhpo {
-
-    margin: 0;
-    padding: 0;
-    font: 500 16px/20px "Google Sans", Roboto, Arial, sans-serif;
-    letter-spacing: .1px;
-    color: #202124;
-    margin-bottom: 16px;
-}
-
-
 .ivlcfb {
-
     font: 400 14px/20px Roboto, Arial, sans-serif;
     letter-spacing: .2px;
     color: #202124;
     padding: 24px 16px 20px;
 }
 
-.klhtjh {
+.yxhfbf {
 
     display: block;
-    position: relative;
-    margin-top: 49px;
+    margin-top: 12px;
 }
 
-.klhtjh::before {
-    background-color: #dadce0;
-    content: "";
-    height: 1px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: -25px;
+.ozpnpu {
+
+    align-items: center;
+    display: flex;
+}
+
+.pcqzce {
+
+    align-items: center;
+    display: flex;
+
+}
+
+.nsftve {
+
+    height: 24px;
+    margin-right: 8px;
+}
+
+.sbyhhu {
+
+    display: block;
+    margin-top: 12px;
 }
