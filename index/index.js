@@ -10,4 +10,6 @@ video.addEventListener('durationchange', ev => {
     player.style.height = `${window.innerWidth* ratio}px`;
 });
 
-video.play();
+video.addEventListener('click',ev => {
+    video.play();
+})
