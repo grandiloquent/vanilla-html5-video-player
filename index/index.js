@@ -11,6 +11,7 @@ video.addEventListener('durationchange', ev => {
 });
 const playButton = document.querySelector('.csjovr');
 playButton.addEventListener('click', ev => {
+    console.log('--------------------->')
     video.play();
     playButton.style.display = 'none';
 })
