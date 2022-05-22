@@ -76,6 +76,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 -16px;
 }
 
 .player svg {
@@ -190,28 +191,66 @@ svg {
     padding: 0;
     border-top-left-radius: 4px;
 }
-                .nhcamn{
-                    
-box-sizing: border-box;
-display: flex;
-flex: 1 1 100%;
-flex-direction: column;
-height: 100%;
-max-width: 100%;
-text-align: center;
-justify-content: flex-start;
-padding: 12px 8px 8px;
-                    }
 
-                .ucsrvw{
-                    
-color:  #5f6368;
-line-height: 0;
-                    }
-                .oapkiq{
-                    
-font: 500 14px/20px "Google Sans",Roboto,Arial,sans-serif;
-letter-spacing: .25px;
-color:  #202124;
-margin-top: 8px;
-                    }
+.nhcamn {
+
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    height: 100%;
+    max-width: 100%;
+    text-align: center;
+    justify-content: flex-start;
+    padding: 12px 8px 8px;
+}
+
+.ucsrvw {
+
+    color: #5f6368;
+    line-height: 0;
+}
+
+.oapkiq {
+
+    font: 500 14px/20px "Google Sans", Roboto, Arial, sans-serif;
+    letter-spacing: .25px;
+    color: #202124;
+    margin-top: 8px;
+}
+
+.furhpo {
+
+    margin: 0;
+    padding: 0;
+    font: 500 16px/20px "Google Sans", Roboto, Arial, sans-serif;
+    letter-spacing: .1px;
+    color: #202124;
+    margin-bottom: 16px;
+}
+
+
+.ivlcfb {
+
+    font: 400 14px/20px Roboto, Arial, sans-serif;
+    letter-spacing: .2px;
+    color: #202124;
+    padding: 24px 16px 20px;
+}
+
+.klhtjh {
+
+    display: block;
+    position: relative;
+    margin-top: 49px;
+}
+
+.klhtjh::before {
+    background-color: #dadce0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -25px;
+}
